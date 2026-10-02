@@ -2,7 +2,7 @@
 
 **Payments are not refundable.**
 
-You can try Consultants Copilot before you pay: every new laptop gets free calls,
+You can try Consilyn before you pay: every new laptop gets free calls,
 and the app shows how many are left before each call. Please use them to check it
 works with your laptop, headset and call app before you buy.
 

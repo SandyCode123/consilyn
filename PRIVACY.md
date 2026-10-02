@@ -1,6 +1,6 @@
 # Privacy
 
-Consultants Copilot runs on your laptop. There is no account, and nothing you say,
+Consilyn runs on your laptop. There is no account, and nothing you say,
 type or paste is ever sent to us.
 
 ## What stays on your laptop
@@ -8,7 +8,7 @@ type or paste is ever sent to us.
 - **Audio is never saved and never leaves your laptop.** It is held in memory for a
   few seconds, turned into text on your laptop, and discarded.
 - **Your material** (your background, clients, screening answers, briefs) and **call
-  text** are stored in a database file in the `.consultants-copilot` folder in your
+  text** are stored in a database file in the `.consilyn` folder in your
   user folder. Only you can see them, and uninstalling leaves them there so you
   don't lose them by accident. Delete that folder to remove them.
 - **Your Gemini key and licence key** are saved in the same folder, in a file called

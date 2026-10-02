@@ -1,6 +1,6 @@
 # Terms of use
 
-Consultants Copilot is free software for Windows. By installing or using it you agree
+Consilyn is free software for Windows. By installing or using it you agree
 to these terms.
 
 ## What it is

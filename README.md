@@ -1,4 +1,4 @@
-# Consultants Copilot
+# Consilyn
 
 A live answer screen for experts on expert-network calls. It listens to your call on
 your own Windows laptop and puts a suggested answer on screen, fast enough to use,
@@ -28,7 +28,7 @@ built from your own screening answers and background.
 ## Download
 
 **The first release is coming soon.** When it's out, get
-`ConsultantsCopilot-Setup-<version>.exe` from [Releases](../../releases/latest)
+`Consilyn-Setup-<version>.exe` from [Releases](../../releases/latest)
 and run it. No admin rights are needed.
 
 Windows may say it "protected your PC", because the installer is not yet signed.
