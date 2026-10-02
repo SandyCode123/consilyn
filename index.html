@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultants Copilot</title>
+<meta name="description" content="A live answer screen for experts on expert-network calls. Runs on your Windows laptop; audio never leaves it.">
+<style>
+  :root {
+    --bg: #F7F8FA; --surface: #FFFFFF; --ink: #16202B; --ink-2: #4A5664; --line: #D5DCE4;
+    --accent: #1F6F4A; --accent-ink: #FFFFFF; --amber: #8A5A00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F141A; --surface: #161D25; --ink: #E6EBF0; --ink-2: #A7B2BE; --line: #2A333E;
+      --accent: #3FA77A; --accent-ink: #0F141A; --amber: #E0B25A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F141A; --surface: #161D25; --ink: #E6EBF0; --ink-2: #A7B2BE; --line: #2A333E;
+    --accent: #3FA77A; --accent-ink: #0F141A; --amber: #E0B25A;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: clamp(30px, 6vw, 42px); line-height: 1.15; margin: 0 0 12px; }
+  h2 { font-size: 21px; margin: 40px 0 10px; }
+  .lead { font-size: 19px; color: var(--ink-2); margin: 0 0 24px; }
+  .cta { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none;
+    font-weight: 700; padding: 12px 20px; border-radius: 8px; }
+  .small { font-size: 14px; color: var(--ink-2); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 24px 0; }
+  .card .src { font-size: 13px; font-weight: 700; color: var(--accent); margin: 0 0 6px; }
+  .card .src.amber { color: var(--amber); }
+  .card p { margin: 0; }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: inherit; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Consultants Copilot</h1>
+  <p class="lead">A live answer screen for experts on expert-network calls. When the client asks a question,
+    an answer you can read aloud appears on your screen, built from your own screening answers and background.</p>
+  <p><a class="cta" href="https://github.com/SandyCode123/consultants-copilot/releases/latest">Download for Windows</a></p>
+  <p class="small">The first release is coming soon.</p>
+  <p class="small">Free during early access, then 5 free calls and 2 more every month. Unlimited is $39 a month.
+    Windows 10 or 11, 64-bit. No account. Audio is never recorded and never leaves your laptop.</p>
+
+  <div class="card" aria-label="An example answer">
+    <p class="src">From your screening answer</p>
+    <p>We moved all twelve funds to one administrator in about nine months. The data clean-up took longer than the move itself.</p>
+  </div>
+  <div class="card" aria-label="An example answer from general knowledge">
+    <p class="src amber">General knowledge, not verified</p>
+    <p>My read is that mid-size funds pay somewhere around three to seven basis points, depending on complexity.</p>
+  </div>
+
+  <h2>How it works</h2>
+  <ol>
+    <li><strong>Before the call</strong>, paste the client's brief and the screening answers you submitted.</li>
+    <li><strong>During the call</strong>, it transcribes both sides on your laptop. When the client finishes a question, an answer appears.</li>
+    <li><strong>Every answer shows what it rests on</strong>: your own material, or general knowledge marked not verified. Nothing contradicts your screening answers.</li>
+  </ol>
+
+  <h2>What you need</h2>
+  <ul>
+    <li>A Windows laptop with 8 GB of memory, plugged in during calls.</li>
+    <li>A headset, and Zoom, Teams, Google Meet or another call app.</li>
+    <li>A free Gemini key from <a href="https://aistudio.google.com/apikey">Google AI Studio</a>. The app asks for it when it first starts.</li>
+  </ul>
+
+  <h2>Before your first real call</h2>
+  <ul>
+    <li>Check your expert network's terms. Some do not allow assistant tools on their calls.</li>
+    <li>Tell the client a tool is transcribing the call, and go ahead only if they agree.</li>
+    <li>Practise on a call with a friend first.</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>Audio stays on your laptop. Only text is sent, to Google's Gemini with your own key. On Gemini's free tier
+    Google may use that text to improve its products. To count free calls, our server sees only a scrambled
+    laptop ID and when calls start, never anything said.</p>
+
+  <footer>
+    <a href="https://github.com/SandyCode123/consultants-copilot/blob/main/PRIVACY.md">Privacy</a> ·
+    <a href="https://github.com/SandyCode123/consultants-copilot/blob/main/TERMS.md">Terms</a> ·
+    <a href="https://github.com/SandyCode123/consultants-copilot/blob/main/REFUND.md">Refunds</a> ·
+    <a href="mailto:pateljimi520@gmail.com">pateljimi520@gmail.com</a> ·
+    <a href="https://github.com/SandyCode123/consultants-copilot/issues">Report a problem</a>
+  </footer>
+</main>
+</body>
+</html>
