@@ -55,6 +55,14 @@ record. Your name, email and payment details go to Dodo Payments under its priva
 policy. We receive the licence's status, and the purchase details Dodo Payments
 shares with sellers.
 
+The Upgrade link passes through our server on its way to Dodo Payments. It uses the
+country Cloudflare reports for your connection, only to offer rupees and UPI if you are
+in India, and keeps nothing: not the country, not your address.
+
+After you pay, Dodo Payments sends you back to a thank-you page on our server, and puts
+your new licence key and email in that page's address. The page shows you the key, then
+removes both from the address bar. The server keeps neither.
+
 ## Contact
 
 Questions about privacy: pateljimi520@gmail.com.
