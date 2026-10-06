@@ -31,9 +31,9 @@ Only text goes to Google's AI, with your own key.**
 
 ## Download
 
-**The first release is coming soon.** When it's out, get
-`Consilyn-Setup-<version>.exe` from [Releases](../../releases/latest)
-and run it. No admin rights are needed.
+Get `Consilyn-Setup-<version>.exe` from [Releases](../../releases/latest) and run it.
+No admin rights are needed. The very first start takes a few minutes while Windows
+checks the new files.
 
 Windows may say it "protected your PC", because the installer is not yet signed.
 Choose **More info**, then **Run anyway**. The `.sha256` file next to each release
@@ -56,13 +56,8 @@ lets you check the download is the one published here.
 
 ## Before your first real call
 
-1. **Check your expert network's terms.** Several large expert networks do not
-   allow experts to transcribe calls or use AI to help answer. On those networks'
-   calls, do not use it without written permission.
-2. **Tell the client** a tool is transcribing the call and sending the text to
-   Google's AI to suggest answers, and go ahead only if they agree. The app asks you
-   to confirm this before it listens.
-3. **Practise** on a call with a friend first.
+Practise once on a call with a friend. When you click start, the app asks you to
+confirm the client knows a tool is transcribing the call.
 
 ## Privacy
 

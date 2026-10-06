@@ -732,3 +732,13 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .prose h2[id], .prose h3[id] { scroll-margin-top: 84px; }
 .guide-desc { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
 .notfound ul { list-style: none; padding: 0; margin: 24px 0 0; display: flex; gap: 10px 22px; flex-wrap: wrap; justify-content: center; }
+
+/* Why Consilyn: what each card replaces, struck through */
+.why .feature { display: flex; flex-direction: column; }
+.why .feature p:not(.was) { flex: 1; }
+.feature .was { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 14px; color: var(--ink-3, var(--ink-2)); text-decoration: line-through; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
+
+/* Privacy: three points on the dark band */
+.privacy-points { max-width: 760px; gap: 16px; }
+.privacy-points li { font-size: 17px; }
+.privacy-points strong { color: var(--night-ink); }

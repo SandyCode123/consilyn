@@ -8,13 +8,13 @@ Key facts:
 - Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; unlimited calls are $39 a month, tax included. Payments by Dodo Payments, merchant of record.
 - Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
 - The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start times and the licence key; never anything said.
-- Consent: before it listens, the app asks the expert to confirm they have told the client the call is transcribed on the laptop and its text sent to Google's AI to suggest answers (on the free tier Google may use that text to improve its products). Several large expert networks restrict transcription or AI help on their calls; experts should check their network's terms and not use it there without written permission.
+- Before it listens, the app asks the expert to confirm the client knows the call is transcribed on the laptop and its text sent to Google's AI.
 - Works best with Zoom and Google Meet in Chrome. Speeds were measured with a paid Gemini key; on the free tier answers can be slow or missing.
-- Status: the first release is coming soon.
+- Download: free Windows installer at https://consilyn.com/#download (no account, no admin rights).
 
 ## Pages
 
-- [Home](https://consilyn.com/): what it does, privacy, pricing and FAQ
+- [Home](https://consilyn.com/): what it does, how it differs from other AI call assistants, privacy, pricing, FAQ and download
 - [Privacy policy](https://consilyn.com/privacy/)
 - [Terms of use](https://consilyn.com/terms/)
 - [Refund policy](https://consilyn.com/refunds/)
