@@ -1,0 +1,7 @@
+# consilyn.com: every page here is public. The Markdown copies of the policies are
+# the source for the /privacy/, /terms/ and /refunds/ pages, so only those are indexed.
+User-agent: *
+Allow: /
+Disallow: /*.md$
+
+Sitemap: https://consilyn.com/sitemap.xml

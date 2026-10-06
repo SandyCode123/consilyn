@@ -65,4 +65,4 @@ removes both from the address bar. The server keeps neither.
 
 ## Contact
 
-Questions about privacy: pateljimi520@gmail.com.
+Questions about privacy: hello@consilyn.com.

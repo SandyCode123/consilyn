@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Consilyn</title>
+<meta name="description" content="What Consilyn keeps on your laptop, the text it sends to Gemini with your own key, and the little our free-call counter receives.">
+<link rel="canonical" href="https://consilyn.com/privacy/">
+<meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1117" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Consilyn">
+<meta property="og:title" content="Privacy">
+<meta property="og:description" content="What Consilyn keeps on your laptop, the text it sends to Gemini with your own key, and the little our free-call counter receives.">
+<meta property="og:url" content="https://consilyn.com/privacy/">
+<meta property="og:image" content="https://consilyn.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://consilyn.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy",
+          "item": "https://consilyn.com/privacy/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="doc">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="/" aria-label="Consilyn home"><span class="mark" aria-hidden="true"></span>Consilyn</a>
+    <nav class="main-nav" aria-label="Main"><a href="/#how">How it works</a><a href="/guides/">Guides</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a></nav>
+    <a class="btn btn-primary btn-small head-cta" href="/#early-access">Get early access</a>
+  </div>
+</header>
+<main id="main" class="wrap doc-main">
+<article class="prose">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Privacy</span></nav>
+<h1>Privacy</h1>
+<p>Consilyn runs on your laptop. There is no account, and nothing you say, type or paste is ever sent to us.</p>
+<h2 id="what-stays-on-your-laptop">What stays on your laptop</h2>
+<ul><li><strong>Audio is never saved and never leaves your laptop.</strong> It is held in memory for a few seconds, turned into text on your laptop, and discarded.</li><li><strong>Your material</strong> (your background, clients, screening answers, briefs) and <strong>call text</strong> are stored in a database file in the <code>.consilyn</code> folder in your user folder. Only you can see them, and uninstalling leaves them there so you don't lose them by accident. Delete that folder to remove them.</li><li><strong>Your Gemini key and licence key</strong> are saved in the same folder, in a file called <code>.env</code>.</li></ul>
+<h2 id="what-is-sent-to-the-ai-service">What is sent to the AI service</h2>
+<p>To suggest answers, the app sends <strong>text only</strong> to Google's Gemini service, using your own key: the recent conversation, your background, and the call's screening answers and brief. Nothing else is sent.</p>
+<ul><li>On Gemini's <strong>free tier</strong>, Google may use this text to improve its products, and people may review it. The consent screen tells you so before every call.</li><li>On a <strong>paid tier</strong> (billing linked in Google AI Studio), Google does not use it for training.</li></ul>
+<p>Google's own privacy terms apply to what it receives. Without a key, nothing is sent to Google, and the app only shows the transcript.</p>
+<h2 id="what-our-server-receives-which-is-only-enough-to-count-free-calls">What our server receives, which is only enough to count free calls</h2>
+<p>When you open the consent screen and when you start a call, the app asks our server whether the call is allowed. It sends exactly this:</p>
+<ul><li><strong>A scrambled laptop ID.</strong> This is a one-way code made from Windows' own ID for your laptop. Anyone who holds it can't work back to your laptop, and it matches nothing in any other app. It stays the same if you reinstall, which is how free calls are counted.</li><li><strong>A scrambled ID for the client entry</strong> the call is for, so that restarting the same call isn't counted twice. It contains nothing about the client.</li><li><strong>The app's version number</strong>, and <strong>the times</strong> calls were started, including any calls started while offline.</li><li><strong>Your licence key</strong>, once you've bought one, so your plan can be checked. The server keeps only a scrambled copy of it.</li></ul>
+<p>It never receives call content, anything said or typed, client names, your name or your email. It doesn't use cookies or analytics. Your internet address is seen by Cloudflare, which runs the server, as with any website.</p>
+<h2 id="payments">Payments</h2>
+<p>If you buy a licence, the purchase is handled by Dodo Payments, the merchant of record. Your name, email and payment details go to Dodo Payments under its privacy policy. We receive the licence's status, and the purchase details Dodo Payments shares with sellers.</p>
+<p>The Upgrade link passes through our server on its way to Dodo Payments. It uses the country Cloudflare reports for your connection, only to offer rupees and UPI if you are in India, and keeps nothing: not the country, not your address.</p>
+<p>After you pay, Dodo Payments sends you back to a thank-you page on our server, and puts your new licence key and email in that page's address. The page shows you the key, then removes both from the address bar. The server keeps neither.</p>
+<h2 id="contact">Contact</h2>
+<p>Questions about privacy: hello@consilyn.com.</p>
+</article>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Consilyn</a>
+        <p>A live answer screen for experts who take paid calls. It runs on your Windows laptop.</p>
+      </div>
+      <nav aria-label="Product">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#privacy">What goes where</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/guides/">Guides</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Policies">
+        <h2>Policies</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy policy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/refunds/">Refunds</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:hello@consilyn.com">hello@consilyn.com</a></li>
+          <li><a href="https://github.com/SandyCode123/consilyn/issues" rel="noopener">Report a problem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Consilyn. Not affiliated with any expert network.</span>
+      <span>Zoom, Google Meet and Microsoft Teams are trademarks of their owners.</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

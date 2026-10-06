@@ -1,0 +1,13 @@
+{
+  "name": "Consilyn",
+  "short_name": "Consilyn",
+  "description": "A live answer screen for experts who take paid calls.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F6F4EF",
+  "theme_color": "#0E1A24",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

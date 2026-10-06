@@ -1,0 +1,26 @@
+# Consilyn
+
+> Consilyn is a Windows app for experts who take paid consultations. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
+
+Key facts:
+
+- Platform: Windows 10 and 11, 64-bit, 8 GB of memory. English only.
+- Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; unlimited calls are $39 a month, tax included. Payments by Dodo Payments, merchant of record.
+- Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
+- The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start times and the licence key; never anything said.
+- Consent: before it listens, the app asks the expert to confirm they have told the client the call is transcribed on the laptop and its text sent to Google's AI to suggest answers (on the free tier Google may use that text to improve its products). Several large expert networks restrict transcription or AI help on their calls; experts should check their network's terms and not use it there without written permission.
+- Works best with Zoom and Google Meet in Chrome. Speeds were measured with a paid Gemini key; on the free tier answers can be slow or missing.
+- Status: the first release is coming soon.
+
+## Pages
+
+- [Home](https://consilyn.com/): what it does, privacy, pricing and FAQ
+- [Privacy policy](https://consilyn.com/privacy/)
+- [Terms of use](https://consilyn.com/terms/)
+- [Refund policy](https://consilyn.com/refunds/)
+
+## Guides
+
+- [How to answer expert network screening questions](https://consilyn.com/guides/answer-expert-network-screening-questions/): How to answer expert network screening questions: a simple structure, before-and-after examples, and how to stay accurate, consistent and confidential.
+- [How to prepare for an expert network call](https://consilyn.com/guides/prepare-for-an-expert-network-call/): What a paid expert consultation looks like, the questions clients ask, what you must never share, and a short checklist for the minutes before the call.
+- [Can you use AI on an expert network call? What the rules say](https://consilyn.com/guides/using-ai-on-expert-calls/): Using AI before or during a paid expert call: what network terms say, how recording consent works, what confidentiality means, and a short checklist.

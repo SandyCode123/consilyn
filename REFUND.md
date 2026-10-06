@@ -13,4 +13,4 @@ works with your laptop, headset and call app before you buy.
   where you live gives you a right to a refund, that right still applies, and Dodo
   Payments handles it.
 - **To cancel, or for a question about a payment**, use the link in your purchase
-  email, or write to pateljimi520@gmail.com.
+  email, or write to hello@consilyn.com.

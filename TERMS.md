@@ -62,7 +62,7 @@ software it includes is covered by its own licences, listed in
 
 ## Contact
 
-Questions about these terms: pateljimi520@gmail.com.
+Questions about these terms: hello@consilyn.com.
 
 ## Changes
 

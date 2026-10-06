@@ -1,97 +1,995 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consilyn</title>
-<meta name="description" content="A live answer screen for experts on expert-network calls. Runs on your Windows laptop; audio never leaves it.">
-<style>
-  :root {
-    --bg: #F7F8FA; --surface: #FFFFFF; --ink: #16202B; --ink-2: #4A5664; --line: #D5DCE4;
-    --accent: #1F6F4A; --accent-ink: #FFFFFF; --amber: #8A5A00;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0F141A; --surface: #161D25; --ink: #E6EBF0; --ink-2: #A7B2BE; --line: #2A333E;
-      --accent: #3FA77A; --accent-ink: #0F141A; --amber: #E0B25A;
+<title>Consilyn · Live answer assistant for expert calls</title>
+<meta name="description" content="Short answers to say aloud on paid expert calls, drawn from the screening answers you submitted, with the source labelled. Windows; audio stays on your laptop.">
+<link rel="canonical" href="https://consilyn.com/">
+<meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1117" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Consilyn">
+<meta property="og:title" content="Consilyn · Be the expert they screened for">
+<meta property="og:description" content="A Windows app that shows short answers to say aloud on paid expert calls, drawn from your own screening answers, with the source labelled. Audio stays on your laptop.">
+<meta property="og:url" content="https://consilyn.com/">
+<meta property="og:image" content="https://consilyn.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Consilyn's live screen: a client's question, and an answer labelled with the screening answer it quotes">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://consilyn.com/#org",
+      "name": "Consilyn",
+      "url": "https://consilyn.com/",
+      "logo": "https://consilyn.com/assets/icon-512.png",
+      "email": "hello@consilyn.com",
+      "sameAs": ["https://github.com/SandyCode123/consilyn"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://consilyn.com/#site",
+      "name": "Consilyn",
+      "url": "https://consilyn.com/",
+      "publisher": { "@id": "https://consilyn.com/#org" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://consilyn.com/#app",
+      "name": "Consilyn",
+      "url": "https://consilyn.com/",
+      "description": "Consilyn is a Windows app for experts who take paid consultations. It transcribes the call on the expert's laptop, never saving audio, and shows short answers to read aloud, built from the expert's own screening answers and background, with the source of every answer labelled.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows 10, Windows 11 (64-bit)",
+      "memoryRequirements": "8 GB",
+      "inLanguage": "en",
+      "featureList": [
+        "Speech is transcribed on the laptop; audio is never saved",
+        "Answers built from your own screening answers and background",
+        "Every answer labelled with its source; AI-written text marked not verified",
+        "Each answer checked against your screening answers before it is shown",
+        "Answers to likely questions prepared before the call",
+        "Asks you to confirm the client has agreed before it listens"
+      ],
+      "publisher": { "@id": "https://consilyn.com/#org" },
+      "offers": {
+        "@type": "Offer",
+        "name": "Early access",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Every call is free during early access."
+      }
     }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0F141A; --surface: #161D25; --ink: #E6EBF0; --ink-2: #A7B2BE; --line: #2A333E;
-    --accent: #3FA77A; --accent-ink: #0F141A; --amber: #E0B25A;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink);
-    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
-  h1 { font-size: clamp(30px, 6vw, 42px); line-height: 1.15; margin: 0 0 12px; }
-  h2 { font-size: 21px; margin: 40px 0 10px; }
-  .lead { font-size: 19px; color: var(--ink-2); margin: 0 0 24px; }
-  .cta { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none;
-    font-weight: 700; padding: 12px 20px; border-radius: 8px; }
-  .small { font-size: 14px; color: var(--ink-2); }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 24px 0; }
-  .card .src { font-size: 13px; font-weight: 700; color: var(--accent); margin: 0 0 6px; }
-  .card .src.amber { color: var(--amber); }
-  .card p { margin: 0; }
-  ul, ol { padding-left: 22px; }
-  li { margin-bottom: 6px; }
-  a { color: inherit; }
-  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
-</style>
+  ]
+}
+</script>
+<script type="application/ld+json" id="faq-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Consilyn record my calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Audio is held in memory for a few seconds, turned into text on your laptop and discarded. No audio file is ever written, and audio never leaves your laptop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the client need to know?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Tell the client a tool is transcribing the call and sending the text, never the audio, to Google's AI to suggest answers, and that on Gemini's free tier Google may use that text to improve its products. Go ahead only if they agree. The law on this differs by country and by US state. Consilyn asks you to confirm before it listens, and it does not join the meeting or hide from it. What to say."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use it on expert-network calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only where the network and the client allow it. Several of the largest expert networks have rules against experts transcribing calls or using AI to help answer questions. Read your network's current terms, and on those networks' calls do not use Consilyn without written permission. Preparing answers beforehand involves no call audio, but some networks' AI rules cover that too. Consilyn is not affiliated with any expert network. What the rules say."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the answers come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are written by Google's Gemini from your screening answers, your background and what has been said on the call. Every AI-written answer is marked not verified. Where it draws on your own material, a green label names the source and your exact words are quoted underneath."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it contradict what I submitted?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each answer is checked against your screening answers before it appears. If it disagrees, your own screening answer is shown instead. If the client quotes one of your figures back wrongly, a bar shows both. The checks reduce mistakes; they cannot promise there will be none, so you always decide what you say."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when a question is outside what I know?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You get a view in your own voice, such as “My read is…”, marked not verified on your screen. It never invents experience for you: no employer, result or figure told as something you did. A view can still include typical figures from general knowledge, so check any figure before you say it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is what I say used to train AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our server never receives anything said. To write suggestions, text is sent to Google's Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. On a paid tier, Google does not use it for training. Audio is never sent anywhere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about confidential information?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consilyn only knows what you give it. Leave out of your background anything you could not say on a call, and never share confidential or material non-public information, whatever the screen suggests. Your obligations to former employers and clients stay yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly do answers appear?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answers prepared before the call usually appear about three seconds after the client stops talking. Answers written during the call take a few seconds longer, and a line you can start with fills the gap. These times were measured with a paid Gemini key. On the free tier, Google's limits can delay an answer or leave a question without one, and the daily allowance can run out mid-call; the app tells you when that happens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which call apps does it work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consilyn follows whichever app on your laptop is playing sound and using your microphone at the same time, so there is no list to set up. Zoom and Google Meet in Chrome work best. Other call apps, such as Microsoft Teams, can work too; use a free call to check yours first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every call is free during early access. After that, your first 5 calls are free, then 2 free calls every month. Unlimited calls are $39 a month, tax included, and you can cancel any time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No Consilyn account. You need a Gemini key from Google AI Studio (free to start, and it needs a Google account), which the app asks for the first time it starts. If you buy a licence, you get a licence key by email."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on a Mac, or in other languages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. Consilyn is for Windows 10 and 11, and works in English."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who makes Consilyn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An independent developer who takes expert calls built it for their own calls first. Write to hello@consilyn.com with any question, or report a problem on GitHub."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
-<main>
-  <h1>Consilyn</h1>
-  <p class="lead">A live answer screen for experts on expert-network calls. When the client asks a question,
-    an answer you can read aloud appears on your screen, built from your own screening answers and background.</p>
-  <p><a class="cta" href="https://github.com/SandyCode123/consilyn/releases/latest">Download for Windows</a></p>
-  <p class="small">The first release is coming soon.</p>
-  <p class="small">Free during early access, then 5 free calls and 2 more every month. Unlimited is $39 a month.
-    Windows 10 or 11, 64-bit. No account. Audio is never recorded and never leaves your laptop.</p>
+<a class="skip" href="#main">Skip to content</a>
 
-  <div class="card" aria-label="An example answer">
-    <p class="src">From your screening answer</p>
-    <p>We moved all twelve funds to one administrator in about nine months. The data clean-up took longer than the move itself.</p>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="/" aria-label="Consilyn home"><span class="mark" aria-hidden="true"></span>Consilyn</a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="/guides/">Guides</a>
+    </nav>
+    <a class="btn btn-primary btn-small head-cta" href="#early-access">Get early access</a>
   </div>
-  <div class="card" aria-label="An example answer from general knowledge">
-    <p class="src amber">General knowledge, not verified</p>
-    <p>My read is that mid-size funds pay somewhere around three to seven basis points, depending on complexity.</p>
+</header>
+
+<main id="main">
+
+<!-- ================================================================ hero -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Live answer assistant for expert calls · Windows</p>
+      <h1 id="hero-title">Be the expert <em>they screened for.</em></h1>
+      <p class="intro">Consilyn is a Windows app that listens to your expert call on your laptop and puts a short, AI-written answer on screen for you to say in your own words. It draws on the screening answers you submitted and your background, and shows which of them it used.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#early-access">Get early access
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
+      <p class="cta-note">Free during early access · Windows 10 and 11 · First release coming soon</p>
+      <ul class="trust-row">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Audio is never saved or uploaded</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>No account, no bot in the meeting</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V5a2 2 0 0 1 2-2h7l9 9-9 9-9-9Z"/><circle cx="8" cy="8" r="1.5"/></svg>Every answer labelled by source</li>
+      </ul>
+    </div>
+
+    <div class="demo" id="demo" data-demo>
+      <div class="demo-tabs" role="group" aria-label="Example calls">
+        <button type="button" class="demo-tab" aria-pressed="true">Energy</button>
+        <button type="button" class="demo-tab" aria-pressed="false">Procurement software</button>
+        <button type="button" class="demo-tab" aria-pressed="false">Logistics</button>
+      </div>
+      <div class="app" aria-hidden="true">
+        <div class="app-bar">
+          <span class="app-dots"><i></i><i></i><i></i></span>
+          <span class="app-brand">Consilyn</span>
+          <span class="app-client">Project Ember · on-site solar and storage</span>
+          <span class="app-spacer"></span>
+          <span class="app-live">Listening</span>
+          <span class="app-timer">00:42</span>
+        </div>
+        <div class="app-heard-slot">
+          <div class="app-heard">
+            <span class="app-label">Heard</span>
+            <p class="app-heard-text"><span class="who">Lee</span>What was the biggest obstacle to rolling solar out to more of your sites?</p>
+          </div>
+          <div class="app-clash hidden"><p class="app-clash-text"></p><span class="x">&times;</span></div>
+        </div>
+        <div class="app-working hidden">
+          <div class="app-working-head"><span class="dot"></span><span class="app-read-text"></span></div>
+          <p class="app-say"></p>
+        </div>
+        <div class="app-cutin hidden"></div>
+        <div class="app-card answered">
+          <div class="app-read">Read this</div>
+          <div class="app-prov"><span class="chip chip-unverified">Generated · not verified</span><span class="chip chip-verified">From your screening answer · Q2</span><span class="chip chip-muted">Prepared</span></div>
+          <p class="app-answer unverified look-b"><span class="sent lead">Grid connection approvals were the biggest obstacle we hit.</span><span class="sent">Two of our sites waited over a year for the utility.</span><span class="sent">So if you're modelling a rollout, I'd put the connection queue on the critical path, ahead of the panels.</span></p>
+          <div class="app-foot">
+            <div class="app-foot-item"><b>You wrote, Q2</b>&ldquo;Two sites waited over a year for the utility.&rdquo;</div>
+          </div>
+        </div>
+        <div class="app-keys"><span><kbd>Esc</kbd> clear the screen</span></div>
+      </div>
+      <div class="demo-controls">
+        <button type="button" class="demo-btn demo-play">
+          <svg class="i-pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+          <svg class="i-play hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5Z"/></svg>
+          <span class="label">Pause demo</span>
+        </button>
+        <button type="button" class="demo-btn demo-restart">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2.5V5H5"/></svg>
+          Replay
+        </button>
+        <div class="demo-steps" aria-hidden="true"><span class="now"></span><span></span><span></span></div>
+      </div>
+      <p class="demo-caption"><span class="tag">Prepared</span><span>Prepared before the call, so it is on screen about three seconds after the question ends.</span></p>
+      <p class="demo-legend"><span class="key key-u">Amber</span> written by the AI, so check it before you say it. <span class="key key-v">Green</span> which of your answers it used, quoted word for word underneath.</p>
+      <p class="demo-live visually-hidden" aria-live="polite"></p>
+      <details class="demo-text" id="demo-text">
+        <summary>The example calls as text</summary>
+<!-- demo-text:start -->
+<h3>Energy: Project Ember · on-site solar and storage</h3>
+<p><strong>Your background:</strong> Former energy manager for a regional grocery distributor.</p>
+<p><strong>Your screening answers:</strong></p><ul><li>Q1. Describe your on-site solar or storage experience. <em>I led rooftop solar at six of our warehouses. Payback came in at around seven years. We ran one battery pilot that we did not extend.</em></li><li>Q2. What was the biggest obstacle to more sites? <em>Grid connection approvals. Two sites waited over a year for the utility. Roof condition ruled out a third.</em></li></ul>
+<ol><li><strong>Lee asks:</strong> What was the biggest obstacle to rolling solar out to more of your sites?<br>Answer, labelled Generated · not verified, From your screening answer · Q2, Prepared: Grid connection approvals were the biggest obstacle we hit. Two of our sites waited over a year for the utility. So if you&#x27;re modelling a rollout, I&#x27;d put the connection queue on the critical path, ahead of the panels.<br>You wrote, Q2: “Two sites waited over a year for the utility.”</li><li><strong>Lee asks:</strong> And payback on those six warehouses was around four years?<br>Bar over the question: Lee said four years; you wrote around seven years (Q1).<br>Line to start with: That one is worth being precise about. Let me set it out properly rather than give you the headline version.<br>Answer, labelled Generated · not verified, From your screening answer · Q1: It was closer to seven years. That was across all six of our warehouses. I&#x27;d treat four as optimistic for a typical distribution site.<br>You wrote, Q1: “Payback came in at around seven years.”</li><li><strong>Lee asks:</strong> Why didn&#x27;t you extend the battery pilot?<br>Line to start with: Let me answer that the way it actually plays out, rather than the way it usually gets described.<br>Answer, labelled Generated · not verified, From your screening answer · Q1: We ran one battery pilot, and we did not extend it. My read is that storage struggles to pay back on energy savings alone at a typical warehouse. It makes more sense where there are peak demand charges to cut. So I&#x27;d look at the tariff before the technology.<br>You wrote, Q1: “We ran one battery pilot that we did not extend.”</li></ol>
+<h3>Procurement software: Project Larch · procurement software</h3>
+<p><strong>Your background:</strong> Former procurement director at a mid-size industrial manufacturer.</p>
+<p><strong>Your screening answers:</strong></p><ul><li>Q1. Have you implemented procurement software? <em>Yes. I led the selection of a source-to-pay platform and rolled it out across four sites over about eighteen months. Supplier onboarding was the slowest part.</em></li><li>Q2. What matters most when choosing a vendor? <em>Ease of use for occasional buyers. If plant staff won&#x27;t use it, spend leaks back to email and purchase cards. ERP integration comes second.</em></li></ul>
+<ol><li><strong>Sam asks:</strong> What should we weigh most when comparing these vendors?<br>Line to start with: I will take that from the practical side rather than the theory. Let me start where it actually matters.<br>Answer, labelled Generated · not verified, From your screening answer · Q2: Ease of use for occasional buyers matters most. If plant staff won&#x27;t use it, spend leaks back to email and purchase cards. ERP integration comes second, so I&#x27;d test both with a real plant user before signing.<br>You wrote, Q2: “If plant staff won&#x27;t use it, spend leaks back to email and purchase cards.”</li><li><strong>Sam asks:</strong> How do you see AI changing procurement teams over the next few years?<br>Line to start with: Let me put that in context first, because the context is what makes the answer useful. Then I will get specific.<br>Answer, labelled Generated · not verified: My read is that the first gains come in the dull work, like matching invoices and chasing approvals. Supplier negotiation stays with people, because it is judgement and relationships. So I&#x27;d expect leaner transactional teams, not smaller procurement functions.</li><li><strong>Sam asks:</strong> So for you, ERP integration was really the deciding factor?<br>Line to start with: That is worth answering properly rather than in one line. Let me give you the version that is actually useful.<br>Held, labelled Your screening answer · Q2: Ease of use for occasional buyers. If plant staff won&#x27;t use it, spend leaks back to email and purchase cards. ERP integration comes second.</li></ol>
+<h3>Logistics: Project Alder · warehouse systems</h3>
+<p><strong>Your background:</strong> Former VP of operations at a regional logistics operator.</p>
+<p><strong>Your screening answers:</strong></p><ul><li>Q1. Describe your experience with warehouse management systems. <em>I led our warehouse management system rollout across 40 depots between 2018 and 2022, in four regional waves.</em></li><li>Q2. What would you tell an operator planning a rollout? <em>Pilots at two depots caught most of the integration problems before the wider rollout.</em></li></ul>
+<ol><li><strong>Maya asks:</strong> If you ran that warehouse system rollout again, what would you do differently?<br>Answer, labelled Generated · not verified, From your screening answer · Q2, From your screening answer · Q1, Prepared: I&#x27;d keep the regional waves. Our two pilot depots caught most of the integration problems before the wider rollout. That&#x27;s the step I&#x27;d protect, even under time pressure.<br>You wrote, Q2: “Pilots at two depots caught most of the integration problems before the wider rollout.”<br>You wrote, Q1: “I led our warehouse management system rollout across 40 depots between 2018 and 2022, in four regional waves.”</li><li><strong>Maya asks:</strong> How many depots would you put in a first wave for an operator our size?<br>Line to start with: That is worth answering properly rather than in one line. Let me give you the version that is actually useful.<br>Answer, labelled Generated · not verified: My read is that a first wave works best when it is small enough for the support team to reach every site the same day. Beyond that, problems start to queue faster than they are fixed. So I&#x27;d size it to the support team, not the network.<br>Maya cuts in; the card dims and the screen says listen.</li></ol>
+<!-- demo-text:end -->
+      </details>
+      <p class="demo-disclaimer">A made-up call on a recreation of the live screen. Timings were measured with a paid Gemini key; answers are shortened. <a href="#demo-text">Read the example calls as text</a>.</p>
+    </div>
   </div>
+</section>
 
-  <h2>How it works</h2>
-  <ol>
-    <li><strong>Before the call</strong>, paste the client's brief and the screening answers you submitted.</li>
-    <li><strong>During the call</strong>, it transcribes both sides on your laptop. When the client finishes a question, an answer appears.</li>
-    <li><strong>Every answer shows what it rests on</strong>: your own material, or general knowledge marked not verified. Nothing contradicts your screening answers.</li>
-  </ol>
+<!-- ============================================================ the moment -->
+<section class="section-tight section-alt" aria-labelledby="moment-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Why it exists</p>
+      <h2 id="moment-title">Expert calls are won and lost in a few seconds.</h2>
+      <p>You know the subject. That is why you were screened in. The hard part is the moment a question lands from an odd angle and the client is waiting.</p>
+    </div>
+    <div class="moment">
+      <article class="moment-item reveal">
+        <p class="num" aria-hidden="true">01</p>
+        <h3>The half-remembered number</h3>
+        <p>The client asks for a figure you know roughly. Guess, and you risk contradicting what you wrote in your screening answers.</p>
+      </article>
+      <article class="moment-item reveal">
+        <p class="num" aria-hidden="true">02</p>
+        <h3>The question from an odd angle</h3>
+        <p>A topic you know well, asked in a way you did not expect. The silence stretches while you find your way in.</p>
+      </article>
+      <article class="moment-item reveal">
+        <p class="num" aria-hidden="true">03</p>
+        <h3>Sounding like the wrong expert</h3>
+        <p>Answer like a market analyst when they screened in an operator or a buyer, and the call can end early.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <h2>What you need</h2>
-  <ul>
-    <li>A Windows laptop with 8 GB of memory, plugged in during calls.</li>
-    <li>A headset, and Zoom, Teams, Google Meet or another call app.</li>
-    <li>A free Gemini key from <a href="https://aistudio.google.com/apikey">Google AI Studio</a>. The app asks for it when it first starts.</li>
-  </ul>
+<!-- =========================================================== how it works -->
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">A few minutes before the call. Then talk as usual.</h2>
+      <p>Consilyn runs on your Windows laptop beside your call app. Nothing joins the meeting.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">1</span>
+        <h3>Paste what you already have</h3>
+        <p>Add your background once. For each call, paste or attach the client's brief and the screening answers you submitted. One button prepares answers to the likeliest questions in about a minute, and you can read them through before you dial in.</p>
+        <div class="step-visual" aria-hidden="true">
+          <span class="mini-field">Your screening answers</span>
+          <div class="mini-box">2. What was the biggest obstacle to more sites?<br>Grid connection approvals. Two sites waited&hellip;</div>
+          <span class="mini-field">Prepared answers</span>
+          <div class="mini-progress"><span></span></div>
+          <span>Ready for the call</span>
+        </div>
+      </li>
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">2</span>
+        <h3>Tell the client, then start</h3>
+        <p>Nothing listens until you confirm you have told the client the call is transcribed on your laptop and its text goes to Google's AI to suggest answers. The sound is thrown away as it goes.</p>
+        <div class="step-visual" aria-hidden="true">
+          <span class="mini-field">Before anything listens</span>
+          <div class="mini-box">Your laptop turns what is said into text as the call goes, and throws the sound away as it goes. No audio file is ever written. The text of the conversation is sent to Google's AI service to suggest answers, and Google may use it to improve its products.</div>
+          <div class="mini-box"><strong>I have told them &mdash; start listening</strong></div>
+        </div>
+      </li>
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">3</span>
+        <h3>Glance, then say it your way</h3>
+        <p>When the client finishes a question, a line to start with appears, then the answer. Each card shows what it rests on. You decide what you say.</p>
+        <div class="step-visual" aria-hidden="true">
+          <div class="app" style="min-height:0;box-shadow:none">
+            <div class="app-card answered" style="min-height:0;padding:12px 14px">
+              <div class="app-prov"><span class="chip chip-unverified">Generated · not verified</span><span class="chip chip-verified">From your screening answer · Q1</span></div>
+              <p class="app-answer unverified" style="font-size:15px"><span class="sent lead">It was closer to seven years.</span><span class="sent">That was across all six of our warehouses.</span></p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-  <h2>Before your first real call</h2>
-  <ul>
-    <li>Check your expert network's terms. Some do not allow assistant tools on their calls.</li>
-    <li>Tell the client a tool is transcribing the call, and go ahead only if they agree.</li>
-    <li>Practise on a call with a friend first.</li>
-  </ul>
+<!-- ============================================================= features -->
+<section class="section section-alt" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What makes it different</p>
+      <h2 id="features-title">An answer assistant built for live calls.</h2>
+      <p>Not a note-taker and not a chatbot. One answer at a time, in your voice, with its source in plain sight.</p>
+    </div>
 
-  <h2>Privacy</h2>
-  <p>Audio stays on your laptop. Only text is sent, to Google's Gemini with your own key. On Gemini's free tier
-    Google may use that text to improve its products. To count free calls, our server sees only a scrambled
-    laptop ID and when calls start, never anything said.</p>
+    <div class="spot reveal">
+      <div class="spot-text">
+        <h3>Every answer says what it rests on.</h3>
+        <p>You can see at a glance how far to trust a card before you say a word of it.</p>
+        <ul>
+          <li>Where an answer draws on your own material, a <strong>green label</strong> names the source and your exact words are quoted underneath.</li>
+          <li>Everything the AI writes is marked <strong>not verified</strong>, with a dashed amber rule, so you know what to check.</li>
+          <li>Nothing reaches your screen without one of these labels. If the app cannot say what an answer rests on, it shows nothing.</li>
+        </ul>
+      </div>
+      <div class="frag" aria-hidden="true">
+        <div class="app">
+          <div class="app-card answered">
+            <div class="app-read">Read this</div>
+            <div class="app-prov"><span class="chip chip-unverified">Generated · not verified</span><span class="chip chip-verified">From your screening answer · Q2</span></div>
+            <p class="app-answer unverified look-c"><span class="sent lead">Ease of use for occasional buyers matters most.</span><span class="sent">If plant staff won't use it, spend leaks back to email and purchase cards.</span></p>
+            <div class="app-foot"><div class="app-foot-item"><b>You wrote, Q2</b>&ldquo;If plant staff won't use it, spend leaks back to email and purchase cards.&rdquo;</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <footer>
-    <a href="https://github.com/SandyCode123/consilyn/blob/main/PRIVACY.md">Privacy</a> ·
-    <a href="https://github.com/SandyCode123/consilyn/blob/main/TERMS.md">Terms</a> ·
-    <a href="https://github.com/SandyCode123/consilyn/blob/main/REFUND.md">Refunds</a> ·
-    <a href="mailto:pateljimi520@gmail.com">pateljimi520@gmail.com</a> ·
-    <a href="https://github.com/SandyCode123/consilyn/issues">Report a problem</a>
-  </footer>
+    <div class="spot flip reveal">
+      <div class="spot-text">
+        <h3>Stays consistent with what you submitted.</h3>
+        <p>Each answer is checked against your screening answers before it appears. If it disagrees, your own screening answer is shown instead.</p>
+        <ul>
+          <li>If the client quotes one of your figures back wrongly, a bar shows what they said next to what you wrote.</li>
+          <li>An answer that disagreed is held back, and your screening answer appears under a solid green label instead.</li>
+          <li>Figures are compared by value, not by wording.</li>
+        </ul>
+      </div>
+      <div class="frag" aria-hidden="true">
+        <div class="app">
+          <div class="app-heard-slot">
+            <div class="app-heard"><span class="app-label">Heard</span><p class="app-heard-text"><span class="who">Lee</span>And payback on those six warehouses was around four years?</p></div>
+            <div class="app-clash"><p class="app-clash-text">Lee said <b>four years</b> &mdash; you wrote <b>around seven years</b> (Q1).</p><span class="x">&times;</span></div>
+          </div>
+          <div class="app-card answered">
+            <div class="app-read">Read this</div>
+            <div class="app-prov"><span class="chip chip-unverified">Generated · not verified</span><span class="chip chip-verified">From your screening answer · Q1</span></div>
+            <p class="app-answer unverified look-c"><span class="sent lead">It was closer to seven years.</span><span class="sent">That was across all six of our warehouses.</span></p>
+            <div class="app-foot"><div class="app-foot-item"><b>You wrote, Q1</b>&ldquo;Payback came in at around seven years.&rdquo;</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features reveal" style="margin-top:88px">
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+        <h3>Written to be read aloud</h3>
+        <p>Short sentences, one to a line, the direct answer first. Checked for length before it reaches your screen.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>A line to start with</h3>
+        <p>While the full answer is written and checked, a line you can begin with appears. It is written to say the question back, not to state facts.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
+        <h3>Prepared before the call</h3>
+        <p>The likeliest questions are answered beforehand from your material, so those cards come up in about three seconds.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+        <h3>Answers from your seat</h3>
+        <p>Written as the operator, buyer or leader the client screened in, first-hand where your material is, not as a market analyst.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12h8"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Knows when to stop</h3>
+        <p>If the client cuts in, the card dims and the screen says &ldquo;listen&rdquo;. Small talk and &ldquo;ok, got it&rdquo; put nothing on screen.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Follows your call app</h3>
+        <p>It listens to whichever app is on the call, with no list to set up. Works best with Zoom and Google Meet in Chrome. No bot joins.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== privacy -->
+<section class="section night" id="privacy" aria-labelledby="privacy-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What goes where</p>
+      <h2 id="privacy-title">The sound of your call never leaves your laptop. Here is exactly what does.</h2>
+      <p>No account and no recording. Speech is turned into text on your own machine, and the sound is thrown away as it goes. Text goes to Google's AI to write suggestions.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="flow-box flow-laptop">
+        <h3>On your laptop</h3>
+        <p>Kept here. Only the text listed alongside is ever sent.</p>
+        <ul class="flow-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>Audio is held in memory for a few seconds, turned into text and discarded. No audio file is ever written.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>Speech recognition runs on your laptop, not in the cloud.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>Your background, clients, screening answers and the call's text are kept in a folder in your own user profile.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>Nothing listens until you confirm you have told the client the call is transcribed and its text sent to Google's AI.</li>
+        </ul>
+      </div>
+      <div class="flow-side">
+        <div class="flow-box">
+          <h3>To Google Gemini, with your own key</h3>
+          <ul class="flow-list">
+            <li class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Text only, to write suggestions: the recent conversation, your background, and this call's brief and screening answers.</li>
+            <li class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>On Gemini's free tier, Google may use that text to improve its products, and people may review it. On a paid tier, Google does not use it for training.</li>
+          </ul>
+        </div>
+        <div class="flow-box">
+          <h3>To our free-call counter</h3>
+          <ul class="flow-list">
+            <li class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Only enough to count calls: a scrambled laptop ID, a scrambled ID for the client entry, the app version, when calls start, and your licence key once you have one.</li>
+            <li class="out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>Never anything said on the call, no names, no email, no cookies, no analytics. The licence key is kept only in scrambled form. Cloudflare, which runs it, sees your internet address, as with any website.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="flow-note">The full list is in the <a href="/privacy/">privacy policy</a>. This website sets no cookies and loads nothing from anyone else.</p>
+  </div>
+</section>
+
+<!-- ======================================================= responsible use -->
+<section class="section" id="responsible" aria-labelledby="responsible-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Used openly</p>
+      <h2 id="responsible-title">Made to be used openly, where it is allowed.</h2>
+      <p>Your reputation is the asset. Consilyn has no hidden mode, and it asks you to do three things.</p>
+    </div>
+    <ul class="rules reveal">
+      <li>
+        <h3>Tell the client</h3>
+        <p>Before anything listens, Consilyn asks you to confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI. Go ahead only if they agree. <a href="/guides/using-ai-on-expert-calls/#how-should-you-tell-the-client">What to say</a>.</p>
+      </li>
+      <li>
+        <h3>Check your network's rules</h3>
+        <p>Several large expert networks do not allow experts to transcribe calls or use AI to help answer. On those networks' calls, do not use Consilyn without written permission. <a href="/guides/using-ai-on-expert-calls/">What the rules say</a>.</p>
+      </li>
+      <li>
+        <h3>Say only what is yours</h3>
+        <p>Outside your material it offers a view, such as &ldquo;my read is&hellip;&rdquo;, marked not verified. It never tells a figure, employer or result you did not give as your own experience. A view can include typical figures, so check them before you say them.</p>
+      </li>
+    </ul>
+
+    <div class="fits reveal">
+      <h3>Where it fits</h3>
+      <ul>
+        <li>Calls with your own advisory clients</li>
+        <li>Networks and clients that allow it, or give written permission</li>
+        <li>Practice calls with a friend or colleague</li>
+        <li>Preparing before a call, with no call audio (some networks' AI rules still apply)</li>
+      </ul>
+    </div>
+
+    <div class="reveal" style="margin-top:64px">
+      <h3 class="compare-title">How it compares</h3>
+      <div class="compare-wrap">
+        <table class="compare">
+          <caption class="visually-hidden">Consilyn compared with typical meeting note-takers and typical hidden interview helpers</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Feature</span></th>
+              <th scope="col" class="us">Consilyn</th>
+              <th scope="col">Typical meeting note-takers</th>
+              <th scope="col">Typical &ldquo;undetectable&rdquo; helpers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Built around your own screening answers</th><td class="us" data-label="Consilyn"><span class="yes">Yes</span></td><td data-label="Note-takers"><span class="no">No</span></td><td data-label="Hidden helpers"><span class="no">No</span></td></tr>
+            <tr><th scope="row">Shows where each answer comes from</th><td class="us" data-label="Consilyn"><span class="yes">Yes</span></td><td data-label="Note-takers"><span class="meh">Notes, not answers</span></td><td data-label="Hidden helpers"><span class="no">Rarely</span></td></tr>
+            <tr><th scope="row">Keeps call audio on your laptop</th><td class="us" data-label="Consilyn"><span class="yes">Always</span></td><td data-label="Note-takers"><span class="meh">Often uploaded</span></td><td data-label="Hidden helpers"><span class="meh">Varies</span></td></tr>
+            <tr><th scope="row">Joins the meeting as a bot</th><td class="us" data-label="Consilyn"><span class="yes">Never</span></td><td data-label="Note-takers"><span class="meh">Often</span></td><td data-label="Hidden helpers"><span class="yes">No</span></td></tr>
+            <tr><th scope="row">Designed to be hidden from the other side</th><td class="us" data-label="Consilyn"><span class="yes">No, used openly</span></td><td data-label="Note-takers"><span class="yes">No</span></td><td data-label="Hidden helpers"><span class="no">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note">Columns describe typical products in each category, not any one tool.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== pricing -->
+<section class="section section-alt" id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2 id="pricing-title">Free to start. Counted in calls, not days.</h2>
+      <p>Experts take a few calls a month, so the free allowance is counted in calls. The app shows how many are left before each one.</p>
+    </div>
+    <div class="plans reveal">
+      <article class="plan featured">
+        <span class="plan-badge">Now</span>
+        <h3>Early access</h3>
+        <p class="price">$0</p>
+        <p class="plan-sub">Every call is free while we are getting started.</p>
+        <ul>
+          <li>Every call free during early access</li>
+          <li>Every feature</li>
+          <li>No account, no card</li>
+        </ul>
+        <a class="btn btn-primary" href="#early-access">Get early access</a>
+      </article>
+      <article class="plan">
+        <h3>Free</h3>
+        <p class="price">$0</p>
+        <p class="plan-sub">After early access ends.</p>
+        <ul>
+          <li>Your first 5 calls free</li>
+          <li>Then 2 free calls every month</li>
+          <li>Restarting a dropped call is not counted again</li>
+        </ul>
+        <a class="btn btn-ghost" href="#faq">Read the FAQ</a>
+      </article>
+      <article class="plan">
+        <h3>Unlimited</h3>
+        <p class="price">$39<small>/ month</small></p>
+        <p class="plan-sub">After early access. Tax included. Cancel any time.</p>
+        <ul>
+          <li>Unlimited calls</li>
+          <li>One licence for up to 2 laptops</li>
+          <li>Upgrade from inside the app</li>
+        </ul>
+        <a class="btn btn-ghost" href="#early-access">Get early access</a>
+      </article>
+    </div>
+    <p class="price-note">Payments are handled by Dodo Payments, the merchant of record. Payments are not refundable except where the law requires it, so please use the free calls to try it first, with the Gemini key you will use: speed depends on it. See the <a href="/refunds/">refund policy</a>. Prices and the free allowance may change; the app shows the current ones before every call.</p>
+  </div>
+</section>
+
+<!-- ========================================================= requirements -->
+<section class="section-tight" id="requirements" aria-labelledby="needs-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What you need</p>
+      <h2 id="needs-title">A Windows laptop, your call app and a Gemini key.</h2>
+    </div>
+    <ul class="needs reveal">
+      <li><b>Windows 10 or 11</b>64-bit, with 8 GB of memory. Keep it plugged in during calls.</li>
+      <li><b>Laptop audio or a headset</b>Consilyn hears the client through your call app's sound, and you through your microphone. Your laptop's own speakers and microphone are the simplest setup; if you prefer a headset, a wired one is more predictable than Bluetooth.</li>
+      <li><b>A call app</b>Zoom or Google Meet in Chrome, on the same laptop, work best. Other call apps such as Microsoft Teams can work too; try yours on a free call first.</li>
+      <li><b>A Gemini key</b>From <a href="https://aistudio.google.com/apikey" rel="noopener">Google AI Studio</a>, free to start. The free tier has daily and per-minute limits, so some answers can arrive late or not at all; a paid key is faster, and Google does not train on its text.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================== FAQ -->
+<section class="section section-alt" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title">Frequently asked questions</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Does Consilyn record my calls?</summary>
+        <div class="answer-body"><p>No. Audio is held in memory for a few seconds, turned into text on your laptop and discarded. No audio file is ever written, and audio never leaves your laptop.</p></div>
+      </details>
+      <details>
+        <summary>Does the client need to know?</summary>
+        <div class="answer-body"><p>Yes. Tell the client a tool is transcribing the call and sending the text, never the audio, to Google's AI to suggest answers, and that on Gemini's free tier Google may use that text to improve its products. Go ahead only if they agree. The law on this differs by country and by US state. Consilyn asks you to confirm before it listens, and it does not join the meeting or hide from it. <a href="/guides/using-ai-on-expert-calls/#how-should-you-tell-the-client">What to say</a>.</p></div>
+      </details>
+      <details>
+        <summary>Can I use it on expert-network calls?</summary>
+        <div class="answer-body"><p>Only where the network and the client allow it. Several of the largest expert networks have rules against experts transcribing calls or using AI to help answer questions. Read your network's current terms, and on those networks' calls do not use Consilyn without written permission. Preparing answers beforehand involves no call audio, but some networks' AI rules cover that too. Consilyn is not affiliated with any expert network. <a href="/guides/using-ai-on-expert-calls/">What the rules say</a>.</p></div>
+      </details>
+      <details>
+        <summary>Where do the answers come from?</summary>
+        <div class="answer-body"><p>They are written by Google's Gemini from your screening answers, your background and what has been said on the call. Every AI-written answer is marked <em>not verified</em>. Where it draws on your own material, a green label names the source and your exact words are quoted underneath.</p></div>
+      </details>
+      <details>
+        <summary>Can it contradict what I submitted?</summary>
+        <div class="answer-body"><p>Each answer is checked against your screening answers before it appears. If it disagrees, your own screening answer is shown instead. If the client quotes one of your figures back wrongly, a bar shows both. The checks reduce mistakes; they cannot promise there will be none, so you always decide what you say.</p></div>
+      </details>
+      <details>
+        <summary>What happens when a question is outside what I know?</summary>
+        <div class="answer-body"><p>You get a view in your own voice, such as &ldquo;My read is&hellip;&rdquo;, marked <em>not verified</em> on your screen. It never invents experience for you: no employer, result or figure told as something you did. A view can still include typical figures from general knowledge, so check any figure before you say it.</p></div>
+      </details>
+      <details>
+        <summary>Is what I say used to train AI?</summary>
+        <div class="answer-body"><p>Our server never receives anything said. To write suggestions, text is sent to Google's Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. On a paid tier, Google does not use it for training. Audio is never sent anywhere.</p></div>
+      </details>
+      <details>
+        <summary>What about confidential information?</summary>
+        <div class="answer-body"><p>Consilyn only knows what you give it. Leave out of your background anything you could not say on a call, and never share confidential or material non-public information, whatever the screen suggests. Your obligations to former employers and clients stay yours.</p></div>
+      </details>
+      <details>
+        <summary>How quickly do answers appear?</summary>
+        <div class="answer-body"><p>Answers prepared before the call usually appear about three seconds after the client stops talking. Answers written during the call take a few seconds longer, and a line you can start with fills the gap. These times were measured with a paid Gemini key. On the free tier, Google's limits can delay an answer or leave a question without one, and the daily allowance can run out mid-call; the app tells you when that happens.</p></div>
+      </details>
+      <details>
+        <summary>Which call apps does it work with?</summary>
+        <div class="answer-body"><p>Consilyn follows whichever app on your laptop is playing sound and using your microphone at the same time, so there is no list to set up. Zoom and Google Meet in Chrome work best. Other call apps, such as Microsoft Teams, can work too; use a free call to check yours first.</p></div>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <div class="answer-body"><p>Every call is free during early access. After that, your first 5 calls are free, then 2 free calls every month. Unlimited calls are $39 a month, tax included, and you can cancel any time.</p></div>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <div class="answer-body"><p>No Consilyn account. You need a Gemini key from Google AI Studio (free to start, and it needs a Google account), which the app asks for the first time it starts. If you buy a licence, you get a licence key by email.</p></div>
+      </details>
+      <details>
+        <summary>Does it work on a Mac, or in other languages?</summary>
+        <div class="answer-body"><p>Not yet. Consilyn is for Windows 10 and 11, and works in English.</p></div>
+      </details>
+      <details>
+        <summary>Who makes Consilyn?</summary>
+        <div class="answer-body"><p>An independent developer who takes expert calls built it for their own calls first. Write to <a href="mailto:hello@consilyn.com">hello@consilyn.com</a> with any question, or report a problem on <a href="https://github.com/SandyCode123/consilyn/issues" rel="noopener">GitHub</a>.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ guides -->
+<section class="section-tight" id="guides" aria-labelledby="guides-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Guides</p>
+      <h2 id="guides-title">For experts who take paid calls</h2>
+    </div>
+    <div class="guide-list reveal">
+      <a class="guide-card" href="/guides/prepare-for-an-expert-network-call/"><span class="guide-kicker">Before the call</span><span class="guide-title">How to prepare for an expert network call</span><span class="guide-more">Read the guide</span></a>
+      <a class="guide-card" href="/guides/answer-expert-network-screening-questions/"><span class="guide-kicker">Screening</span><span class="guide-title">How to answer screening questions well</span><span class="guide-more">Read the guide</span></a>
+      <a class="guide-card" href="/guides/using-ai-on-expert-calls/"><span class="guide-kicker">The rules</span><span class="guide-title">Can you use AI on an expert call?</span><span class="guide-more">Read the guide</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ final CTA -->
+<section class="section final" id="early-access" aria-labelledby="final-title">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <h2 id="final-title">Be first to try it.</h2>
+      <p>The first release is coming soon. Send one email and we will write back when it is ready to download, with early access free. Nothing else.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:hello@consilyn.com?subject=Consilyn%20early%20access&amp;body=Please%20let%20me%20know%20when%20Consilyn%20is%20ready%20to%20download.">Email for early access</a>
+        <button type="button" class="btn btn-ghost copy-email" data-email="hello@consilyn.com">Copy the address</button>
+      </div>
+      <p class="cta-note">hello@consilyn.com · Free during early access · Windows 10 and 11</p>
+      <p class="copy-status visually-hidden" role="status"></p>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Consilyn</a>
+        <p>A live answer screen for experts who take paid calls. It runs on your Windows laptop.</p>
+      </div>
+      <nav aria-label="Product">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#privacy">What goes where</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="/guides/">Guides</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Policies">
+        <h2>Policies</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy policy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/refunds/">Refunds</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:hello@consilyn.com">hello@consilyn.com</a></li>
+          <li><a href="https://github.com/SandyCode123/consilyn/issues" rel="noopener">Report a problem</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Consilyn. Not affiliated with any expert network.</span>
+      <span>Zoom, Google Meet and Microsoft Teams are trademarks of their owners.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="demo-calls">
+[
+ {
+  "id": "energy",
+  "tab": "Energy",
+  "client": "Project Ember · on-site solar and storage",
+  "who": "Lee",
+  "background": "Former energy manager for a regional grocery distributor.",
+  "screening": [
+   [
+    "Describe your on-site solar or storage experience.",
+    "I led rooftop solar at six of our warehouses. Payback came in at around seven years. We ran one battery pilot that we did not extend."
+   ],
+   [
+    "What was the biggest obstacle to more sites?",
+    "Grid connection approvals. Two sites waited over a year for the utility. Roof condition ruled out a third."
+   ]
+  ],
+  "turns": [
+   {
+    "heard": "What was the biggest obstacle to rolling solar out to more of your sites?",
+    "prepared": true,
+    "prov": [
+     "Generated · not verified",
+     "From your screening answer · Q2"
+    ],
+    "text": "Grid connection approvals were the biggest obstacle we hit. Two of our sites waited over a year for the utility. So if you're modelling a rollout, I'd put the connection queue on the critical path, ahead of the panels.",
+    "foot": [
+     [
+      "You wrote, Q2",
+      "Two sites waited over a year for the utility."
+     ]
+    ],
+    "caption": [
+     "Prepared",
+     "Prepared before the call, so it is on screen about three seconds after the question ends."
+    ]
+   },
+   {
+    "heard": "And payback on those six warehouses was around four years?",
+    "clash": {
+     "said": "four years",
+     "wrote": "around seven years",
+     "q": 1
+    },
+    "say": "That one is worth being precise about. Let me set it out properly rather than give you the headline version.",
+    "prov": [
+     "Generated · not verified",
+     "From your screening answer · Q1"
+    ],
+    "text": "It was closer to seven years. That was across all six of our warehouses. I'd treat four as optimistic for a typical distribution site.",
+    "foot": [
+     [
+      "You wrote, Q1",
+      "Payback came in at around seven years."
+     ]
+    ],
+    "caption": [
+     "Figure check",
+     "The client quotes a figure that does not match your screening answer, so a bar shows both before you reply."
+    ]
+   },
+   {
+    "heard": "Why didn't you extend the battery pilot?",
+    "say": "Let me answer that the way it actually plays out, rather than the way it usually gets described.",
+    "prov": [
+     "Generated · not verified",
+     "From your screening answer · Q1"
+    ],
+    "text": "We ran one battery pilot, and we did not extend it. My read is that storage struggles to pay back on energy savings alone at a typical warehouse. It makes more sense where there are peak demand charges to cut. So I'd look at the tariff before the technology.",
+    "foot": [
+     [
+      "You wrote, Q1",
+      "We ran one battery pilot that we did not extend."
+     ]
+    ],
+    "caption": [
+     "Your facts, your view",
+     "Facts come from what you wrote, quoted underneath. Beyond them it offers a view (“my read is”), never told as your own experience."
+    ]
+   }
+  ]
+ },
+ {
+  "id": "procurement",
+  "tab": "Procurement software",
+  "client": "Project Larch · procurement software",
+  "who": "Sam",
+  "background": "Former procurement director at a mid-size industrial manufacturer.",
+  "screening": [
+   [
+    "Have you implemented procurement software?",
+    "Yes. I led the selection of a source-to-pay platform and rolled it out across four sites over about eighteen months. Supplier onboarding was the slowest part."
+   ],
+   [
+    "What matters most when choosing a vendor?",
+    "Ease of use for occasional buyers. If plant staff won't use it, spend leaks back to email and purchase cards. ERP integration comes second."
+   ]
+  ],
+  "turns": [
+   {
+    "heard": "What should we weigh most when comparing these vendors?",
+    "say": "I will take that from the practical side rather than the theory. Let me start where it actually matters.",
+    "prov": [
+     "Generated · not verified",
+     "From your screening answer · Q2"
+    ],
+    "text": "Ease of use for occasional buyers matters most. If plant staff won't use it, spend leaks back to email and purchase cards. ERP integration comes second, so I'd test both with a real plant user before signing.",
+    "foot": [
+     [
+      "You wrote, Q2",
+      "If plant staff won't use it, spend leaks back to email and purchase cards."
+     ]
+    ],
+    "caption": [
+     "Your own words",
+     "Where an answer draws on your material, a green label names the source and your exact words are quoted underneath."
+    ]
+   },
+   {
+    "heard": "How do you see AI changing procurement teams over the next few years?",
+    "say": "Let me put that in context first, because the context is what makes the answer useful. Then I will get specific.",
+    "prov": [
+     "Generated · not verified"
+    ],
+    "text": "My read is that the first gains come in the dull work, like matching invoices and chasing approvals. Supplier negotiation stays with people, because it is judgement and relationships. So I'd expect leaner transactional teams, not smaller procurement functions.",
+    "foot": [],
+    "caption": [
+     "Not verified",
+     "Outside your material it gives a view in your voice. The card says not verified, so you know what to check."
+    ]
+   },
+   {
+    "heard": "So for you, ERP integration was really the deciding factor?",
+    "say": "That is worth answering properly rather than in one line. Let me give you the version that is actually useful.",
+    "held": {
+     "label": "Your screening answer · Q2",
+     "text": "Ease of use for occasional buyers. If plant staff won't use it, spend leaks back to email and purchase cards. ERP integration comes second."
+    },
+    "caption": [
+     "Held",
+     "A suggestion that disagreed with what you submitted is not shown. Your own screening answer appears instead."
+    ]
+   }
+  ]
+ },
+ {
+  "id": "logistics",
+  "tab": "Logistics",
+  "client": "Project Alder · warehouse systems",
+  "who": "Maya",
+  "background": "Former VP of operations at a regional logistics operator.",
+  "screening": [
+   [
+    "Describe your experience with warehouse management systems.",
+    "I led our warehouse management system rollout across 40 depots between 2018 and 2022, in four regional waves."
+   ],
+   [
+    "What would you tell an operator planning a rollout?",
+    "Pilots at two depots caught most of the integration problems before the wider rollout."
+   ]
+  ],
+  "turns": [
+   {
+    "heard": "If you ran that warehouse system rollout again, what would you do differently?",
+    "prepared": true,
+    "prov": [
+     "Generated · not verified",
+     "From your screening answer · Q2",
+     "From your screening answer · Q1"
+    ],
+    "text": "I'd keep the regional waves. Our two pilot depots caught most of the integration problems before the wider rollout. That's the step I'd protect, even under time pressure.",
+    "foot": [
+     [
+      "You wrote, Q2",
+      "Pilots at two depots caught most of the integration problems before the wider rollout."
+     ],
+     [
+      "You wrote, Q1",
+      "I led our warehouse management system rollout across 40 depots between 2018 and 2022, in four regional waves."
+     ]
+    ],
+    "caption": [
+     "Read it aloud",
+     "Short sentences, one to a line, the direct answer first, so it can be said cold, mid-conversation."
+    ]
+   },
+   {
+    "heard": "How many depots would you put in a first wave for an operator our size?",
+    "say": "That is worth answering properly rather than in one line. Let me give you the version that is actually useful.",
+    "prov": [
+     "Generated · not verified"
+    ],
+    "text": "My read is that a first wave works best when it is small enough for the support team to reach every site the same day. Beyond that, problems start to queue faster than they are fixed. So I'd size it to the support team, not the network.",
+    "foot": [],
+    "cutIn": true,
+    "caption": [
+     "Knows when to stop",
+     "When the client talks over the card, it dims and the screen says to listen, so you never read over them."
+    ]
+   }
+  ]
+ }
+]
+</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
