@@ -385,3 +385,61 @@
     document.querySelectorAll("[data-demo]").forEach((root) => Demo(root, CALLS));
   }
 })();
+
+/* Counting visits (2026-10-08, docs/plans/2026-10-08-feedback-analytics.md).
+
+   One small message to our own server per page, and nothing else: which page, the
+   site that sent the visitor (referrer) and any utm_ tags, a press on Download, Buy
+   or the email link, and this page's own script errors. No cookies, nothing kept in
+   the browser, nothing loaded from anyone else. The server counts a visitor with a
+   code that changes every day and never keeps the address (server/src/insights.js).
+   Download presses are also counted by the server's own /download link, which
+   carries the utm_ tags along so a download is credited to where the visitor came
+   from. Off anywhere but consilyn.com, so previews and local copies count nothing. */
+(function () {
+  "use strict";
+  if (!/^(www\.)?consilyn\.com$/.test(location.hostname)) return;
+  const ENDPOINT = "https://api.consilyn.com/v1/site";
+  const send = (body) => {
+    try {
+      const data = new Blob([JSON.stringify(body)], { type: "text/plain" });
+      if (!(navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, data))) {
+        fetch(ENDPOINT, { method: "POST", body: data, keepalive: true, mode: "no-cors" }).catch(() => {});
+      }
+    } catch (e) { /* counting never breaks the page */ }
+  };
+  const params = new URLSearchParams(location.search);
+  const utm = {};
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref"].forEach((k) => {
+    if (params.get(k)) utm[k] = params.get(k).slice(0, 100);
+  });
+  send({ t: "view", p: location.pathname, r: document.referrer || "", u: utm });
+
+  // The visitor's utm_ tags ride along to the download, so it is credited to them.
+  if (Object.keys(utm).length) {
+    document.querySelectorAll('a[href^="https://api.consilyn.com/download"]').forEach((a) => {
+      const url = new URL(a.href);
+      Object.keys(utm).forEach((k) => url.searchParams.set(k, utm[k]));
+      a.href = url.toString();
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    let button = null;
+    if (href.startsWith("https://api.consilyn.com/download")) button = "download";
+    else if (href.startsWith("https://api.consilyn.com/buy")) button = "buy";
+    else if (href.startsWith("mailto:")) button = "email";
+    else if (href === "#download" || href === "/#download") button = "to-download";
+    if (button) send({ t: "click", p: location.pathname, b: button, u: utm });
+  });
+
+  let errors = 0;
+  window.addEventListener("error", (e) => {
+    if (errors++ >= 5) return;
+    send({ t: "error", p: location.pathname, m: String(e.message || "error").slice(0, 300),
+           s: `${String(e.filename || "").split("/").pop()}:${e.lineno || 0}` });
+  });
+})();

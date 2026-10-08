@@ -65,7 +65,9 @@ Audio stays on your laptop. Only text is sent, to Google's Gemini with your own 
 to write suggestions. On Gemini's free tier Google may use that text to improve its
 products. To count free calls, our server sees a scrambled laptop ID, a scrambled ID
 for the client entry, the app version, when calls start, and your licence key once
-you have one. It never sees anything said. See the [privacy policy](https://consilyn.com/privacy/) and
+you have one. Unless you turn them off in Set up, the app also sends usage counts and
+error reports (numbers and error kinds, never words), tied to that laptop ID and your
+email if you give it; feedback you send goes there too. It never sees anything said. See the [privacy policy](https://consilyn.com/privacy/) and
 [terms](https://consilyn.com/terms/).
 
 ## Contact
