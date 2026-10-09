@@ -450,14 +450,19 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
    ===================================================================== */
 
 .app {
-  --a-ground: #F4F6F8; --a-surface: #FFFFFF; --a-surface-2: #EAEEF2;
-  --a-ink: #12171E; --a-ink-2: #4C5765; --a-ink-3: #636D7A; --a-said: #77828F;
+  --a-ground: #F6F4EF; --a-surface: #FFFFFF; --a-surface-2: #EEEAE1;
+  --a-ink: #0E1A24; --a-ink-2: #44515E; --a-ink-3: #5F6A76; --a-said: #77828F;
   --a-look-b: #132A45; --a-look-b-soft: #33506E; --a-look-c: #2C1B0F; --a-look-c-soft: #5E4630;
-  --a-line: #D5DCE4; --a-line-strong: #B4BFCC;
-  --a-verified: #0B6E62; --a-verified-bg: #DDEFEB;
+  --a-line: #E0DBD0; --a-line-strong: #C9C2B4;
+  --a-verified: #0B6E62; --a-verified-bg: #DCEEE9;
   --a-unverified: #8A5A05; --a-unverified-bg: #F7EBD3;
   --a-clash: #A32118; --a-clash-bg: #F8E2E0; --a-live: #B3261E;
-  --a-font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --a-brand-soft: #DCEEE9;
+  /* The app wears the site's Inter and Newsreader since 0.1.3 (2026-10-09); the answer
+     keeps the faces it was gated in, so look b is still Segoe UI. */
+  --a-font-ui: var(--font-ui);
+  --a-font-display: var(--font-display);
+  --a-font-sans-read: "Segoe UI", system-ui, -apple-system, sans-serif;
   --a-font-read: Georgia, "Times New Roman", serif;
   --a-font-read-alt: Cambria, Constantia, "Palatino Linotype", Georgia, serif;
   --a-font-data: "Cascadia Mono", Consolas, ui-monospace, monospace;
@@ -469,37 +474,54 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .app {
-    --a-ground: #0D1117; --a-surface: #161C24; --a-surface-2: #1F2731;
-    --a-ink: #E8ECF1; --a-ink-2: #A2AEBC; --a-ink-3: #818F9C; --a-said: #6B7886;
+    --a-ground: #0B1117; --a-surface: #141C25; --a-surface-2: #1F2731;
+    --a-ink: #E8ECF1; --a-ink-2: #A9B4C0; --a-ink-3: #8C99A6; --a-said: #6B7886;
     --a-look-b: #D3E7FA; --a-look-b-soft: #93B4D4; --a-look-c: #F6E7D2; --a-look-c-soft: #C9B393;
-    --a-line: #2A333E; --a-line-strong: #3C4854;
+    --a-line: #222E3A; --a-line-strong: #34414F;
     --a-verified: #5FCFBC; --a-verified-bg: #12332F;
     --a-unverified: #E3B25C; --a-unverified-bg: #33280F;
     --a-clash: #F0928A; --a-clash-bg: #3A1A17; --a-live: #F0928A;
+    --a-brand-soft: #12332F;
   }
 }
 :root[data-theme="dark"] .app {
-  --a-ground: #0D1117; --a-surface: #161C24; --a-surface-2: #1F2731;
-  --a-ink: #E8ECF1; --a-ink-2: #A2AEBC; --a-ink-3: #818F9C; --a-said: #6B7886;
-  --a-look-b: #D3E7FA; --a-look-b-soft: #93B4D4; --a-look-c: #F6E7D2; --a-look-c-soft: #C9B393;
-  --a-line: #2A333E; --a-line-strong: #3C4854;
-  --a-verified: #5FCFBC; --a-verified-bg: #12332F;
-  --a-unverified: #E3B25C; --a-unverified-bg: #33280F;
-  --a-clash: #F0928A; --a-clash-bg: #3A1A17; --a-live: #F0928A;
+  --a-ground: #0B1117; --a-surface: #141C25; --a-surface-2: #1F2731;
+    --a-ink: #E8ECF1; --a-ink-2: #A9B4C0; --a-ink-3: #8C99A6; --a-said: #6B7886;
+    --a-look-b: #D3E7FA; --a-look-b-soft: #93B4D4; --a-look-c: #F6E7D2; --a-look-c-soft: #C9B393;
+    --a-line: #222E3A; --a-line-strong: #34414F;
+    --a-verified: #5FCFBC; --a-verified-bg: #12332F;
+    --a-unverified: #E3B25C; --a-unverified-bg: #33280F;
+    --a-clash: #F0928A; --a-clash-bg: #3A1A17; --a-live: #F0928A;
+    --a-brand-soft: #12332F;
 }
 
+/* The app's top bar on a call: its mark and name, the client, LISTENING in red, the
+   clock and End call. Same background as the window, as in the app. */
 .app-bar {
-  display: flex; align-items: center; gap: 12px; padding: 10px 16px;
-  background: var(--a-surface); border-bottom: 1px solid var(--a-line); font-size: 13px; min-width: 0;
+  display: flex; align-items: center; gap: 12px; padding: 9px 16px; min-height: 48px;
+  background: var(--a-ground); border-bottom: 1px solid var(--a-line); font-size: 13px; min-width: 0;
 }
-.app-dots { display: flex; gap: 6px; margin-right: 4px; }
-.app-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--a-line-strong); display: block; }
-.app-brand { font-weight: 700; font-size: 13.5px; white-space: nowrap; }
-.app-client { color: var(--a-ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.app-brand {
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font: 600 16px/1 var(--a-font-display); letter-spacing: -.01em;
+}
+.app-mark { width: 20px; height: 20px; border-radius: 6px; background: var(--a-ink); position: relative; flex: none; }
+.app-mark::before, .app-mark::after { content: ""; position: absolute; left: 5px; height: 2.5px; border-radius: 2px; }
+.app-mark::before { top: 6px; width: 10px; background: var(--a-brand-soft); }
+.app-mark::after { top: 11.5px; width: 6.5px; background: #5FCFBC; }
+.app-client { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.app-client em { font-style: normal; font-weight: 400; color: var(--a-ink-2); }
 .app-spacer { flex: 1; }
-.app-live { display: inline-flex; align-items: center; gap: 7px; color: var(--a-live); font-weight: 600; white-space: nowrap; }
+.app-live {
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; color: var(--a-live);
+  font-family: var(--a-font-data); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+}
 .app-live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--a-live); animation: app-blink 1.6s ease-in-out infinite; }
-.app-timer { font-family: var(--a-font-data); color: var(--a-ink-3); font-size: 12px; }
+.app-timer { font-family: var(--a-font-data); color: var(--a-ink-2); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.app-end {
+  font-size: 12px; font-weight: 600; color: var(--a-clash); white-space: nowrap;
+  border: 1px solid var(--a-clash); border-radius: 999px; padding: 5px 12px;
+}
 @keyframes app-blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 .app-heard-slot { position: relative; }
@@ -549,7 +571,7 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .app-prov { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip {
   display: inline-flex; align-items: center; font-family: var(--a-font-data); font-size: 10.5px;
-  letter-spacing: .07em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; white-space: nowrap; max-width: 100%;
+  letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; white-space: nowrap; max-width: 100%;
 }
 .chip-verified { background: var(--a-verified-bg); color: var(--a-verified); border: 1px solid var(--a-verified); }
 .chip-unverified { background: var(--a-unverified-bg); color: var(--a-unverified); border: 1px dashed var(--a-unverified); }
@@ -557,11 +579,11 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .chip-solid { background: var(--a-verified); color: var(--a-surface); }
 .app-answer { font-family: var(--a-font-read); font-size: 20px; line-height: 1.42; color: var(--a-ink); margin: 0; max-width: 40ch; }
 .app-answer.unverified { border-left: 3px dashed var(--a-unverified); padding-left: 12px; color: var(--a-ink-2); }
-.app-answer.look-b, .app-working.look-b .app-say { font-family: var(--a-font-ui); color: var(--a-look-b); letter-spacing: -.012em; }
+.app-answer.look-b, .app-working.look-b .app-say { font-family: var(--a-font-sans-read); color: var(--a-look-b); letter-spacing: -.012em; }
 .app-answer.unverified.look-b { color: var(--a-look-b-soft); }
 .app-answer.look-c, .app-working.look-c .app-say { font-family: var(--a-font-read-alt); color: var(--a-look-c); }
 .app-answer.unverified.look-c { color: var(--a-look-c-soft); }
-.app-answer .sent, .app-say .sent { display: block; }
+.app-answer .sent, .app-say .sent { display: block; text-wrap: pretty; }   /* as the app: no one-word last lines */
 .app-answer .sent + .sent { margin-top: .45em; }
 .app-say .sent + .sent { margin-top: .25em; }
 .app-answer .sent.lead { font-weight: 600; }
@@ -573,8 +595,9 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
   display: block; margin-bottom: 2px; font-family: var(--a-font-data); font-size: 10px; font-weight: 500;
   letter-spacing: .13em; text-transform: uppercase; color: var(--a-ink-3);
 }
-.app-blank h4 { margin: 0 0 4px; font: 600 15px/1.3 var(--a-font-ui); color: var(--a-ink-2); }
-.app-blank p { margin: 0; font-size: 13.5px; color: var(--a-ink-3); }
+.app-blank { margin: auto 0; padding: 0 8px 24px; }
+.app-blank h4 { margin: 0 0 6px; font: 500 22px/1.15 var(--a-font-display); letter-spacing: -.015em; color: var(--a-ink); }
+.app-blank p { margin: 0; font-size: 13.5px; color: var(--a-ink-2); }
 .app-keys {
   border-top: 1px solid var(--a-line); background: var(--a-surface-2); padding: 6px 18px; display: flex; gap: 16px;
   font-family: var(--a-font-data); font-size: 10.5px; color: var(--a-ink-3);
@@ -588,7 +611,8 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 @media (max-width: 600px) {
   .app { height: 720px; }
   .app-bar { padding: 9px 12px; gap: 8px; }
-  .app-dots, .app-timer { display: none; }
+  .app-timer, .app-end, .app-client em { display: none; }
+  .app-brand { font-size: 15px; }
   .app-heard { padding: 9px 14px; }
   .app-working, .app-cutin { padding-left: 14px; padding-right: 14px; }
   .app-card { padding: 14px 14px 12px; }
@@ -623,15 +647,6 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .demo-steps span { flex: 1; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; position: relative; }
 .demo-steps span.done { background: var(--brand); }
 .demo-steps span.now { background: color-mix(in srgb, var(--brand) 45%, var(--line)); }
-.demo-caption {
-  margin: 14px 0 0; min-height: 3.2em; font-size: 15px; color: var(--ink-2); line-height: 1.5;
-  display: flex; gap: 10px; align-items: flex-start;
-}
-.demo-caption b { color: var(--ink); font-weight: 650; }
-.demo-caption .tag {
-  flex: none; font: 600 11px/1 var(--font-mono); letter-spacing: .08em; color: var(--brand);
-  border: 1px solid currentColor; border-radius: 4px; padding: 5px 6px; margin-top: 1px;
-}
 .demo-disclaimer { margin: 10px 0 0; font-size: 13px; color: var(--ink-3); }
 
 /* Static fragments used in the spotlights. */
@@ -705,11 +720,10 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 
 .app-heard { height: 72px; overflow: hidden; }
 .app-card { flex: 1 1 auto; }
-.demo-caption { min-height: 4.6em; }
 .demo-legend { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 .demo-legend .key {
   display: inline-block; font: 600 10.5px/1 var(--font-mono); letter-spacing: .07em; text-transform: uppercase;
-  padding: 3px 7px; border-radius: 2px; margin-right: 2px; vertical-align: 1px;
+  padding: 3px 8px; border-radius: 6px; margin-right: 2px; vertical-align: 1px;
 }
 .demo-legend .key-u { color: var(--amber); background: var(--amber-soft); border: 1px dashed var(--amber); }
 .demo-legend .key-v { color: var(--brand); background: var(--brand-soft); border: 1px solid var(--brand); margin-left: 6px; }

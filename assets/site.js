@@ -9,6 +9,10 @@
    each piece of the expert's own material it quotes; a held answer is the expert's
    own screening answer under a solid green chip; a figure the client misquotes gets
    the red bar over the heard line; a client who cuts in dims the card.
+   Every element it looks up must be in index.html: the caption line was taken off the
+   page on 2026-10-06 while this still wrote to it, and the demo froze at its first
+   step until 2026-10-09. tests/test_public_site.py now checks each lookup. The calls'
+   "caption" fields are not shown anywhere at present.
    Every call is invented. No real company, client or person appears here. */
 
 /* The phone menu: the same <nav> as on a laptop, opened by the "Menu" button. Closes on
@@ -76,7 +80,6 @@
     const tabs = Array.from(root.querySelectorAll(".demo-tab"));
     const playBtn = $(root, ".demo-play");
     const stepsBar = $(root, ".demo-steps");
-    const caption = $(root, ".demo-caption");
     const live = $(root, ".demo-live");
 
     let scenarioIndex = 0;
@@ -128,7 +131,13 @@
       for (let i = 0; i < total; i += 1) stepsBar.appendChild(el("span", i < at ? "done" : i === at ? "now" : ""));
     }
 
-    function setCaption(tag, text) { caption.replaceChildren(el("span", "tag", tag), el("span", "", text)); }
+
+    // The app's top bar: the client in bold, what the call is about after it.
+    function setClient(text) {
+      const [name, ...rest] = text.split(" · ");
+      ui.client.replaceChildren(document.createTextNode(name));
+      if (rest.length) ui.client.appendChild(el("em", "", ` · ${rest.join(" · ")}`));
+    }
     function announce(id, text) { if (id === speakRun) live.textContent = text; }
 
     function wear(node) {
@@ -240,14 +249,13 @@
         await sleep(7000, id);
         first = 1;
       } else {
-        ui.client.textContent = sc.client;
+        setClient(sc.client);
         ui.clash.classList.add("hidden");
         ui.cutin.classList.add("hidden");
         ui.working.classList.add("hidden");
         ui.heard.replaceChildren(document.createTextNode("Listening. Nothing said yet."));
         blankCard();
         setSteps(sc.turns.length, 0);
-        setCaption("Listening", "Both sides of the call are turned into text on your laptop. The sound is thrown away as it goes.");
         announce(id, `Example call: ${sc.client}.`);
         await sleep(1800, id);
       }
@@ -258,7 +266,6 @@
         if (!turn.clash) ui.clash.classList.add("hidden");
         ui.cutin.classList.add("hidden");
         ui.card.classList.remove("stale");
-        setCaption("Heard", `${sc.who} asks a question. It appears as it is said.`);
         await hear(sc.who, turn.heard, id);
         if (turn.clash) {
           showClash(sc.who, turn.clash);
@@ -273,13 +280,11 @@
         } else {
           await sleep(1800, id);
           showOpening(turn.say);
-          setCaption("Say this first", "A line to start with, while the full answer is written and checked.");
           announce(id, `${sc.who} asks: ${turn.heard} Opening line: ${turn.say}`);
           await sleep(3400, id);
         }
         quietOpening();
         showAnswer(turn);
-        setCaption(turn.caption[0], turn.caption[1]);
         const labels = turn.held ? turn.held.label : turn.prov.concat(turn.prepared ? ["Prepared"] : []).join(", ");
         const body = turn.held ? turn.held.text : turn.text;
         announce(id, `Answer on screen, labelled ${labels}: ${body}`);
@@ -460,5 +465,14 @@
     if (errors++ >= 5) return;
     send({ t: "error", p: location.pathname, m: String(e.message || "error").slice(0, 300),
            s: `${String(e.filename || "").split("/").pop()}:${e.lineno || 0}` });
+  });
+  // The demo runs in async functions, and an error there arrives here, not above:
+  // the 2026-10-06 demo crash was reported by nobody for three days.
+  window.addEventListener("unhandledrejection", (e) => {
+    if (errors++ >= 5) return;
+    const r = e.reason || {};
+    const at = /([\w.-]+\.js):(\d+)/.exec(String(r.stack || ""));
+    send({ t: "error", p: location.pathname, m: String(r.message || r).slice(0, 300),
+           s: at ? `${at[1]}:${at[2]}` : "promise" });
   });
 })();
