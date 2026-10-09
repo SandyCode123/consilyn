@@ -158,9 +158,27 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .main-nav a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--ink-2); }
 .main-nav a:hover { color: var(--ink); }
 .head-cta { margin-left: 4px; }
+/* On a phone the menu folds behind a "Menu" button (user, 2026-10-09: there was no
+   menu at all below 900px). Shown only when site.js runs, which opens it; without
+   script the footer's links are the way round. */
+.menu-btn { display: none; }
 @media (max-width: 900px) {
   .main-nav { display: none; }
   .head-cta { margin-left: auto; }
+  .js .menu-btn {
+    display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px;
+    border-radius: 999px; border: 1px solid var(--line-strong); background: transparent;
+    font: 600 15px/1 var(--font-ui); color: var(--ink); cursor: pointer;
+  }
+  .js .menu-btn[aria-expanded="true"] { border-color: var(--ink); }
+  .site-head.menu-open .main-nav {
+    display: flex; flex-direction: column; gap: 0; margin: 0;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+    padding: 8px 16px 14px;
+  }
+  .site-head.menu-open .main-nav a { padding: 13px 4px; font-size: 17px; border-bottom: 1px solid var(--line); }
+  .site-head.menu-open .main-nav a:last-child { border-bottom: 0; }
 }
 .doc-nav { display: flex; gap: 20px; margin-left: auto; flex-wrap: wrap; }
 .doc-nav a { text-decoration: none; font-size: 15px; color: var(--ink-2); }
@@ -709,7 +727,7 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
   .moment-item, .step, .feature, .plan { padding: 22px 20px; }
   .chip { white-space: normal; }
 }
-.main-nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.main-nav a[aria-current] { color: var(--ink); font-weight: 600; }
 
 /* The comparison table restacks on a phone: one card per row, each value labelled. */
 @media (max-width: 700px) {

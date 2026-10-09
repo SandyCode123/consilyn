@@ -11,6 +11,25 @@
    the red bar over the heard line; a client who cuts in dims the card.
    Every call is invented. No real company, client or person appears here. */
 
+/* The phone menu: the same <nav> as on a laptop, opened by the "Menu" button. Closes on
+   a link (most go to a section of the same page), on Escape, and on a tap outside. */
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  const button = document.querySelector(".menu-btn");
+  const head = document.querySelector(".site-head");
+  if (!button || !head) return;
+  const set = (open) => {
+    head.classList.toggle("menu-open", open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    button.textContent = open ? "Close" : "Menu";
+  };
+  button.addEventListener("click", () => set(button.getAttribute("aria-expanded") !== "true"));
+  document.getElementById("main-nav").addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
+  document.addEventListener("click", (e) => { if (!head.contains(e.target)) set(false); });
+})();
+
 (function () {
   "use strict";
 
