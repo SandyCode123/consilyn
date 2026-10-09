@@ -22,7 +22,7 @@ Only text goes to Google's AI, with your own key.**
 
 - **Free during early access.** Every call is free while we're getting started.
 - **After that:** your first 5 calls are free, then 2 free calls every month.
-  Unlimited calls are $39 a month, and you can cancel any time. The free allowance
+  Consilyn Pro gives unlimited calls for $39 a month, and you can cancel any time. The free allowance
   and the price may change; the app shows the current numbers before each call.
 - Restarting the same call, for example after a dropped connection, isn't counted
   again.

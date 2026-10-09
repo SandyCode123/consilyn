@@ -5,7 +5,7 @@
 Key facts:
 
 - Platform: Windows 10 and 11, 64-bit, 8 GB of memory. English only.
-- Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; unlimited calls are $39 a month, tax included. Payments by Dodo Payments, merchant of record.
+- Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; Consilyn Pro, with unlimited calls, is $39 a month, tax included. Payments by Dodo Payments, merchant of record.
 - Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
 - The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start times and the licence key; never anything said.
 - Before it listens, the app asks the expert to confirm the client knows the call is transcribed on the laptop and its text sent to Google's AI.
