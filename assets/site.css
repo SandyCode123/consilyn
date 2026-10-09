@@ -228,6 +228,13 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .mini-box:last-child { margin-bottom: 0; }
 .mini-progress { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin: 8px 0 4px; }
 .mini-progress span { display: block; height: 100%; width: 100%; background: var(--brand); border-radius: 3px; }
+/* Step 3 shows a fragment of the app screen. The full demo above is a fixed 640px
+   window; this one is only as tall as its answer, or it stretches all three step
+   cards to its height (user, 2026-10-09). */
+.step-visual .app { height: auto; min-height: 0; box-shadow: none; }
+.step-visual .app-card { padding: 12px 14px; }
+.step-visual .app-answer { font-size: 15px; }
+.step-visual .chip { white-space: normal; }   /* a long chip wraps on a phone instead of overflowing */
 @media (max-width: 960px) { .steps { grid-template-columns: minmax(0, 1fr); } }
 
 /* Features. */
