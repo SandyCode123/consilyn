@@ -34,6 +34,59 @@
   document.addEventListener("click", (e) => { if (!head.contains(e.target)) set(false); });
 })();
 
+/* On a phone, a tablet or a Mac, a Windows installer is no use (2026-10-14: the first
+   week's visitors looked and left, and the one outside download never installed).
+   There the Download buttons become "Send the link to my laptop": the phone's own share
+   sheet, or the visitor's own mail app with the link in it - nothing is sent by us.
+   On a Mac the installer stays one small link away, for anyone running Windows on it.
+   The link carries utm_source=send-link, so a download it leads to is credited to it. */
+(function () {
+  "use strict";
+  const ua = navigator.userAgent || "";
+  const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;  // an iPad asking for the desktop site
+  const handheld = /iPhone|iPad|iPod|Android|Windows Phone/i.test(ua) || touchMac ||
+    Boolean(navigator.userAgentData && navigator.userAgentData.mobile);
+  const mac = !handheld && /Macintosh|Mac OS X/.test(ua);
+  if (!handheld && !mac) return;
+  const buttons = document.querySelectorAll('a.btn[href^="https://api.consilyn.com/download"]');
+  if (!buttons.length) return;
+
+  const link = new URL("/", location.href);
+  link.search = "?utm_source=send-link";
+  link.hash = "download";
+  const subject = "Consilyn: download it on my Windows laptop";
+  const body = `Consilyn runs on Windows 10 and 11. Open this on the laptop you take calls on:\n${link}`;
+  const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const say = handheld
+    ? "Consilyn runs on your Windows laptop, not on a phone or tablet. Send yourself the link and download it there."
+    : "Consilyn runs on Windows 10 and 11, not on a Mac yet. Send the link to the Windows laptop you take calls on.";
+
+  buttons.forEach((a) => {
+    const installer = a.href;
+    a.textContent = "Send the link to my laptop";
+    a.href = mailto;
+    a.dataset.track = "send-link";
+    a.addEventListener("click", (e) => {
+      if (!navigator.share) return;  // the mail app opens from the link itself
+      e.preventDefault();
+      navigator.share({ title: subject, text: body.split("\n")[0], url: link.toString() })
+        .catch((err) => { if (err && err.name !== "AbortError") location.href = mailto; });
+    });
+    const row = a.closest(".cta-row");
+    if (!row) return;  // the pricing card keeps just the button
+    const note = document.createElement("p");
+    note.className = "cta-note device-note";
+    note.textContent = say;
+    if (mac) {
+      const anyway = document.createElement("a");
+      anyway.href = installer;
+      anyway.textContent = "Download the Windows installer";
+      note.append(" ", anyway);
+    }
+    row.after(note);
+  });
+})();
+
 (function () {
   "use strict";
 
@@ -452,8 +505,9 @@
     const a = e.target.closest && e.target.closest("a[href]");
     if (!a) return;
     const href = a.getAttribute("href");
-    let button = null;
-    if (href.startsWith("https://api.consilyn.com/download")) button = "download";
+    let button = a.dataset.track || null;
+    if (button) { /* named by the page itself */ }
+    else if (href.startsWith("https://api.consilyn.com/download")) button = "download";
     else if (href.startsWith("https://api.consilyn.com/buy")) button = "buy";
     else if (href.startsWith("mailto:")) button = "email";
     else if (href === "#download" || href === "/#download") button = "to-download";

@@ -103,14 +103,16 @@ website. We don't store it.
 
 consilyn.com uses **no cookies** and keeps nothing in your browser. Each page sends one
 small message to our server: the page's address, the site that linked to it, any
-campaign tags in the link (`utm_` tags), which country Cloudflare places you in, and
-whether you pressed Download, Buy or our email link. To count visitors without
+campaign tags in the link (`utm_` tags), which country Cloudflare places you in,
+whether you pressed Download, Buy or our email link, and what kind of device you are
+on: Windows, Mac, phone, tablet, Linux or other. The kind is worked out from what your
+browser says about itself, and only the kind is kept. To count visitors without
 cookies, the server makes a code from your internet address, browser and the date,
 which changes every day and can't be turned back into the address; the address
 itself is not kept. Script errors on our pages are reported the same way.
 
-The Download button goes through our server, which counts the press the same way and
-sends you to the newest installer on GitHub. To tell which visit led to which install,
+The Download button goes through our server, which counts the press the same way
+(with the kind of device) and sends you to the newest installer on GitHub. To tell which visit led to which install,
 the server also makes a second daily code from your internet address alone, kept with
 the download press and with the installer's first message; it changes every day and
 can't be turned back into the address.
@@ -124,7 +126,8 @@ shares with sellers, including your email and, if a payment fails, Dodo's reason
 
 The Upgrade link passes through our server on its way to Dodo Payments. It uses the
 country Cloudflare reports for your connection to offer rupees and UPI if you are in
-India, and counts the press with that country. It never keeps your address.
+India, and counts the press with that country, the kind of device and the same daily
+code made from your internet address. It never keeps your address.
 
 After you pay, Dodo Payments sends you back to a thank-you page on our server, and puts
 your new licence key and email in that page's address. The page shows you the key, then
