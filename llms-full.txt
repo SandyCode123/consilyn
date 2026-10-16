@@ -105,7 +105,7 @@ Consilyn takes the opposite approach to hiding. It will not start listening unti
 
 Start with whether your network allows any live tool at all. If it does, compare where each answer comes from, what happens to the audio and the text, and whether you can read the answer aloud without stumbling. Features matter less than these.
 
-1. **Allowed at all?** Read your network's current terms for recording, transcription and AI. If they forbid it, no tool fits.
+1. **Allowed at all?** Read your network's current terms for recording, transcription and AI.
 2. **Built from what?** Does it answer from your own submitted material, and does it show which parts are yours and which are the model's?
 3. **Consistent with what you wrote?** Does anything check an answer against your screening answers before you say it?
 4. **What happens to the audio?** Is it saved, and where? Is it sent anywhere?
@@ -118,13 +118,13 @@ Start with whether your network allows any live tool at all. If it does, compare
 
 It fits an expert taking calls on a Windows laptop, for a network that allows live help, with a client who agrees. It is built around the screening answers you submitted for that call. It is not a meeting note-taker for your own team, and it is not for job interviews.
 
-The limits are worth knowing before you download it. It runs on Windows 10 and 11 only, in English. Answers are written by Google Gemini using your own key: the call's text and your notes go to Google, never the audio, and on Gemini's free tier Google may use that text to improve its products and people may review it. Given the rules above, don't use it on GLG, Guidepoint or Third Bridge calls, including answers prepared beforehand to read out on them. Check every other network's current terms first.
+The limits are worth knowing before you download it. It runs on Windows 10 and 11 only, in English. Answers are written by Google Gemini using your own key: the call's text and your notes go to Google, never the audio, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
 If you only need a record of a call your network lets you transcribe, a note-taker may be all you need. If you want answers on screen during an expert call, look for one that tells you plainly which words are yours.
 
 ## How to answer expert network screening questions
 
-https://consilyn.com/guides/answer-expert-network-screening-questions/ · updated 2026-10-03
+https://consilyn.com/guides/answer-expert-network-screening-questions/ · updated 2026-10-16
 
 Screening questions are short and easy to rush. A few lines typed between meetings decide whether a client picks you, what they ask you for an hour, and how much of it you can answer with confidence. Here is a simple way to write them well. Where it describes networks' rules, this guide is general information, not legal advice.
 
@@ -218,11 +218,11 @@ This is also why preparation can be light. [GLG's guidance](https://glgmembersol
 
 [Consilyn](https://consilyn.com) is a Windows app built around that idea. On calls where it is allowed and everyone has agreed, it transcribes the conversation on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background notes. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It can also prepare answers to likely questions before a call, which involves no call audio, though network rules on AI still apply.
 
-The call's text and your notes go to Google Gemini using your own key; on Gemini's free tier, Google may use that text to improve its products, and people may review it. As the section on AI shows, GLG's code bars using or relying on AI-generated content in phone consultations, Third Bridge's code bars any AI help in answering questions, and Guidepoint's terms bar transcribing calls with AI tools, so don't use Consilyn for those networks' calls, including answers prepared beforehand to read out on them. Check every other network's current terms first, and use it only where it is allowed.
+The call's text and your notes go to Google Gemini using your own key; on Gemini's free tier, Google may use that text to improve its products, and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
 ## How to prepare for an expert network call
 
-https://consilyn.com/guides/prepare-for-an-expert-network-call/ · updated 2026-10-03
+https://consilyn.com/guides/prepare-for-an-expert-network-call/ · updated 2026-10-16
 
 A client has read your profile and screening answers and booked a paid consultation. Here is what happens on the call, what comes up, what to keep to yourself, and how to set up.
 
@@ -329,7 +329,7 @@ If a client pressed for confidential information, tell the network even if you d
 
 [Consilyn](https://consilyn.com) is a Windows app for experts. It transcribes the call on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
 
-The call text and your material, never the audio, go to Google Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. GLG's and Guidepoint's terms above forbid experts transcribing consultations, GLG's code bars relying on AI-generated content during calls, and Third Bridge's code bars any AI help in answering questions, so don't use Consilyn for those networks' calls, including answers prepared beforehand to read out on them. Check your own network's terms, and where they forbid it, don't use it. It is a prompt for your own knowledge, not a substitute for it.
+The call text and your material, never the audio, go to Google Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it. It is a prompt for your own knowledge, not a substitute for it.
 
 ## Screening questions that ask for free consulting: what to give
 
@@ -403,7 +403,7 @@ Check your network's rules first, because several cover written answers. [GLG's 
 
 [Consilyn](https://consilyn.com) is a Windows app built on the screening answers you submit. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
 
-The call's text and your notes go to Google Gemini using your own key, and on Gemini's free tier Google may use that text to improve its products and people may review it. Because of the GLG, Guidepoint and Third Bridge rules above, don't use it on those networks' calls, and check every other network's current terms first.
+The call's text and your notes go to Google Gemini using your own key, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
 ## Can you use AI on an expert network call? What the rules say
 
