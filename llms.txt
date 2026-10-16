@@ -2,6 +2,8 @@
 
 > Consilyn is a Windows app for experts who take paid consultations. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
 
+Consilyn is a product of Amaltas Labs (https://www.amaltaslabs.com/). Website: https://consilyn.com/. Contact: hello@consilyn.com.
+
 Key facts:
 
 - Platform: Windows 10 and 11, 64-bit, 8 GB of memory. English only.
@@ -24,3 +26,7 @@ Key facts:
 - [How to answer expert network screening questions](https://consilyn.com/guides/answer-expert-network-screening-questions/): How to answer expert network screening questions: a simple structure, before-and-after examples, and how to stay accurate, consistent and confidential.
 - [How to prepare for an expert network call](https://consilyn.com/guides/prepare-for-an-expert-network-call/): What a paid expert consultation looks like, the questions clients ask, what you must never share, and a short checklist for the minutes before the call.
 - [Can you use AI on an expert network call? What the rules say](https://consilyn.com/guides/using-ai-on-expert-calls/): Using AI before or during a paid expert call: what network terms say, how recording consent works, what confidentiality means, and a short checklist.
+
+## Optional
+
+- [Everything in one file](https://consilyn.com/llms-full.txt): these facts, the home page's FAQ and every guide in full, as plain Markdown

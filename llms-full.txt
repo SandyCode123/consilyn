@@ -1,0 +1,361 @@
+# Consilyn
+
+> Consilyn is a Windows app for experts who take paid consultations. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
+
+Consilyn is a product of Amaltas Labs (https://www.amaltaslabs.com/). Website: https://consilyn.com/. Contact: hello@consilyn.com.
+
+Key facts:
+
+- Platform: Windows 10 and 11, 64-bit, 8 GB of memory. English only.
+- Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; Consilyn Pro, with unlimited calls, is $39 a month, tax included. Payments by Dodo Payments, merchant of record.
+- Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
+- The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start times and the licence key; never anything said.
+- Before it listens, the app asks the expert to confirm the client knows the call is transcribed on the laptop and its text sent to Google's AI.
+- Works best with Zoom and Google Meet in Chrome. Speeds were measured with a paid Gemini key; on the free tier answers can be slow or missing.
+- Download: free Windows installer at https://consilyn.com/#download (no account, no admin rights).
+
+## Frequently asked questions
+
+From https://consilyn.com/#faq
+
+### Does Consilyn record my calls?
+
+No. Speech is turned into text on your laptop a few seconds at a time and the audio is thrown away. No sound file is ever saved, and audio never leaves your laptop.
+
+### Where do the answers come from?
+
+Google's Gemini writes them from your screening answers, your background and what has been said on the call. Where an answer uses your own material, your exact words are quoted underneath.
+
+### Can it contradict what I submitted?
+
+Each answer is checked against your screening answers before it appears. If it disagrees, your own screening answer is shown instead. You always decide what you say.
+
+### How fast are the answers?
+
+Answers prepared before the call appear about three seconds after the client stops talking; others take a few seconds more, with a line to start on while you wait. A paid Gemini key is fastest; the free one has daily limits.
+
+### Is what I say used to train AI?
+
+Our server never sees anything said. Text goes to Google's Gemini with your own key. On Gemini's free tier, Google may use that text to improve its products; on a paid tier it does not train on it.
+
+### Which call apps does it work with?
+
+Zoom and Google Meet in Chrome work best. Consilyn follows whichever app is on the call, so others such as Microsoft Teams can work too.
+
+### Do I need an account?
+
+No. You need a free Gemini key from Google, and the app shows you where to get one the first time it starts.
+
+### Windows says it protected my PC. Is it safe?
+
+Yes. The installer is new and not yet code-signed, so Windows and some browsers ask first. In Edge, open the downloads list, choose … next to the file, then Keep, then Show more and Keep anyway. In Chrome, choose Keep. When you run it and Windows says it protected your PC, choose More info, then Run anyway. The very first start takes a few minutes while Windows checks the new files.
+
+### What does it cost?
+
+Every call is free during early access. After that, your first 5 calls are free, then 2 free calls every month, or Consilyn Pro: unlimited calls for $39 a month. You can buy Pro now; it is billed from the day you buy.
+
+### Does it work on a Mac, or in other languages?
+
+Not yet. Consilyn is for Windows 10 and 11, in English.
+
+## How to answer expert network screening questions
+
+https://consilyn.com/guides/answer-expert-network-screening-questions/ · updated 2026-10-03
+
+Screening questions are short and easy to rush. A few lines typed between meetings decide whether a client picks you, what they ask you for an hour, and how much of it you can answer with confidence. Here is a simple way to write them well. Where it describes networks' rules, this guide is general information, not legal advice.
+
+### What are screening questions for, and who reads them?
+
+Screening questions let a client choose between experts before paying for anyone's time. The network typically sends a shortlist with each expert's answers, and the client picks the people whose answers show direct, relevant experience. Your answers are, in effect, your pitch for the call and the client's first briefing on you.
+
+The network's own team reads them first, to check you fit the project. Then the client reads them, often beside several other experts' answers to the same questions. [GLG's guidance for its experts](https://glgmembersolutions.zendesk.com/hc/en-us/articles/360043658433-How-should-I-prepare-for-my-scheduled-phone-consultation) describes the same order: a project manager selects you for your expertise, and the client then reviews your credentials and agrees to speak with you.
+
+That reader is short of time and looking for one thing: whether you have seen this from the inside, recently enough to matter.
+
+### What structure works best?
+
+Answer the question first, then give the first-hand basis for your answer, then say where your knowledge stops. Three or four sentences is usually enough. The structure works because it gives the client exactly what they need to decide: a yes or no, the evidence behind it, and an honest boundary.
+
+1. **The direct answer.** "Yes", "partly" or "not directly, but" in the first few words. Do not make the reader dig for it.
+2. **The first-hand basis.** Your role, the years, the scale (budget, sites, team, volumes) and one concrete detail only someone who did the work would know.
+3. **Where your knowledge stops.** A sentence on what you did not do, or know only second-hand. It reads as confidence, not weakness, and it stops the call drifting into ground you cannot cover.
+
+### What does a good answer look like?
+
+A good answer is specific, recent and bounded. The weak versions below are not dishonest; they are vague, and vague answers lose to specific ones. All three examples, including every figure in them, are invented to show the shape, and the same pattern works in any field you are screened for.
+
+#### Manufacturing procurement
+
+*Question: Describe your experience negotiating with suppliers of aluminium castings.*
+
+**Before:** I have extensive procurement experience across the automotive sector and have negotiated with many suppliers. I am very familiar with aluminium pricing and market dynamics and can speak to all aspects of the supply chain.
+
+**After:** Yes, directly. From 2016 to 2022 I was category manager for castings at a mid-sized maker of commercial-vehicle parts, buying around 60 million euros a year from nine suppliers. I led the annual price rounds and moved our contracts onto an alloy-index formula in 2019. I have never worked on the supplier side, so I know their margins only from what they told us across the table.
+
+#### Hospital purchasing
+
+*Question: How do hospitals evaluate and buy surgical staplers?*
+
+**Before:** Very familiar. I have worked in healthcare for over twenty years and know the surgical device market extremely well.
+
+**After:** From the buying side, closely. Until 2024 I spent six years running value analysis for a group of four regional hospitals and chaired the committee that reviewed surgical consumables, staplers included. We ran two stapler tenders in that time; the second cut us from three suppliers to one. I can explain how surgeons, finance and procurement each weigh in. I cannot speak to what manufacturers charge other hospital groups.
+
+#### Energy
+
+*Question: How do industrial sites decide whether to install battery storage?*
+
+**Before:** I am an expert in energy storage with deep knowledge of the industrial battery market, including all major technologies, vendors and trends.
+
+**After:** I can answer for food manufacturers specifically. As energy manager for a chilled-food producer with five sites, from 2018 to 2023, I wrote the business cases for batteries at two of them. One was approved, a 2 MWh system sized mainly to cut peak demand charges. I know how finance teams in that sector judge payback. Utility-scale storage and battery chemistry are outside my first-hand experience.
+
+### Should you aim to sound impressive?
+
+No. Aim to be accurate. Never stretch your title, your years, your scale or how close you were to a decision. Networks can check your background, clients test claims in the first minutes of a call, and every overstatement becomes a question you then have to answer live, with the client listening.
+
+The networks' own rules say this directly. [GLG's Code of Conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) requires accurate information about your qualifications and work experience, and says members may not accept projects outside their areas of expertise. [AlphaSights' Expert Code of Conduct](https://www.alphasights.com/expert-professional-code-of-conduct/) says experts must not mislead anyone about their relevant expertise, and must give accurate, up-to-date and verifiable career information. [Guidepoint's terms for advisers](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) reserve the right, for Guidepoint and its clients, to run background checks and confirm your professional and educational history. [Third Bridge's expert terms](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions) require the biographical information you give to be up to date, true and not misleading.
+
+### How do you keep your figures consistent with the call?
+
+Treat every number in a screening answer as one you will be asked to explain. Give its basis and period, round honestly, prefer a range to false precision, and keep a copy so you can reread it before the call. If you later realise a figure was wrong, correct it yourself at the start of the call.
+
+The client will have written your figures down. If your screening answer said a supplier switch saved "around 8%" and on the call you say "roughly a fifth", the client now doubts both. Most inconsistencies are innocent: a different year, a different base, or a figure remembered more generously under pressure. Prevent them by stating the base in writing ("8% of the castings budget in the first year") and repeating it the same way when asked.
+
+### What must you never put in a screening answer?
+
+Share your own experience and judgement, never your employer's confidential information or material non-public information: information that is not generally available and that a reasonable investor would likely consider important to an investment decision. If a question can only be answered with that, say so in your answer and offer what you can share instead.
+
+Each network quoted here says so in its own terms. [AlphaSights](https://www.alphasights.com/expert-professional-code-of-conduct/) bars disclosing information specific to a company you currently work for or represent, and any material non-public, confidential or proprietary information. [Guidepoint's terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) say you must decline or stop any project that would disclose confidential or proprietary information that is not exclusively yours, or material non-public information about a public company or security. [GLG's Code](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) says members should never share confidential information with GLG or its clients. [Third Bridge](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions) bars disclosing confidential information, trade secrets or material non-public information, and counts unreleased margins or revenues as confidential.
+
+In practice, speak about patterns, ranges and how decisions get made, not a company's unreleased numbers, contracts or plans. A line such as "I can describe how these deals are usually structured, but not my current employer's terms" protects you and still helps the client.
+
+This is general information, not legal advice. What binds you is the actual text of your network's terms, your employment contract and any confidentiality agreements you have signed. Read them, and take advice if you are unsure.
+
+### Can you use AI to write your screening answers?
+
+Write them yourself, in your own words, from your own experience. Several networks restrict AI-generated content in ways that reach screening answers: GLG's rule names written responses to project opportunities, AlphaSights' plagiarism rule, which covers AI, applies to any vetting process, and Third Bridge bars AI help with any question it or its clients ask. Check your network's current terms before using any AI tool.
+
+[GLG's Code of Conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) says that, other than as GLG builds AI into its own systems, members may not use or rely on AI-generated content in phone consultations, surveys, written work or written responses to project opportunities. [AlphaSights' code](https://www.alphasights.com/expert-professional-code-of-conduct/) says that presenting AI-produced insights as your own is plagiarism, and prohibits using information directly and exclusively from AI tools such as chatbots. [Guidepoint's terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) bar misrepresenting your experience "through the use of artificial intelligence or otherwise", and say advisers may not record or transcribe consultations, including through AI tools. [Third Bridge's Expert Code of Conduct](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-code-of-conduct) bars using any form of AI to answer, or help answer, any question from Third Bridge or its clients, which includes its screening questions. For more, see [what the rules say about AI](https://consilyn.com/guides/using-ai-on-expert-calls/), and for the call itself, [how to prepare for an expert network call](https://consilyn.com/guides/prepare-for-an-expert-network-call/).
+
+### Why keep a private library of your past answers?
+
+Keep a private record of what you submit: the date, the topic and your exact wording. It saves time on the next project, keeps your account of your career consistent across many clients, and lets you reread precisely what a client read about you before the call starts.
+
+Keep it private, and check what your network's terms let you keep. [Guidepoint's terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) count a client's questions and the topics discussed as confidential information, not to be used for any purpose the terms do not permit, and [Third Bridge's terms](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions) say much the same of a consultation's subject matter and questions. So store the record on your own device, describe topics in general words rather than copying the client's question or naming the client, and never share it.
+
+Use it as raw material, not paste-in paragraphs: a reused block that half-answers a new question reads exactly like one.
+
+### Why do your screening answers frame the whole call?
+
+Because they are what the client chose you on, they are what the client prepares from. Expect the first questions to start from your own words ("you mentioned the 2019 index change") and the call to stay inside the scope you described. Write each answer as the opening of a conversation you can actually hold.
+
+This is also why preparation can be light. [GLG's guidance](https://glgmembersolutions.zendesk.com/hc/en-us/articles/360043658433-How-should-I-prepare-for-my-scheduled-phone-consultation) says your first-hand knowledge is all you need to bring and that there is typically no need to prepare, and [Guidepoint's terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) ask advisers to do no more than 15 minutes of preparatory work for a project without its approval. Rereading your own screening answers fits easily in that time, and reminds you of the frame you set, the figures you gave and where you said your knowledge stops.
+
+### How Consilyn fits
+
+[Consilyn](https://consilyn.com) is a Windows app built around that idea. On calls where it is allowed and everyone has agreed, it transcribes the conversation on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background notes. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It can also prepare answers to likely questions before a call, which involves no call audio, though network rules on AI still apply.
+
+The call's text and your notes go to Google Gemini using your own key; on Gemini's free tier, Google may use that text to improve its products, and people may review it. As the section on AI shows, GLG's code bars using or relying on AI-generated content in phone consultations, Third Bridge's code bars any AI help in answering questions, and Guidepoint's terms bar transcribing calls with AI tools, so don't use Consilyn for those networks' calls, including answers prepared beforehand to read out on them. Check every other network's current terms first, and use it only where it is allowed.
+
+## How to prepare for an expert network call
+
+https://consilyn.com/guides/prepare-for-an-expert-network-call/ · updated 2026-10-03
+
+A client has read your profile and screening answers and booked a paid consultation. Here is what happens on the call, what comes up, what to keep to yourself, and how to set up.
+
+### What does a typical expert network call look like?
+
+Most calls are a phone or video conversation booked for a set slot. The client leads, working through their own questions, and you answer from your own experience. The client decides when to stop, and networks typically pay for the minutes you actually spend on the call rather than the time booked.
+
+GLG describes its calls as led by the client and as "a discussion of your direct knowledge and experience" ([GLG Expert Support](https://glgmembersolutions.zendesk.com/hc/en-us/articles/360043658433-How-should-I-prepare-for-my-scheduled-phone-consultation)). The GLG, Guidepoint and Third Bridge terms linked below all pay by the minute.
+
+The usual shape is a short introduction, a few minutes confirming your background and how close you were to the topic, then the client's questions and follow-ups. Near the end, some clients ask what they should have asked, or what kind of person to speak to next.
+
+Both [GLG's membership terms](https://membership.glgresearch.com/tutorials/downloadTerms/6/en/default.pdf) and [Guidepoint's advisor terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) say someone may listen in for compliance purposes without announcing themselves. Speak as if the call is being reviewed, because it may be.
+
+### How much preparation do networks expect?
+
+Less than you might think. Networks select you for what you already know, and GLG says there is typically no need to prepare. Useful preparation is short: re-read your screening answers, refresh the facts of your own roles, decide what you cannot discuss, and check your setup. Researching the client's subject from scratch is not the job.
+
+GLG adds that your project manager will tell you if a client wants specific preparation. Guidepoint's terms say advisers should do no more than 15 minutes of preparatory work without its explicit approval, and GLG's terms say preparation time is not paid unless agreed otherwise.
+
+### Why re-read your screening answers before the call?
+
+Because the client chose you partly on them and will often start there. Your screening answers are a record of what you said you know, and the call should match them. If you now remember a date, a figure or a role differently, say so early and plainly rather than letting the conversation drift away from what you wrote.
+
+An invented example: you wrote that you ran packaging procurement for a mid-sized food manufacturer from 2019 to 2023. Expect the first question to be about exactly that: how many suppliers, how the tender ran, what moved the price. An answer that widens your remit or blurs the dates costs you credibility in the first five minutes.
+
+Keep your own copy of everything you submit.
+
+### What questions do clients ask on expert calls?
+
+Most questions fall into a handful of groups: your role and how close you were to decisions, your view of the market, competitors, pricing, how buyers choose, and what you expect next. Clients also ask what they should ask others, which tests whether you understand the topic beyond your own seat.
+
+- **Your role.** What you did, what budget or volume you handled, and which decisions were yours.
+- **Market view.** What is growing or shrinking, and what is driving it.
+- **Competitors.** Who wins business and why, and who is losing ground.
+- **Pricing.** How pricing is usually structured and what makes customers accept an increase or switch. Answer in general patterns, not with your employer's actual contract terms.
+- **Buying decisions.** Who signs off, on what criteria, and how long it takes. A former warehouse operations director might be asked how mid-sized retailers choose a logistics provider.
+- **What comes next.** Where you expect the market to go, and what would change your mind.
+- **What would you ask others?** Which questions you would put to a competitor, a customer or a regulator, and what kind of person they should speak to next.
+
+### How should you answer as the expert you were screened as?
+
+Lead with what you saw first-hand, then give your wider view and label it as a view. When a question goes past what you know, say so plainly. Clients pay for first-hand experience, and a clear "I didn't see that directly" protects the value of everything else you say.
+
+A useful pattern is two layers: "In my last role we did this, because of that", then "More broadly, my read is…". Keep answers short, then let the client steer.
+
+Do not stretch into areas you were not screened for. GLG's [code of conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) says members may not misrepresent their backgrounds or accept projects outside their expertise. AlphaSights' [expert code of conduct](https://www.alphasights.com/expert-professional-code-of-conduct/) says you must not mislead anyone about your expertise, and prohibits passing off AI-produced insights as your own or using information taken directly and exclusively from AI tools.
+
+Do not give investment advice, such as whether a share is worth buying: GLG's and Guidepoint's terms both prohibit it.
+
+### What must you not share on an expert call?
+
+Never share confidential information from a current or former employer, or material non-public information about any company. In practice that means internal figures, unreleased results, contract terms, customer details given in confidence, plans and trade secrets. Offer patterns, publicly known facts and your own judgement instead.
+
+[Third Bridge's expert terms](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions) define material non-public information as information that is not generally available and that a reasonable investor would be substantially likely to consider important to an investment decision. Its examples include results before publication, non-public details of a merger or major contract, and unpublished clinical trial data.
+
+Networks also restrict calls about your current employer. GLG's and Guidepoint's terms both bar projects about a company you currently work for, and calls for a client that competes directly with it; GLG's allow these only with written consent from the company and GLG.
+
+If a question heads somewhere you cannot go, say so calmly: "I can't go into that company's numbers, but I can tell you how buyers generally think about it." If the questions make you uncomfortable, GLG's code says to end the project and contact GLG immediately.
+
+This is general information, not legal advice. Your employment contract, any non-disclosure agreements and your network's current terms decide what applies to you, so check them.
+
+### What compliance attestations do networks ask for?
+
+Expect three kinds: a compliance tutorial before you start and at intervals after, confirmations that no conflict or contract stops you taking part, and sometimes an attestation afterwards that you shared nothing confidential. Some networks also set rules on recording calls and on using AI.
+
+- **A tutorial.** GLG's terms require its Network Member tutorial before you take part in projects other than surveys, repeated each year. Guidepoint's require its Advisor Compliance Tutorial at least once in the 12 months before each project.
+- **Confirmations.** GLG's terms have you confirm, when you sign them, that no contract or employer policy prevents you taking part, and say clients may ask for further confirmations as a condition of a project.
+- **An attestation afterwards.** GLG's terms say you may be asked to attest that you disclosed nothing confidential, breached no duty to an employer and will not use what you learned from the client, and that invoicing a project counts as that attestation.
+- **Recording and AI.** GLG's terms say members will not record or transcribe their consultations, and its code says members may not use or rely on AI-generated content during phone consultations, other than as GLG itself provides. Guidepoint's terms do not permit advisers to record or transcribe consultations through AI tools, personal devices or other methods. [Third Bridge's Expert Code of Conduct](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-code-of-conduct) bars using any form of AI to answer, or help answer, any question from Third Bridge or its clients. [What the rules say](https://consilyn.com/guides/using-ai-on-expert-calls/) covers each network in more detail.
+
+Again, this is general information, not legal advice: read your network's current terms before using any note-taking or assistant tool on a call.
+
+### How should you set up for the call?
+
+Treat it like a client meeting you cannot reschedule: a quiet room, a reliable headset, a laptop on mains power and a call link you have already tested. Small failures, such as a dropped connection or a muffled microphone, cost minutes you are paid for and some of the client's patience.
+
+- **A quiet room**, door closed and notifications off.
+- **A headset** you have used on calls before. Bluetooth headsets can switch modes when a call starts, so wired is more predictable.
+- **Mains power.** A laptop on battery may slow itself down, and a video call feels it.
+- **The link, tested** a day ahead, with the call app updated.
+- **Your notes.** Your screening answers and a few lines on each relevant role.
+
+### What should you check before the call starts?
+
+Run through this list about half an hour before. It takes ten minutes and covers the things that tend to go wrong: forgetting what you wrote, being unsure what is off limits, and the technology failing at the first question.
+
+1. Re-read your screening answers and note anything you would now correct.
+2. Write down what you cannot discuss.
+3. Check the call is not about your current employer or for its direct competitor. If it is, contact the network before you join.
+4. Pick two or three first-hand examples you can describe without confidential detail.
+5. Decide how you will say "that is outside what I saw directly".
+6. Plug the laptop in and close apps that compete for the microphone or connection.
+7. Test the headset microphone inside the call app.
+8. Check the time zone on the invitation, and keep the network's contact details to hand.
+9. Join a few minutes early.
+
+### What should you do after the call?
+
+Complete any attestation honestly, report anything that worried you, and submit your payment request on time. Do not contact the client directly or post about the project. Then take five minutes to note the questions you were asked: they show what the next client is likely to want.
+
+If a client pressed for confidential information, tell the network even if you declined. GLG's code says members should not communicate with clients without GLG's written approval or describe a project on any public forum, including social media. Payment requests have deadlines: 30 days after a project under GLG's terms, 45 under Guidepoint's. Update your profile if your role or restrictions change; each network above requires it.
+
+### How Consilyn fits
+
+[Consilyn](https://consilyn.com) is a Windows app for experts. It transcribes the call on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
+
+The call text and your material, never the audio, go to Google Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. GLG's and Guidepoint's terms above forbid experts transcribing consultations, GLG's code bars relying on AI-generated content during calls, and Third Bridge's code bars any AI help in answering questions, so don't use Consilyn for those networks' calls, including answers prepared beforehand to read out on them. Check your own network's terms, and where they forbid it, don't use it. It is a prompt for your own knowledge, not a substitute for it.
+
+## Can you use AI on an expert network call? What the rules say
+
+https://consilyn.com/guides/using-ai-on-expert-calls/ · updated 2026-10-03
+
+AI tools can now transcribe a call and suggest what to say next. For an expert taking paid consultations, the question is not whether this works but whether you are allowed to use it, and what you owe the client if you do.
+
+This guide covers what several large expert networks' published terms say, how recording consent works, and what happens to confidentiality when call text goes to an AI service. It is general information, not legal advice. Terms change, so read your own network's current terms before relying on anything here. The pages below were read on 3 October 2026.
+
+### Can you use AI on an expert network call?
+
+Often not. Several large networks forbid or restrict AI-generated content in consultations, and two of those below forbid experts recording or transcribing calls themselves, one naming AI tools expressly. Where your network forbids it, do not use a live tool on its calls unless it gives you written permission. Where it is allowed, the client still has to agree.
+
+The client's agreement does not override a network's ban, and a network's permission does not replace the client's agreement.
+
+### Is preparing with AI before a call different from using it during the call?
+
+Yes, in ways that matter. Preparing on your own, from your own material, captures no one's voice, so recording consent does not arise. But some networks' AI rules cover preparation too.
+
+Take an invented example. An expert in hospital purchasing is booked for a call about how health systems negotiate supply contracts. Beforehand, she drafts notes from her own experience and asks an AI assistant to tidy them into short points. No call audio is involved, although some networks' rules may still forbid the AI step. During the call, a live tool would have to capture the client's voice and usually send the words to a service that writes suggestions, and that is where consent law, network rules and confidentiality all apply.
+
+Two cautions about preparation. First, the client's screening questions can be confidential in their own right: some network terms list the questions a client asks among the information you must protect, so pasting them into an AI chatbot sends them to a third party. Second, some AI rules are not limited to the live call. One code forbids using AI even to assist in answering client questions. Another forbids using or relying on AI-generated content in consultations and in written responses to project opportunities, which on a plain reading covers screening answers and answers prepared in advance to read out. If in doubt, ask the network.
+
+### What do large expert networks' terms and codes say?
+
+The pages we read differ in wording but point the same way: give your own first-hand view, do not present AI output as your own, keep the client's identity and questions confidential, and in some cases do not record or transcribe calls at all. These are summaries and general information, not legal advice; follow the links and read the current versions.
+
+#### GLG
+
+GLG's [Network Member Code of Conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) has a section on AI-generated content. Apart from AI that GLG itself builds into its systems, members "may not use, or rely upon, AI-generated content" in phone consultations, surveys, written work or written responses to GLG project opportunities. The same code says members must not disclose a project or a client's identity to any third party.
+
+GLG's [member terms](https://membership.glgresearch.com/tutorials/downloadTerms/6/en/default.pdf), linked from the code and marked last updated April 2022, include an undertaking that you will not record or transcribe your consultations with clients, alongside your consent to clients recording and transcribing them. Members sign the terms each year, so check the version you last signed. GLG's own [preparation advice](https://glgmembersolutions.zendesk.com/hc/en-us/articles/360043658433-How-should-I-prepare-for-my-scheduled-phone-consultation) describes calls as a discussion of your direct knowledge and experience, and says there is typically no need to prepare anything in advance.
+
+#### Guidepoint
+
+Guidepoint's [advisor terms and conditions](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/), last updated 4 February 2026, are the most direct on recording. Advisors may not record or transcribe consultations "through the use of AI tools, personal devices, or other methods", though some clients may. The terms also forbid misrepresenting your experience or knowledge through AI or otherwise, and treat client names, the questions a client asks and the topics discussed as confidential information.
+
+#### AlphaSights
+
+AlphaSights' [Expert Code of Conduct](https://www.alphasights.com/expert-professional-code-of-conduct/) deals with AI under plagiarism. Experts must not use AI to produce insights and pass them off as their own, and using information directly and exclusively from AI tools such as chatbots is prohibited. The plagiarism rule it sits under covers vetting as well as calls. The code also requires every engagement to stay confidential, including its participants, its subject matter and the client's identity. It does not address recording; it refers to separate Terms of Engagement.
+
+#### Third Bridge
+
+Third Bridge's [Expert Code of Conduct](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-code-of-conduct) is the broadest. Experts must not use any form of AI, such as large language models, "to answer or assist in answering any questions" from Third Bridge or its clients. Its [Expert Terms and Conditions](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions), last revised December 2024, require you to keep confidential the client's identity, the subject of the consultation and the questions asked.
+
+Other networks have their own rules, and all of them can change; Guidepoint's terms, for example, say changes take effect when posted.
+
+### Do you need the client's consent to transcribe a call?
+
+You should get it, and in many places the law requires it. Live transcription works by capturing the other person's voice, which is the kind of activity call-recording and interception laws deal with. Some places require one party's consent, others everyone's, and on a call across borders the stricter rule may apply. This is general information, not legal advice.
+
+In the United States, federal law sets a minimum of one party's consent, and states can be stricter. The Reporters Committee for Freedom of the Press, in an [introduction to recording laws](https://www.rcfp.org/introduction-to-reporters-recording-guide/) written for journalists, lists a number of states that primarily require the consent of everyone in the conversation, including California, Florida, Illinois, Pennsylvania and Washington. When participants are in different states, courts have differed over which state's law applies, so the cautious course is to assume the stricter one does.
+
+Outside the US the rules vary again. In the UK and the European Union, data protection law generally applies to recording or transcribing what identifiable people say, and other countries have their own requirements.
+
+Two points are easy to miss. A tool that never saves audio still has to capture it to transcribe, so do not assume it falls outside a recording law. And the law is only the floor: a network's terms can forbid what the law allows.
+
+### What happens to confidentiality when call text goes to an AI service?
+
+It leaves your control. The words are processed by another company under that company's terms, which may allow it to keep the text, use it to improve its products or have people review it. Since the network terms above treat the client's identity and questions as confidential, you need to be sure you are entitled to share them.
+
+Read the provider's data terms before the first call, not after, because free and paid tiers often differ. Google's [Gemini API terms](https://ai.google.dev/gemini-api/terms), for example, say that on unpaid services Google uses submitted content to improve its products, that human reviewers may read it, and that you should not submit sensitive, confidential or personal information there. On paid services, the same terms say prompts are not used to improve Google's products, though Google logs them for a limited period to detect misuse. Users in the UK, the European Economic Area and Switzerland get the paid-service data terms either way.
+
+The client's identity needs particular care, because a transcript can reveal it through introductions and context even if no one names the firm. Keep the client's name and firm out of any notes the tool keeps. And some material should never reach any tool because it should not be on the call at all, such as non-public information about a current or former employer.
+
+### What should you check before using AI on a call?
+
+Work through these in order and stop at the first one that says no. The first four carry most of the weight.
+
+1. Read your network's current terms and code of conduct yourself, not a summary such as this one. Look for recording, transcription, AI and confidentiality.
+2. If the network forbids live tools or recording, do not use one on its calls. If you think there is a case for an exception, ask the network for written permission and keep the reply.
+3. Check the consent rules where you and the client are. If you cannot tell, assume everyone on the call must agree.
+4. Tell the client at the start of the call, in plain words, and go ahead only if they agree.
+5. Keep confidential material out: the client's name and firm, non-public information about any employer, and anything price-sensitive about a listed company.
+6. Read the AI provider's data terms, including whether text is kept, used for training or read by people, and choose a tier that suits client work.
+7. Prefer tools that do not save audio and that clearly label AI-written text, so you never present a model's general knowledge as your own experience.
+8. Answer from your own experience. Whatever appears on screen, what you say is your statement, and the client is paying for your view.
+
+### How should you tell the client?
+
+Briefly, at the start, before any substance, and in a way that makes it easy to say no. Say what the tool does, which company receives the text, whether that company may use it, and that audio is not saved if that is true. Then ask, and accept the answer without fuss. If your tool asks you to confirm what you told the client, say at least that.
+
+For example, with a free Google Gemini key: "Before we start, I'd like to mention that I use an assistant on my laptop that transcribes our conversation as we go. It never saves the audio, and it sends the text to Google's AI service to suggest answers, mainly from my own notes. Google may use that text to improve its products. Are you comfortable with that, or would you prefer I switch it off?"
+
+On a paid tier whose provider does not train on the text, say that instead: "...sends the text to a paid AI service, which does not use it for training, to suggest answers."
+
+If the client hesitates or says no, switch it off and carry on; it may reflect their firm's own rules rather than anything about you. And only ask where your network allows the tool in the first place.
+
+### How Consilyn fits
+
+[Consilyn](https://consilyn.com) is a Windows app for experts. Used on a call your network allows, with the client's agreement, it transcribes the call on your laptop without saving the audio, and shows short read-aloud answers built from your own screening answers and background, each labelled with its source. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
+
+The call text and your material go to Google Gemini using your own key. On Gemini's free tier Google may use that text to improve its products, and people may review it. Google's terms advise against sending confidential information to the free tier, so consider a paid tier for client work. Consilyn does not decide whether a call allows it: your network's terms and your client do.

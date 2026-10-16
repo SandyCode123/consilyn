@@ -3,6 +3,7 @@
 A live answer screen for experts on paid calls. It listens to your call on your own
 Windows laptop and puts a short, AI-written answer on screen for you to say in your own
 words, drawn from your own screening answers and background. See https://consilyn.com.
+Consilyn is a product of [Amaltas Labs](https://www.amaltaslabs.com).
 
 **Free to start. Runs on your laptop. Audio is never recorded and never leaves it.
 Only text goes to Google's AI, with your own key.**

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consilyn · Live answer assistant for expert calls</title>
+<title>Consilyn · AI answer assistant for expert network calls</title>
 <meta name="description" content="Short answers to say aloud on expert calls, built from the screening answers you submitted, with the source shown. Free Windows app; audio stays on your laptop.">
 <link rel="canonical" href="https://consilyn.com/">
 <meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
@@ -32,11 +32,24 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://consilyn.com/#org",
+      "@id": "https://www.amaltaslabs.com/#org",
+      "name": "Amaltas Labs",
+      "url": "https://www.amaltaslabs.com/",
+      "sameAs": ["https://www.linkedin.com/company/amaltaslabs"],
+      "brand": { "@id": "https://consilyn.com/#brand" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@consilyn.com",
+        "availableLanguage": "en"
+      }
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://consilyn.com/#brand",
       "name": "Consilyn",
       "url": "https://consilyn.com/",
       "logo": "https://consilyn.com/assets/icon-512.png",
-      "email": "hello@consilyn.com",
       "sameAs": ["https://github.com/SandyCode123/consilyn"]
     },
     {
@@ -44,7 +57,7 @@
       "@id": "https://consilyn.com/#site",
       "name": "Consilyn",
       "url": "https://consilyn.com/",
-      "publisher": { "@id": "https://consilyn.com/#org" },
+      "publisher": { "@id": "https://www.amaltaslabs.com/#org" },
       "inLanguage": "en"
     },
     {
@@ -66,14 +79,27 @@
         "No bot joins the meeting"
       ],
       "downloadUrl": "https://api.consilyn.com/download?from=schema",
-      "publisher": { "@id": "https://consilyn.com/#org" },
-      "offers": {
-        "@type": "Offer",
-        "name": "Early access",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Every call is free during early access."
-      }
+      "publisher": { "@id": "https://www.amaltaslabs.com/#org" },
+      "creator": { "@id": "https://www.amaltaslabs.com/#org" },
+      "brand": { "@id": "https://consilyn.com/#brand" },
+      "isAccessibleForFree": true,
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Early access",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Every call is free during early access."
+        },
+        {
+          "@type": "Offer",
+          "name": "Consilyn Pro",
+          "price": "39",
+          "priceCurrency": "USD",
+          "description": "Unlimited calls on up to 2 laptops, billed monthly, tax included. Cancel any time.",
+          "url": "https://consilyn.com/#pricing"
+        }
+      ]
     }
   ]
 }
@@ -605,7 +631,7 @@
       </div>
     </div>
     <div class="foot-legal">
-      <span>&copy; 2026 Consilyn. Not affiliated with any expert network.</span>
+      <span>&copy; 2026 <a href="https://www.amaltaslabs.com/">Amaltas Labs</a>. Consilyn is a product of Amaltas Labs. Not affiliated with any expert network.</span>
       <span>Zoom, Google Meet and Microsoft Teams are trademarks of their owners.</span>
     </div>
   </div>

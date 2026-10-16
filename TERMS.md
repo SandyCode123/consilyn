@@ -1,7 +1,8 @@
 # Terms of use
 
-Consilyn is free software for Windows. By installing or using it you agree
-to these terms.
+Consilyn is free software for Windows, made by Amaltas Labs
+(https://www.amaltaslabs.com). "We" and "us" in these terms mean Amaltas Labs. By
+installing or using it you agree to these terms.
 
 ## What it is
 

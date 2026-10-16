@@ -1,6 +1,7 @@
 # Privacy
 
-Consilyn runs on your laptop. There is no account, and nothing said on a call, and
+Consilyn is made by Amaltas Labs (https://www.amaltaslabs.com); "we" and "us" here
+mean Amaltas Labs. Consilyn runs on your laptop. There is no account, and nothing said on a call, and
 nothing you type or paste for a call, is ever sent to us.
 
 ## What stays on your laptop
