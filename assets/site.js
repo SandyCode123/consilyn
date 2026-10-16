@@ -468,7 +468,8 @@
    One small message to our own server per page, and nothing else: which page, the
    site that sent the visitor (referrer) and any utm_ tags, a press on Download, Buy
    or the email link, and this page's own script errors. No cookies, nothing kept in
-   the browser, nothing loaded from anyone else. The server counts a visitor with a
+   a visitor's browser (the owner's own browsers hold one switch, below), nothing loaded
+   from anyone else. The server counts a visitor with a
    code that changes every day and never keeps the address (server/src/insights.js).
    Download presses are also counted by the server's own /download link, which
    carries the utm_ tags along so a download is credited to where the visitor came
@@ -486,6 +487,31 @@
     } catch (e) { /* counting never breaks the page */ }
   };
   const params = new URLSearchParams(location.search);
+
+  /* The owner's own browsers count nothing (2026-10-16). Open consilyn.com/?owner=1 once
+     in a browser and it remembers, on that device only, to send nothing from then on;
+     ?owner=0 undoes it. This is the one thing the site keeps in a browser, and only
+     where the owner asked. It grants nothing: no server check is switched off, nothing
+     is sent, and anyone who sets it only leaves their own visits out of the numbers.
+     The Download and Buy links carry owner=1 so the server leaves those presses out too. */
+  const OWNER_KEY = "consilyn-owner";
+  let owner = false;
+  try {
+    const flag = params.get("owner");
+    if (flag === "1") localStorage.setItem(OWNER_KEY, "1");
+    else if (flag === "0") localStorage.removeItem(OWNER_KEY);
+    owner = localStorage.getItem(OWNER_KEY) === "1";
+    if (flag === "1" || flag === "0") {
+      params.delete("owner");
+      const rest = params.toString();
+      history.replaceState(null, "", location.pathname + (rest ? `?${rest}` : "") + location.hash);
+    }
+  } catch (e) { /* no storage: counted like anyone */ }
+  if (owner) {
+    document.querySelectorAll('a[href^="https://api.consilyn.com/download"], a[href^="https://api.consilyn.com/buy"]')
+      .forEach((a) => { const url = new URL(a.href); url.searchParams.set("owner", "1"); a.href = url.toString(); });
+    return;
+  }
   const utm = {};
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref"].forEach((k) => {
     if (params.get(k)) utm[k] = params.get(k).slice(0, 100);

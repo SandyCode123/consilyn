@@ -109,7 +109,9 @@ on: Windows, Mac, phone, tablet, Linux or other. The kind is worked out from wha
 browser says about itself, and only the kind is kept. To count visitors without
 cookies, the server makes a code from your internet address, browser and the date,
 which changes every day and can't be turned back into the address; the address
-itself is not kept. Script errors on our pages are reported the same way.
+itself is not kept. Script errors on our pages are reported the same way. The only
+thing the site ever stores in a browser is a switch the site's owner turns on in their
+own browsers to stop counting their own visits; nobody else has one.
 
 The Download button goes through our server, which counts the press the same way
 (with the kind of device) and sends you to the newest installer on GitHub. To tell which visit led to which install,
