@@ -350,6 +350,7 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
   border-left: 2px solid var(--brand); border-bottom: 2px solid var(--brand); transform: rotate(-45deg);
 }
 .plan .btn { margin-top: auto; }
+.pay-line { margin: 12px 0 0; text-align: center; font-size: 13.5px; color: var(--ink-3); }
 .price-note { margin: 24px auto 0; max-width: 760px; text-align: center; font-size: 14.5px; color: var(--ink-3); }
 @media (max-width: 960px) { .plans { grid-template-columns: minmax(0, 1fr); max-width: 520px; margin: 0 auto; } }
 
