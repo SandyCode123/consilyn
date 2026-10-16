@@ -58,6 +58,70 @@ Every call is free during early access. After that, your first 5 calls are free,
 
 Not yet. Consilyn is for Windows 10 and 11, in English.
 
+## AI assistants for expert calls: Cluely, Otter and others compared
+
+https://consilyn.com/guides/ai-call-assistants-for-expert-calls/ · updated 2026-10-16
+
+Most AI call tools were built for something other than expert calls. Cluely and Final Round AI suggest answers during job interviews and meetings. Otter, Fireflies and Granola take notes. An expert network call is different in three ways that decide which tool fits, if any: the client is paying for your own first-hand view, your screening answers are already on record, and many networks restrict AI on their calls.
+
+This guide compares what each tool says it does, from its own website, read on 16 October 2026. Products and prices change, so check the linked pages before you choose. Where it describes networks' rules, it is general information, not legal advice.
+
+### What kinds of AI call tool are there?
+
+There are three kinds. **Live answer tools** listen and put a suggested answer on your screen while the other person waits. **Note-takers** transcribe the meeting and write a summary, sometimes with a chat you can question. **Expert call assistants** listen too, but build each answer from what you have already submitted for that call and show which parts are yours.
+
+The difference that matters on an expert call is where an answer comes from. A general answer from a model can sound fluent and still not be your experience. That is the thing the client is paying for, and several networks' codes forbid passing it off as your own.
+
+### What does each tool do during the call?
+
+Each summary below is taken from the tool's own pages.
+
+- **Cluely.** A desktop app that listens to the conversation and answers when you ask it, with a keyboard shortcut. It does not join the meeting as a bot. You can add custom instructions and upload files. Its [pricing page](https://cluely.com/pricing) lists a free plan with limited answers, Pro at $19.99 a month, and a $149.99-a-month plan that adds being hidden from screen-sharing software, which its [undetectability page](https://cluely.com/undetectability) describes as using Cluely "without a trace".
+- **Final Round AI.** An interview copilot for job seekers. Its [home page](https://www.finalroundai.com/) says it listens to a live interview and streams a short suggested answer to a private window, with a Stealth Mode, on by default, designed to keep its windows out of supported screen shares and recordings. It runs on macOS 14.4 or later and on Windows. Live sessions need its paid Pro plan.
+- **Otter.** A transcription and note-taking service. Its [pricing page](https://otter.ai/pricing) describes a notetaker that joins Zoom, Microsoft Teams and Google Meet to write and share notes, desktop apps for Mac and Windows, and live transcription on the free plan, which caps each conversation at 30 minutes.
+- **Fireflies.** A note-taker that records Zoom, Google Meet, Microsoft Teams and other platforms through a bot that joins the meeting, or through a Chrome extension without the bot, according to its [pricing page](https://fireflies.ai/pricing). It lists real-time notes and live transcription.
+- **Granola.** A note-taker that does not join as a bot. Its [home page](https://www.granola.ai/) says it uses your computer's audio and has notes ready when the meeting ends. It runs on macOS, Windows, iOS and Android, and has a free tier.
+- **Consilyn.** A Windows app for experts on paid consultations. It transcribes both sides on your laptop, never saving the audio, and nothing joins the meeting. When the client finishes a question, it shows a short answer built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own material, a green label names the source and quotes your exact words. It is made by Amaltas Labs, the publisher of this guide.
+
+### Why is an expert call different from a job interview or a meeting?
+
+Three things change. The client pays for your experience, not for a well-phrased answer. The client has already read your screening answers and will test the call against them. And the call happens under a network's terms, which may restrict recording, transcription and AI.
+
+**Your experience is the product.** [AlphaSights' Expert Code of Conduct](https://www.alphasights.com/expert-professional-code-of-conduct/) says presenting AI-produced insights as your own is plagiarism, and prohibits using information directly and exclusively from AI tools such as chatbots. A tool that writes fluent general answers works against you here, unless it keeps your own material and the model's guesses visibly apart.
+
+**Your screening answers are on record.** The client chose you on them and has written your figures down. An answer that says "about a fifth" where your screening answer said "around 8%" costs you more than a pause would. A note-taker cannot help with that during the call; a general answer tool does not know what you wrote.
+
+**There is a third party's voice on the line.** A live tool has to capture the client's voice to work, which brings in call-recording law and the network's own rules. That is the same whether a bot appears in the meeting or not.
+
+### Does it matter whether the tool can be seen?
+
+Not for the rules. A tool that cannot be seen still captures the client's voice, still sends their words to an AI service, and still falls under your network's terms. A network that forbids experts transcribing calls with AI tools forbids it whether or not anyone can tell.
+
+[Guidepoint's advisor terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) say advisers may not record or transcribe consultations "through the use of AI tools, personal devices, or other methods". [GLG's Code of Conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) says members may not use or rely on AI-generated content in phone consultations, other than AI that GLG builds into its own systems. [Third Bridge's Expert Code of Conduct](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-code-of-conduct) bars using any form of AI to answer, or help answer, questions from Third Bridge or its clients. And in places that require everyone on a call to agree to it being recorded, which in the US includes California, Florida, Illinois, Pennsylvania and Washington according to the [Reporters Committee for Freedom of the Press](https://www.rcfp.org/introduction-to-reporters-recording-guide/), consent is about the capture, not about what shows on screen.
+
+Consilyn takes the opposite approach to hiding. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and that they are happy to go ahead. For what each network's rules say, see [can you use AI on an expert network call?](https://consilyn.com/guides/using-ai-on-expert-calls/)
+
+### What should you compare before choosing a tool?
+
+Start with whether your network allows any live tool at all. If it does, compare where each answer comes from, what happens to the audio and the text, and whether you can read the answer aloud without stumbling. Features matter less than these.
+
+1. **Allowed at all?** Read your network's current terms for recording, transcription and AI. If they forbid it, no tool fits.
+2. **Built from what?** Does it answer from your own submitted material, and does it show which parts are yours and which are the model's?
+3. **Consistent with what you wrote?** Does anything check an answer against your screening answers before you say it?
+4. **What happens to the audio?** Is it saved, and where? Is it sent anywhere?
+5. **Where does the text go?** Which AI provider receives it, and may that provider use it to improve its products or have people read it? Free and paid tiers often differ.
+6. **Does it ask about consent?** Does it make you confirm the client agreed before it listens, or leave that to memory?
+7. **Can you say it?** Is each answer short enough to read aloud while the client waits, with the direct answer first?
+8. **Does it run where you take calls?** Your operating system, your call app and your headset.
+
+### Where does Consilyn fit, and where does it not?
+
+It fits an expert taking calls on a Windows laptop, for a network that allows live help, with a client who agrees. It is built around the screening answers you submitted for that call. It is not a meeting note-taker for your own team, and it is not for job interviews.
+
+The limits are worth knowing before you download it. It runs on Windows 10 and 11 only, in English. Answers are written by Google Gemini using your own key: the call's text and your notes go to Google, never the audio, and on Gemini's free tier Google may use that text to improve its products and people may review it. Given the rules above, don't use it on GLG, Guidepoint or Third Bridge calls, including answers prepared beforehand to read out on them. Check every other network's current terms first.
+
+If you only need a record of a call your network lets you transcribe, a note-taker may be all you need. If you want answers on screen during an expert call, look for one that tells you plainly which words are yours.
+
 ## How to answer expert network screening questions
 
 https://consilyn.com/guides/answer-expert-network-screening-questions/ · updated 2026-10-03
@@ -266,6 +330,80 @@ If a client pressed for confidential information, tell the network even if you d
 [Consilyn](https://consilyn.com) is a Windows app for experts. It transcribes the call on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
 
 The call text and your material, never the audio, go to Google Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. GLG's and Guidepoint's terms above forbid experts transcribing consultations, GLG's code bars relying on AI-generated content during calls, and Third Bridge's code bars any AI help in answering questions, so don't use Consilyn for those networks' calls, including answers prepared beforehand to read out on them. Check your own network's terms, and where they forbid it, don't use it. It is a prompt for your own knowledge, not a substitute for it.
+
+## Screening questions that ask for free consulting: what to give
+
+https://consilyn.com/guides/screening-questions-that-ask-for-free-consulting/ · updated 2026-10-16
+
+Some screening questions ask for the answer itself, such as "What are the key cost drivers, and how will pricing change over the next three years?" Show that you can answer it, not the answer. Say where you sat, when, at what scale and which decisions were yours, give one fact only someone in that seat would know, and keep the analysis for the paid call.
+
+Experts raise this often. Threads on the r/expertnetworks forum include [how to deal with screening questions asking for free insights](https://www.reddit.com/r/expertnetworks/comments/1mvjlob/how_to_deal_with_screening_questions_asking_for/), [asking the meaningful questions as part of the screening](https://www.reddit.com/r/expertnetworks/comments/1s3jp7q/bad_practice_asking_the_meaningful_questions_as/) and [detailed screener questions](https://www.reddit.com/r/expertnetworks/comments/1c7tmvm/detailed_screener_questions/). Where this guide describes networks' terms, it is general information, not legal advice.
+
+### Why do some screening questions ask for so much?
+
+Because the client is choosing between experts and wants evidence, and the quickest way to test someone is to ask the real question. It is rarely bad faith. But a long written answer to the real question is the call's content, delivered before anyone has agreed to pay for it.
+
+Network terms tie payment to the consultation, not to the screening. [Guidepoint's advisor terms](https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/) say you will not be paid for a consultation unless it was completed, and that you should do no more than 15 minutes of preparatory work for a project without its explicit approval. [GLG's member terms](https://membership.glgresearch.com/tutorials/downloadTerms/6/en/default.pdf) say that, unless GLG agrees otherwise in writing or the project invitation says so, you are paid only for the time you spend interacting with clients, and not for preparation time. So an hour spent on a screener is an hour no one has agreed to pay for, and the client may still pick someone else.
+
+### What is the difference between qualifying and answering?
+
+Qualifying shows the client that you are the right person to ask. Answering gives them what they would have asked you on the call. A good screening answer is almost all qualifying, with just enough substance to prove it is real.
+
+**Qualifying** is:
+
+- your role, the years, and how close you were to the decision
+- the scale: budget, sites, volumes, team
+- one concrete detail that only someone in that seat would know
+- what you can speak to, and where your first-hand knowledge stops
+
+**Answering** is:
+
+- the ranked list of drivers, and why
+- figures for the market, not for your own role
+- a forecast or a recommendation
+- a comparison of named suppliers or competitors
+
+### What does that look like in practice?
+
+Two invented examples, in fields chosen only to show the shape. Every name and figure in them is made up.
+
+#### Hospital cleaning contracts
+
+*Question: What are the key cost drivers for contract cleaning companies serving hospitals, and how do you expect pricing to change over the next three years?*
+
+**Giving the call away:** A full page on labour as a share of cost, wage rules by region, consumables, how tenders are scored, which suppliers are losing share, and a three-year price forecast.
+
+**Qualifying:** Yes, from the buying side. From 2017 to 2023 I ran facilities procurement for a group of five hospitals and managed our cleaning contract, around 9 million euros a year, through two tenders. I can take you through how the cost build-up looked from our side, what moved price at each renewal, and how I would expect buyers to react to the next round. I did not work for a cleaning company, so I know their margins only from negotiations.
+
+#### Cold-chain logistics
+
+*Question: Which temperature-controlled carriers are winning share with grocery retailers, and why?*
+
+**Giving the call away:** A ranked list of carriers with reasons, their pricing, and which retailers each one serves.
+
+**Qualifying:** Partly. Until 2024 I was head of transport for a regional grocery chain with about 120 stores, and I chose and managed our chilled and frozen carriers. I can explain what we weighed when we switched carriers in 2022 and what I heard from carriers bidding for the work. I can speak to our region, not to national share figures.
+
+### How do you say "on the call" without sounding difficult?
+
+Say it in one plain sentence, after the qualifying part: "Happy to go through the drivers in detail on the call." It reads as confidence, not as holding back, because the rest of your answer has just shown the client you can. Keep the tone friendly: the client reads your answer as a preview of the call.
+
+If a screener is long, or most of it asks for analysis, tell the network's project manager before you start writing. Ask whether the client would like to book a call, or whether the network can turn the questions into paid work. Guidepoint's 15-minute limit on unapproved preparation gives you a reason to ask that is not about money.
+
+### What should never go in a screening answer, however short?
+
+Your current or former employer's confidential information, and material non-public information about any company. That applies to a three-line screening answer as much as to a call. Talk about patterns, ranges and how decisions get made, never a company's unreleased numbers, contract terms or plans.
+
+The client's questions can be confidential too. Guidepoint's terms list the questions a client asks among the confidential information you must protect, and [Third Bridge's expert terms](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-terms-and-conditions) count the subject of a consultation and the questions asked during it as confidential. So don't paste a screener into a public forum or a chatbot when you ask for advice on it; describe it in general words. For more, see [how to answer expert network screening questions](https://consilyn.com/guides/answer-expert-network-screening-questions/).
+
+### Can you use AI to write a long screener for you?
+
+Check your network's rules first, because several cover written answers. [GLG's Code of Conduct](https://membership.glgresearch.com/council-members/code-of-conduct?lang=en) says members may not use or rely on AI-generated content in written responses to project opportunities, other than as GLG builds AI into its own systems, and [Third Bridge's Expert Code of Conduct](https://www.thirdbridge.com/en-us/about-us/compliance/policies/expert-code-of-conduct) bars using any form of AI to answer, or help answer, its or its clients' questions. A short qualifying answer in your own words is quicker to write anyway. See [what the rules say about AI](https://consilyn.com/guides/using-ai-on-expert-calls/).
+
+### How Consilyn fits
+
+[Consilyn](https://consilyn.com) is a Windows app built on the screening answers you submit. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
+
+The call's text and your notes go to Google Gemini using your own key, and on Gemini's free tier Google may use that text to improve its products and people may review it. Because of the GLG, Guidepoint and Third Bridge rules above, don't use it on those networks' calls, and check every other network's current terms first.
 
 ## Can you use AI on an expert network call? What the rules say
 
