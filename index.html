@@ -515,9 +515,57 @@
       <p class="cta-note">Windows 10 and 11, 64-bit, 8 GB memory · A free Gemini key from Google</p>
       <p class="cta-note"><strong>A warning is normal.</strong> The installer is new and not yet code-signed. If Edge says it was blocked, open the downloads list, choose <strong>…</strong> then <strong>Keep</strong> then <strong>Keep anyway</strong>. If Windows then says it protected your PC, choose <strong>More info</strong> then <strong>Run anyway</strong>.</p>
       <p class="cta-note">Questions? <a href="mailto:hello@consilyn.com">hello@consilyn.com</a></p>
+
+      <!-- Why people stop (2026-10-16, docs/plans/2026-10-16-why-people-stop.md): one tap,
+           no popup, shown only with the script running. Only the chosen answer (and any
+           note typed under "Something else") is sent, to our own counter. -->
+      <div class="ask ask-stopped" id="why-not" data-ask="stopped">
+        <p class="ask-q">Not downloading today? One tap tells me why.</p>
+        <div class="ask-options">
+          <button type="button" data-a="network_rules">My expert network doesn't allow AI</button>
+          <button type="button" data-a="no_trust">I don't trust it yet</button>
+          <button type="button" data-a="mac_phone">I'm on a Mac or phone</button>
+          <button type="button" data-a="no_calls">No calls coming up</button>
+          <button type="button" data-a="too_much_setup">Too much setup (the AI key)</button>
+          <button type="button" data-a="other">Something else</button>
+        </div>
+        <form class="ask-note" hidden>
+          <label for="why-note">In a few words (optional)</label>
+          <span class="ask-note-row"><input id="why-note" name="note" maxlength="200" autocomplete="off">
+          <button type="submit">Send</button></span>
+        </form>
+        <p class="ask-thanks" role="status" hidden>Thanks, that helps.</p>
+        <p class="setup-call">Prefer a hand? <a href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Book a free 15-minute call with Sandip, who built it</a>.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- After a Download press on a Windows laptop: what to expect, and one question.
+     The download itself has already started; closing this changes nothing. -->
+<dialog class="after-dl" id="after-download" aria-labelledby="after-dl-title">
+  <form method="dialog" class="after-dl-close"><button type="submit" aria-label="Close">×</button></form>
+  <h2 id="after-dl-title">Your download is starting</h2>
+  <ol class="after-dl-steps">
+    <li>If Edge says it was blocked, open the downloads list, choose <strong>…</strong>, then <strong>Keep</strong>, then <strong>Keep anyway</strong>.</li>
+    <li>Run the installer. If Windows says it protected your PC, choose <strong>More info</strong>, then <strong>Run anyway</strong>. The installer is new and not yet code-signed, so this is normal.</li>
+    <li>The very first start takes a few minutes while Windows checks the new files.</li>
+  </ol>
+  <div class="ask" data-ask="install">
+    <p class="ask-q">How did it go?</p>
+    <div class="ask-options">
+      <button type="button" data-a="installed">It's installed</button>
+      <button type="button" data-a="blocked">Windows or my browser blocked it</button>
+      <button type="button" data-a="not_windows">I'm not on a Windows laptop</button>
+      <button type="button" data-a="changed_mind">I changed my mind</button>
+    </div>
+    <p class="ask-thanks" role="status" hidden data-reply="installed">Great. Open Consilyn from the Start menu; the first screen shows where to get the free Gemini key.</p>
+    <p class="ask-thanks" role="status" hidden data-reply="blocked">Thanks for saying. That is Windows being careful with a new app: the first two steps above get past it, and a call can walk you through it.</p>
+    <p class="ask-thanks" role="status" hidden data-reply="not_windows">Consilyn runs on Windows 10 and 11. Type <strong>consilyn.com</strong> on the laptop you take calls on and download it there.</p>
+    <p class="ask-thanks" role="status" hidden data-reply="changed_mind">Thanks for saying. <a href="#why-not" data-close>One more tap tells me what put you off.</a></p>
+  </div>
+  <p class="setup-call">Prefer a hand? <a href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Book a free 15-minute call with Sandip, who built it</a>.</p>
+</dialog>
 
 </main>
 

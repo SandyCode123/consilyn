@@ -55,6 +55,9 @@ server whether the call is allowed. It sends:
 So that problems get found and fixed, the app also sends, tied to your Support ID:
 
 - that the app started, and the first time it did;
+- the first time you reach each setup step, **by name only**: AI key saved, client added,
+  screening answers saved, answers prepared, consent screen opened, listening started.
+  Nothing you typed or pasted goes with it;
 - after each call, **numbers only**: how long it lasted, how many answers were shown and
   what they were built from (your material, or general knowledge), how quickly they
   came, how the call ended, the name of the speaker it listened to, whether the laptop
@@ -112,6 +115,25 @@ which changes every day and can't be turned back into the address; the address
 itself is not kept. Script errors on our pages are reported the same way. The only
 thing the site ever stores in a browser is a switch the site's owner turns on in their
 own browsers to stop counting their own visits; nobody else has one.
+
+Two pages also send, the same way and with the same daily code:
+
+- **"Read the page"**: a note that a page stayed open 30 seconds or was read down to the
+  download section, so we can tell readers from people who leave at once.
+- **Your answer, if you tap one,** to "How did it go?" (shown after you press Download)
+  or "What stopped you?" (at the bottom of the home page): only the answer you chose, and
+  the few words you type under "Something else", if any. Please don't put anything
+  private there.
+
+**"Email me the link"** (on phones, tablets and Macs): the email address you type is sent
+to our server, which emails you the download link once through Resend, a mail service,
+under its privacy terms. We keep the address, when you asked, the country and kind of
+device, whether the link went out, and whether you ticked "OK to email me once to ask
+how it went". If you ticked it, we may write to you once; if not, we won't write except
+to send the link. We keep the address until you ask us to delete it.
+
+**The setup call** is booked on Cal.com, a separate service; what you give it is under
+Cal.com's privacy terms and reaches us as a normal booking.
 
 The Download button goes through our server, which counts the press the same way
 (with the kind of device) and sends you to the newest installer on GitHub. To tell which visit led to which install,

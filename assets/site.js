@@ -36,10 +36,14 @@
 
 /* On a phone, a tablet or a Mac, a Windows installer is no use (2026-10-14: the first
    week's visitors looked and left, and the one outside download never installed).
-   There the Download buttons become "Send the link to my laptop": the phone's own share
-   sheet, or the visitor's own mail app with the link in it - nothing is sent by us.
-   On a Mac the installer stays one small link away, for anyone running Windows on it.
-   The link carries utm_source=send-link, so a download it leads to is credited to it. */
+   Since 2026-10-16 the Download buttons there become "Email me the link": one field,
+   sent to our own server (POST /v1/send-link), which emails the link through Resend.
+   An unticked box asks whether the founder may write once to ask how it went. If sending
+   fails, or away from consilyn.com, the visitor's own mail app opens with the link in
+   it, as before; "Or share the link" keeps the phone's share sheet. The pricing card
+   keeps one button, which leads to the form at #download. On a Mac the installer stays
+   one small link away, for anyone running Windows on it. The link carries
+   utm_source=send-link, so a download it leads to is credited to it. */
 (function () {
   "use strict";
   const ua = navigator.userAgent || "";
@@ -58,31 +62,98 @@
   const body = `Consilyn runs on Windows 10 and 11. Open this on the laptop you take calls on:\n${link}`;
   const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const say = handheld
-    ? "Consilyn runs on your Windows laptop, not on a phone or tablet. Send yourself the link and download it there."
-    : "Consilyn runs on Windows 10 and 11, not on a Mac yet. Send the link to the Windows laptop you take calls on.";
+    ? "Consilyn runs on your Windows laptop, not on a phone or tablet. We email you the link to open there."
+    : "Consilyn runs on Windows 10 and 11, not on a Mac yet. We email you the link for the Windows laptop you take calls on.";
+
+  const live = /^(www\.)?consilyn\.com$/.test(location.hostname);
+  const share = (e) => {
+    if (!navigator.share) return;  // the mail app opens from the link itself
+    e.preventDefault();
+    navigator.share({ title: subject, text: body.split("\n")[0], url: link.toString() })
+      .catch((err) => { if (err && err.name !== "AbortError") location.href = mailto; });
+  };
+  const make = (tag, attrs = {}, text) => {
+    const n = document.createElement(tag);
+    Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
+    if (text) n.textContent = text;
+    return n;
+  };
+  let forms = 0;
+
+  function sendForm(installer) {
+    forms += 1;
+    const form = make("form", { class: "send-link", novalidate: "" });
+    const label = make("label", { for: `send-link-email-${forms}`, class: "send-link-label" }, "Your email");
+    const field = make("input", { id: `send-link-email-${forms}`, type: "email", name: "email", required: "",
+                                  autocomplete: "email", inputmode: "email", maxlength: "254", placeholder: "you@example.com" });
+    const go = make("button", { type: "submit", class: "btn btn-primary" }, "Email me the link");
+    const row = make("span", { class: "send-link-row" });
+    row.append(field, go);
+    const tick = make("label", { class: "send-link-tick" });
+    const box = make("input", { type: "checkbox", name: "follow_up" });
+    tick.append(box, " OK for Sandip to email me once to ask how it went");
+    const status = make("p", { class: "send-link-status", role: "status" });
+    const note = make("p", { class: "cta-note device-note" }, say);
+    note.append(" Or type ");
+    note.append(make("strong", {}, "consilyn.com"));
+    note.append(" on your laptop, or ");
+    const shareLink = make("a", { href: mailto, "data-track": "send-link" }, "share the link");
+    shareLink.addEventListener("click", share);
+    note.append(shareLink, ".");
+    if (mac) {
+      note.append(" ");
+      note.append(make("a", { href: installer }, "Download the Windows installer"));
+    }
+    form.append(label, row, tick, status);
+
+    const fallBack = (said) => {
+      status.textContent = said;
+      location.href = mailto;
+    };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = field.value.trim();
+      if (!field.checkValidity() || !email) {
+        status.textContent = "That doesn't look like an email address.";
+        field.focus();
+        return;
+      }
+      if (!live) return fallBack("Your mail app is opening with the link instead.");
+      go.disabled = true;
+      status.textContent = "Sending...";
+      let answer = null;
+      try {
+        const res = await fetch("https://api.consilyn.com/v1/send-link", {
+          method: "POST", headers: { "content-type": "text/plain" },
+          body: JSON.stringify({ email, follow_up: box.checked }),
+        });
+        answer = await res.json();
+      } catch (err) { answer = null; }
+      go.disabled = false;
+      if (answer && answer.ok) {
+        form.replaceChildren(make("p", { class: "send-link-done", role: "status" },
+                                  `Sent to ${email}. Open it on the laptop you take calls on.`));
+      } else if (answer && answer.reason === "email") {
+        status.textContent = "That doesn't look like an email address.";
+        field.focus();
+      } else {
+        fallBack("We couldn't send it just now, so your mail app is opening with the link instead.");
+      }
+    });
+    return [form, note];
+  }
 
   buttons.forEach((a) => {
     const installer = a.href;
-    a.textContent = "Send the link to my laptop";
-    a.href = mailto;
-    a.dataset.track = "send-link";
-    a.addEventListener("click", (e) => {
-      if (!navigator.share) return;  // the mail app opens from the link itself
-      e.preventDefault();
-      navigator.share({ title: subject, text: body.split("\n")[0], url: link.toString() })
-        .catch((err) => { if (err && err.name !== "AbortError") location.href = mailto; });
-    });
     const row = a.closest(".cta-row");
-    if (!row) return;  // the pricing card keeps just the button
-    const note = document.createElement("p");
-    note.className = "cta-note device-note";
-    note.textContent = say;
-    if (mac) {
-      const anyway = document.createElement("a");
-      anyway.href = installer;
-      anyway.textContent = "Download the Windows installer";
-      note.append(" ", anyway);
+    if (!row) {  // the pricing card keeps one button, which leads to the form
+      a.textContent = "Email me the link";
+      a.href = "#download";
+      a.dataset.track = "to-send-link";
+      return;
     }
+    const [form, note] = sendForm(installer);
+    a.replaceWith(form);
     row.after(note);
   });
 })();
@@ -463,6 +534,77 @@
   }
 })();
 
+/* Why people stop (2026-10-16, docs/plans/2026-10-16-why-people-stop.md).
+
+   A Download press on a Windows laptop opens #after-download: what to expect from
+   Windows, and "How did it go?". The final section asks everyone else "What stopped
+   you?". One answer per question per page load, nothing kept in the browser. The answer
+   is handed to the counter below as a "consilyn-count" event, so it is sent only where
+   the counter runs (consilyn.com, not the owner's browsers); the questions work anywhere. */
+(function () {
+  "use strict";
+  const count = (detail) => document.dispatchEvent(new CustomEvent("consilyn-count", { detail }));
+
+  function ask(root) {
+    const q = root.dataset.ask;
+    const options = root.querySelector(".ask-options");
+    const noteForm = root.querySelector(".ask-note");
+    let answered = false;
+    let pending = null;  // "Something else" chosen, note not sent yet
+    const finish = (a, note) => {
+      if (answered) return;
+      answered = true;
+      pending = null;
+      count({ t: "answer", q, a, n: note || "" });
+      options.hidden = true;
+      if (noteForm) noteForm.hidden = true;
+      const replies = root.querySelectorAll(".ask-thanks");
+      const reply = root.querySelector(`.ask-thanks[data-reply="${a}"]`) ||
+        Array.from(replies).find((p) => !p.dataset.reply);
+      if (reply) reply.hidden = false;
+    };
+    options.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-a]");
+      if (!b || answered) return;
+      if (b.dataset.a === "other" && noteForm) {
+        pending = "other";
+        options.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        noteForm.hidden = false;
+        noteForm.querySelector("input").focus();
+        return;
+      }
+      finish(b.dataset.a);
+    });
+    if (noteForm) {
+      noteForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        finish("other", noteForm.querySelector("input").value.trim().slice(0, 200));
+      });
+      // Chose "Something else" and left without pressing Send: the choice still counts.
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden" && pending) {
+          finish("other", noteForm.querySelector("input").value.trim().slice(0, 200));
+        }
+      });
+    }
+  }
+  document.querySelectorAll(".ask[data-ask]").forEach(ask);
+
+  const dialog = document.getElementById("after-download");
+  if (!dialog || typeof dialog.showModal !== "function") return;
+  // Windows laptops only: on phones and Macs these buttons became the email form above.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest('a.btn[href^="https://api.consilyn.com/download"]');
+    if (!a || dialog.open) return;
+    // The download starts from the link as before; the box opens beside it.
+    setTimeout(() => dialog.showModal(), 0);
+  });
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();  // a press on the dimmed page around it
+    if (e.target.closest && e.target.closest("[data-close]")) dialog.close();
+  });
+})();
+
 /* Counting visits (2026-10-08, docs/plans/2026-10-08-feedback-analytics.md).
 
    One small message to our own server per page, and nothing else: which page, the
@@ -517,6 +659,29 @@
     if (params.get(k)) utm[k] = params.get(k).slice(0, 100);
   });
   send({ t: "view", p: location.pathname, r: document.referrer || "", u: utm });
+
+  // The answers to the page's two questions (above).
+  document.addEventListener("consilyn-count", (e) => {
+    const d = e.detail || {};
+    if (d.t === "answer") send({ t: "answer", p: location.pathname, q: d.q, a: d.a, n: d.n || "" });
+  });
+
+  // "Read the page": 30 seconds with it open, or reaching the download section, once.
+  // It tells a reader from a bounce or a robot that loads the page and goes (2026-10-16).
+  let read = false;
+  const reading = () => {
+    if (read) return;
+    read = true;
+    send({ t: "read", p: location.pathname });
+  };
+  setTimeout(() => { if (document.visibilityState === "visible") reading(); }, 30000);
+  const end = document.getElementById("download");
+  if (end && "IntersectionObserver" in window) {
+    const seen = new IntersectionObserver((entries) => {
+      if (entries.some((x) => x.isIntersecting)) { reading(); seen.disconnect(); }
+    });
+    seen.observe(end);
+  }
 
   // The visitor's utm_ tags ride along to the download, so it is credited to them.
   if (Object.keys(utm).length) {
