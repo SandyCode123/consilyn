@@ -534,6 +534,63 @@
   }
 })();
 
+/* Want a hand? (2026-10-18). In the box after Download: an optional email address for
+   anyone who may get stuck installing, an unticked "OK to email me again later" box, and
+   how they said it went if they answered above. Sent once to our own server, which tells
+   the founder; nothing comes back but the reply they write. Away from consilyn.com it
+   sends nothing and points to the email address instead. */
+(function () {
+  "use strict";
+  const form = document.getElementById("help-ask");
+  if (!form) return;
+  const live = /^(www\.)?consilyn\.com$/.test(location.hostname);
+  const field = form.querySelector('input[name="email"]');
+  const box = form.querySelector('input[name="follow_up"]');
+  const go = form.querySelector('button[type="submit"]');
+  const status = form.querySelector(".help-status");
+  let went = null;
+  document.addEventListener("consilyn-count", (e) => {
+    const d = e.detail || {};
+    if (d.t === "answer" && d.q === "install") went = d.a;
+  });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = field.value.trim();
+    if (!email || !field.checkValidity()) {
+      status.textContent = "That doesn't look like an email address.";
+      field.focus();
+      return;
+    }
+    if (!live) {
+      status.textContent = "This copy of the page can't send it. Write to hello@consilyn.com instead.";
+      return;
+    }
+    go.disabled = true;
+    status.textContent = "Sending...";
+    let answer = null;
+    try {
+      const res = await fetch("https://api.consilyn.com/v1/help", {
+        method: "POST", headers: { "content-type": "text/plain" },
+        body: JSON.stringify({ email, follow_up: box.checked, went }),
+      });
+      answer = await res.json();
+    } catch (err) { answer = null; }
+    go.disabled = false;
+    if (answer && answer.ok) {
+      const done = document.createElement("p");
+      done.className = "help-done";
+      done.setAttribute("role", "status");
+      done.textContent = `Thanks. I'll write to ${email} soon.`;
+      form.replaceChildren(done);
+    } else if (answer && answer.reason === "email") {
+      status.textContent = "That doesn't look like an email address.";
+      field.focus();
+    } else {
+      status.textContent = "It didn't go through. Write to hello@consilyn.com and I'll help from there.";
+    }
+  });
+})();
+
 /* Why people stop (2026-10-16, docs/plans/2026-10-16-why-people-stop.md).
 
    A Download press on a Windows laptop opens #after-download: what to expect from
@@ -681,6 +738,41 @@
       if (entries.some((x) => x.isIntersecting)) { reading(); seen.disconnect(); }
     });
     seen.observe(end);
+  }
+
+  // "How far they got" (2026-10-18): the deepest section that reached the upper half of
+  // the screen, whether "What stopped you?" was on screen, and roughly how long the page
+  // has been open. Sent when the visitor leaves or switches away, and again only if they
+  // came back and got further, so a visitor who never answers still says where they stopped.
+  const sections = Array.from(document.querySelectorAll("main section[id]"));
+  if (sections.length && "IntersectionObserver" in window) {
+    const order = sections.map((s) => s.id);
+    const opened = Date.now();
+    let deepest = "top";
+    let asked = false;
+    let told = "";
+    const reached = new IntersectionObserver((entries) => {
+      entries.forEach((x) => {
+        if (x.isIntersecting && order.indexOf(x.target.id) > order.indexOf(deepest)) deepest = x.target.id;
+      });
+    }, { rootMargin: "0px 0px -50% 0px" });
+    sections.forEach((s) => reached.observe(s));
+    const question = document.getElementById("why-not");
+    if (question) {
+      const shown = new IntersectionObserver((entries) => {
+        if (entries.some((x) => x.isIntersecting)) { asked = true; shown.disconnect(); }
+      }, { threshold: 0.5 });
+      shown.observe(question);
+    }
+    const bucket = (s) => (s < 10 ? "lt10" : s < 30 ? "10to30" : s < 120 ? "30to120" : s < 300 ? "120to300" : "gt300");
+    const leaving = () => {
+      const now = `${deepest}|${asked}`;
+      if (now === told) return;
+      told = now;
+      send({ t: "depth", p: location.pathname, s: deepest, q: asked, d: bucket((Date.now() - opened) / 1000) });
+    };
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") leaving(); });
+    window.addEventListener("pagehide", leaving);
   }
 
   // The visitor's utm_ tags ride along to the download, so it is credited to them.

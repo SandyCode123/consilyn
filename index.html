@@ -232,9 +232,9 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.consilyn.com/download?from=hero">Download for Windows
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
-        <a class="btn btn-ghost" href="#why">Why it's different</a>
+        <a class="btn btn-ghost" href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Free 15-minute setup call</a>
       </div>
-      <p class="cta-note">Free during early access · Windows 10 and 11 · No account</p>
+      <p class="cta-note">Free during early access · Windows 10 and 11 · No account · The setup call is a free 15-minute call with Sandip, who built it.</p>
       <ul class="trust-row">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Audio never leaves your laptop</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>No bot joins the meeting</li>
@@ -550,6 +550,7 @@
       <p>Free during early access. Installs without admin rights, and there is no account to make.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.consilyn.com/download?from=final">Download for Windows</a>
+        <a class="btn btn-ghost" href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Free 15-minute setup call</a>
       </div>
       <p class="cta-note">Windows 10 and 11, 64-bit, 8 GB memory · A free Gemini key from Google</p>
       <p class="cta-note"><strong>A warning is normal.</strong> The installer is new and not yet code-signed. If Edge says it was blocked, open the downloads list, choose <strong>…</strong> then <strong>Keep</strong> then <strong>Keep anyway</strong>. If Windows then says it protected your PC, choose <strong>More info</strong> then <strong>Run anyway</strong>.</p>
@@ -574,7 +575,6 @@
           <button type="submit">Send</button></span>
         </form>
         <p class="ask-thanks" role="status" hidden>Thanks, that helps.</p>
-        <p class="setup-call">Prefer a hand? <a href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Book a free 15-minute call with Sandip, who built it</a>.</p>
       </div>
     </div>
   </div>
@@ -603,6 +603,17 @@
     <p class="ask-thanks" role="status" hidden data-reply="not_windows">Consilyn runs on Windows 10 and 11. Type <strong>consilyn.com</strong> on the laptop you take calls on and download it there.</p>
     <p class="ask-thanks" role="status" hidden data-reply="changed_mind">Thanks for saying. <a href="#why-not" data-close>One more tap tells me what put you off.</a></p>
   </div>
+  <!-- Want a hand? (2026-10-18): optional, never in the way. Only the address, the tick and
+       how it went are sent, to our own server, which tells the owner; nothing is sent back. -->
+  <form class="help-ask" id="help-ask" novalidate>
+    <p class="ask-q">Want a hand if it gets stuck?</p>
+    <p class="help-sub">Leave your email (optional) and I'll write to you to help set it up.</p>
+    <label for="help-email" class="visually-hidden">Your email</label>
+    <span class="help-row"><input id="help-email" type="email" name="email" autocomplete="email" inputmode="email"
+      maxlength="254" placeholder="you@example.com"><button type="submit">Send</button></span>
+    <label class="help-tick"><input type="checkbox" name="follow_up"> OK to email me again later to ask how it went</label>
+    <p class="help-status" role="status"></p>
+  </form>
   <p class="setup-call">Prefer a hand? <a href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Book a free 15-minute call with Sandip, who built it</a>.</p>
 </dialog>
 

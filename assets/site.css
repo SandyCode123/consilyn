@@ -466,6 +466,25 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .after-dl-steps li { margin-bottom: 8px; }
 .after-dl .ask { padding-top: 18px; border-top: 1px solid var(--line); }
 .after-dl .ask-thanks a, .after-dl .setup-call a { color: var(--brand); }
+/* Want a hand? (2026-10-18). Needs the script, like the questions. */
+.help-ask { display: none; margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
+.js .help-ask { display: block; }
+.help-sub { margin: 0 0 10px; font-size: 15px; color: var(--ink-2); }
+.help-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.help-row input {
+  flex: 1 1 220px; min-width: 0; font: 15px/1.3 var(--font-ui); padding: 9px 12px; border-radius: 10px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+}
+.help-row button {
+  font: 500 14.5px/1.25 var(--font-ui); padding: 9px 16px; border-radius: 999px; cursor: pointer;
+  background: var(--brand); color: var(--brand-ink); border: 1px solid var(--brand);
+}
+.help-row button:hover { background: var(--brand-hover); }
+.help-row button:disabled { opacity: .6; cursor: default; }
+.help-tick { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; font-size: 14px; color: var(--ink-2); }
+.help-tick input { margin-top: 3px; }
+.help-status { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); min-height: 1em; }
+.help-done { margin: 0; font-weight: 600; }
 @media (max-width: 600px) { .after-dl { padding: 22px 16px 18px; } .after-dl h2 { font-size: 22px; } }
 
 /* "Email me the link", on phones, tablets and Macs. */

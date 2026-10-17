@@ -121,6 +121,10 @@ Two pages also send, the same way and with the same daily code:
 
 - **"Read the page"**: a note that a page stayed open 30 seconds or was read down to the
   download section, so we can tell readers from people who leave at once.
+- **How far you got**: when you leave a page or switch away from it, which of its
+  sections you scrolled down to, whether "What stopped you?" came into view, and roughly
+  how long the page had been open (under 10 seconds, up to 30, up to 2 minutes, up to 5,
+  or longer). It is sent again only if you come back and read further.
 - **Your answer, if you tap one,** to "How did it go?" (shown after you press Download)
   or "What stopped you?" (at the bottom of the home page): only the answer you chose, and
   the few words you type under "Something else", if any. Please don't put anything
@@ -132,6 +136,13 @@ under its privacy terms. We keep the address, when you asked, the country and ki
 device, whether the link went out, and whether you ticked "OK to email me once to ask
 how it went". If you ticked it, we may write to you once; if not, we won't write except
 to send the link. We keep the address until you ask us to delete it.
+
+**"Want a hand?"** (in the box after you press Download): if you type your email address
+there, it is sent to our server with whether you ticked "OK to email me again later to
+ask how it went", your answer to "How did it go?" if you gave one, and the country and
+kind of device. The founder is told at once and writes to you to help with the install;
+nothing is emailed to you automatically. If you didn't tick the box, we write only about
+this. We keep the address until you ask us to delete it.
 
 **The setup call** is booked on Cal.com, a separate service; what you give it is under
 Cal.com's privacy terms and reaches us as a normal booking.
