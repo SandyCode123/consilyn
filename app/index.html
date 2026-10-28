@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opening Consilyn</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://consilyn.com/">
+<script>
+(function () {
+  try {
+    var live = /^(www\.)?consilyn\.com$/.test(location.hostname);
+    var owner = localStorage.getItem("consilyn-owner") === "1";
+    if (live && !owner && navigator.sendBeacon) {
+      var q = new URLSearchParams(location.search), u = {};
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref"].forEach(function (k) {
+        if (q.get(k)) u[k] = q.get(k).slice(0, 100);
+      });
+      navigator.sendBeacon("https://api.consilyn.com/v1/site", new Blob([JSON.stringify(
+        { t: "view", p: "/app/", r: document.referrer || "", u: u })], { type: "text/plain" }));
+    }
+  } catch (e) { /* counting never stops the visitor */ }
+  location.replace("https://app.consilyn.com/");
+})();
+</script>
+<meta http-equiv="refresh" content="2; url=https://app.consilyn.com/">
+</head>
+<body><p>Opening Consilyn... <a href="https://app.consilyn.com/">Continue</a></p></body>
+</html>

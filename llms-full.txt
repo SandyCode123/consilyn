@@ -1,18 +1,18 @@
 # Consilyn
 
-> Consilyn is a Windows app for experts who take paid consultations. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
+> Consilyn is a live answer screen for experts who take paid consultations. It runs in Chrome or Edge on Windows and Mac, or as a Windows app. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
 
 Consilyn is a product of Amaltas Labs (https://www.amaltaslabs.com/). Website: https://consilyn.com/. Contact: hello@consilyn.com.
 
 Key facts:
 
-- Platform: Windows 10 and 11, 64-bit, 8 GB of memory. English only.
+- Platform: in the browser, Chrome or Edge on Windows 10 and 11, and Chrome 141 or newer on macOS 14.2 or newer, at https://consilyn.com/app (nothing to install). Or the Windows app: Windows 10 and 11, 64-bit. 8 GB of memory. English only.
 - Price: free during early access. After that, the first 5 calls are free, then 2 free calls a month; Consilyn Pro, with unlimited calls, is $39 a month, tax included. Payments by Dodo Payments, merchant of record: in the buyer's own currency (with Dodo's 4% conversion fee) or in US dollars, and in India by UPI or an Indian card.
 - Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
 - The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start times and the licence key; never anything said.
 - Before it listens, the app asks the expert to confirm the client knows the call is transcribed on the laptop and its text sent to Google's AI.
 - Works best with Zoom and Google Meet in Chrome. Speeds were measured with a paid Gemini key; on the free tier answers can be slow or missing.
-- Download: free Windows installer at https://consilyn.com/#download (no account, no admin rights).
+- Start: https://consilyn.com/app in the browser, or the free Windows installer at https://consilyn.com/#download (no account, no admin rights).
 
 ## Frequently asked questions
 
@@ -46,7 +46,7 @@ Zoom and Google Meet in Chrome work best. Consilyn follows whichever app is on t
 
 No. You need a free Gemini key from Google, and the app shows you where to get one the first time it starts.
 
-### Windows says it protected my PC. Is it safe?
+### The Windows app: Windows says it protected my PC. Is it safe?
 
 Yes. The installer is new and not yet code-signed, so Windows and some browsers ask first. In Edge, open the downloads list, choose … next to the file, then Keep, then Show more and Keep anyway. In Chrome, choose Keep. When you run it and Windows says it protected your PC, choose More info, then Run anyway. The very first start takes a few minutes while Windows checks the new files.
 
@@ -58,9 +58,17 @@ Every call is free during early access. After that, your first 5 calls are free,
 
 Checkout shows the full amount, tax included, before you pay. Pay in your own currency (it includes a 4% conversion fee) or in US dollars. In India, UPI or any Indian card. Cancel any time from the link in your receipt email.
 
+### Do I need to install anything?
+
+No. Consilyn runs in your browser: open consilyn.com/app in Chrome or Edge on Windows 10 and 11, or in Chrome on a Mac with macOS 14.2 or newer. The first time, your browser downloads about 60 MB; after that it opens in seconds. Prefer an app? The Windows app does the same and is a little faster on older laptops.
+
+### Which browsers does it work in?
+
+Chrome and Edge on Windows, and Chrome on a Mac (version 141 or newer, on macOS 14.2 or newer). Consilyn hears the call through the screen share these browsers offer with your computer's sound. Safari and Firefox can't share sound yet, and a phone or tablet can't share a call's sound, so in those the page tells you what to open instead.
+
 ### Does it work on a Mac, or in other languages?
 
-Not yet. Consilyn is for Windows 10 and 11, in English.
+Yes on a Mac, in Chrome on macOS 14.2 or newer. It works in English for now.
 
 ## AI assistants for expert calls: Cluely, Otter and others compared
 
@@ -85,7 +93,7 @@ Each summary below is taken from the tool's own pages.
 - **Otter.** A transcription and note-taking service. Its [pricing page](https://otter.ai/pricing) describes a notetaker that joins Zoom, Microsoft Teams and Google Meet to write and share notes, desktop apps for Mac and Windows, and live transcription on the free plan, which caps each conversation at 30 minutes.
 - **Fireflies.** A note-taker that records Zoom, Google Meet, Microsoft Teams and other platforms through a bot that joins the meeting, or through a Chrome extension without the bot, according to its [pricing page](https://fireflies.ai/pricing). It lists real-time notes and live transcription.
 - **Granola.** A note-taker that does not join as a bot. Its [home page](https://www.granola.ai/) says it uses your computer's audio and has notes ready when the meeting ends. It runs on macOS, Windows, iOS and Android, and has a free tier.
-- **Consilyn.** A Windows app for experts on paid consultations. It transcribes both sides on your laptop, never saving the audio, and nothing joins the meeting. When the client finishes a question, it shows a short answer built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own material, a green label names the source and quotes your exact words. It is made by Amaltas Labs, the publisher of this guide.
+- **Consilyn.** A live answer screen for experts on paid consultations, in the browser on Windows and Mac or as a Windows app. It transcribes both sides on your laptop, never saving the audio, and nothing joins the meeting. When the client finishes a question, it shows a short answer built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own material, a green label names the source and quotes your exact words. It is made by Amaltas Labs, the publisher of this guide.
 
 ### Why is an expert call different from a job interview or a meeting?
 
@@ -120,9 +128,9 @@ Start with whether your network allows any live tool at all. If it does, compare
 
 ### Where does Consilyn fit, and where does it not?
 
-It fits an expert taking calls on a Windows laptop, for a network that allows live help, with a client who agrees. It is built around the screening answers you submitted for that call. It is not a meeting note-taker for your own team, and it is not for job interviews.
+It fits an expert taking calls on a Windows laptop or a Mac, for a network that allows live help, with a client who agrees. It is built around the screening answers you submitted for that call. It is not a meeting note-taker for your own team, and it is not for job interviews.
 
-The limits are worth knowing before you download it. It runs on Windows 10 and 11 only, in English. Answers are written by Google Gemini using your own key: the call's text and your notes go to Google, never the audio, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
+The limits are worth knowing before you try it. It runs in Chrome or Edge on Windows 10 and 11 and in Chrome on macOS 14.2 or newer, or as a Windows app, in English only. Answers are written by Google Gemini using your own key: the call's text and your notes go to Google, never the audio, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
 If you only need a record of a call your network lets you transcribe, a note-taker may be all you need. If you want answers on screen during an expert call, look for one that tells you plainly which words are yours.
 
@@ -220,7 +228,7 @@ This is also why preparation can be light. [GLG's guidance](https://glgmembersol
 
 ### How Consilyn fits
 
-[Consilyn](https://consilyn.com) is a Windows app built around that idea. On calls where it is allowed and everyone has agreed, it transcribes the conversation on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background notes. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It can also prepare answers to likely questions before a call, which involves no call audio, though network rules on AI still apply.
+[Consilyn](https://consilyn.com) is a live answer screen built around that idea, in your browser on Windows and Mac. On calls where it is allowed and everyone has agreed, it transcribes the conversation on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background notes. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It can also prepare answers to likely questions before a call, which involves no call audio, though network rules on AI still apply.
 
 The call's text and your notes go to Google Gemini using your own key; on Gemini's free tier, Google may use that text to improve its products, and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
@@ -307,7 +315,7 @@ Follow them, and tell the network, because several can pay in other ways. GLG's 
 
 ### How Consilyn fits
 
-[Consilyn](https://consilyn.com) has nothing to do with payments. It is a Windows app for the call itself. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
+[Consilyn](https://consilyn.com) has nothing to do with payments. It is a live answer screen for the call itself, in your browser on Windows and Mac. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
 
 The call's text and your notes go to Google Gemini using your own key, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
@@ -418,7 +426,7 @@ If a client pressed for confidential information, tell the network even if you d
 
 ### How Consilyn fits
 
-[Consilyn](https://consilyn.com) is a Windows app for experts. It transcribes the call on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
+[Consilyn](https://consilyn.com) is a live answer screen for experts, in your browser on Windows and Mac. It transcribes the call on your laptop, never saving the audio, and shows short answers you can read aloud, built from your own screening answers and background. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
 
 The call text and your material, never the audio, go to Google Gemini using your own key. On Gemini's free tier, Google may use that text to improve its products, and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it. It is a prompt for your own knowledge, not a substitute for it.
 
@@ -492,7 +500,7 @@ Check your network's rules first, because several cover written answers. [GLG's 
 
 ### How Consilyn fits
 
-[Consilyn](https://consilyn.com) is a Windows app built on the screening answers you submit. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
+[Consilyn](https://consilyn.com) is a live answer screen, in your browser on Windows and Mac, built on the screening answers you submit. On calls where it is allowed and the client has agreed, it transcribes the call on your laptop, never saving the audio, and shows short answers to read aloud, built from your screening answers and background notes. Every AI-written answer is marked *not verified*; where it uses your own words, a green label names the source and quotes them.
 
 The call's text and your notes go to Google Gemini using your own key, and on Gemini's free tier Google may use that text to improve its products and people may review it. Consilyn does not decide whether a call allows it: your network's terms and your client do, so check your network's current terms before you use it.
 
@@ -585,6 +593,6 @@ If the client hesitates or says no, switch it off and carry on; it may reflect t
 
 ### How Consilyn fits
 
-[Consilyn](https://consilyn.com) is a Windows app for experts. Used on a call your network allows, with the client's agreement, it transcribes the call on your laptop without saving the audio, and shows short read-aloud answers built from your own screening answers and background, each labelled with its source. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
+[Consilyn](https://consilyn.com) is a live answer screen for experts, in your browser on Windows and Mac. Used on a call your network allows, with the client's agreement, it transcribes the call on your laptop without saving the audio, and shows short read-aloud answers built from your own screening answers and background, each labelled with its source. Every AI-written answer is marked *not verified*. Where it draws on your own material, a green label names the source and your exact words are quoted underneath. It will not start listening until you confirm you have told the client the call is transcribed on your laptop and its text sent to Google's AI, and they are happy to go ahead. It can also prepare answers to likely questions before the call, which involves no call audio, though network rules on AI still apply.
 
 The call text and your material go to Google Gemini using your own key. On Gemini's free tier Google may use that text to improve its products, and people may review it. Google's terms advise against sending confidential information to the free tier, so consider a paid tier for client work. Consilyn does not decide whether a call allows it: your network's terms and your client do.

@@ -15,6 +15,26 @@ nothing you type or paste for a call, is ever sent to us.
 - **Your Gemini key and licence key** are saved in the same folder, in a file called
   `.env`.
 
+### If you use Consilyn in your browser
+
+The browser version (Chrome or Edge on Windows, Chrome on a Mac, at app.consilyn.com) is
+the same app, run inside the page, and keeps the same rules:
+
+- **Audio still never leaves your laptop.** The page hears the call through the screen
+  share you choose and your microphone, turns it into text inside the page, and
+  discards it. Only the sound of the share is used; the picture is never looked at.
+- **Your material, call text and keys** are kept in your browser's own storage for
+  app.consilyn.com, on this laptop, instead of the `.consilyn` folder. Clearing that
+  site's data in your browser deletes them. Another browser, or a private window, starts
+  empty.
+- **The first time, the page downloads its parts**: Python and its libraries from
+  jsDelivr, and the speech and matching models from Hugging Face. Like any download,
+  those services see your internet address; nothing about you or your calls goes with it.
+- **The laptop ID** is a random code the page makes once and keeps in that same storage,
+  because a web page cannot read Windows' ID. Clearing the site's data makes a new one.
+- **Reports** say "web on Windows" or "web on Mac" where the app says your Windows
+  version. Everything else our server receives is exactly as listed below.
+
 ## What is sent to the AI service
 
 To suggest answers, the app sends **text only** to Google's Gemini service, using
@@ -31,7 +51,8 @@ to Google, and the app only shows the transcript.
 
 ## What our server receives
 
-Our server is a small service run for us by Cloudflare at api.consilyn.com. It never
+Our server is a small service run for us by Cloudflare at api.consilyn.com (the browser
+version reaches the same service at app.consilyn.com). It never
 receives call content: nothing said, no transcript, no suggested answer, no client name,
 no brief, no screening answers, no background, no AI key.
 

@@ -34,128 +34,135 @@
   document.addEventListener("click", (e) => { if (!head.contains(e.target)) set(false); });
 })();
 
-/* On a phone, a tablet or a Mac, a Windows installer is no use (2026-10-14: the first
-   week's visitors looked and left, and the one outside download never installed).
-   Since 2026-10-16 the Download buttons there become "Email me the link": one field,
-   sent to our own server (POST /v1/send-link), which emails the link through Resend.
-   An unticked box asks whether the founder may write once to ask how it went. If sending
-   fails, or away from consilyn.com, the visitor's own mail app opens with the link in
-   it, as before; "Or share the link" keeps the phone's share sheet. The pricing card
-   keeps one button, which leads to the form at #download. On a Mac the installer stays
-   one small link away, for anyone running Windows on it. The link carries
-   utm_source=send-link, so a download it leads to is credited to it. */
+/* Who is visiting decides what the Start buttons do (2026-10-28, docs/web-first-placement.md).
+   The web version's own browser check (fit.js, copied here by build_site.py) is asked
+   first, and a browser that can hear a call changes nothing.
+   - A phone or tablet: Consilyn runs on the laptop the call is taken on, so the buttons
+     become "Email me the link" (since 2026-10-16): one field, sent to our own server
+     (POST /v1/send-link), which emails the link through Resend. An unticked box asks
+     whether the founder may write once to ask how it went. If sending fails, or away from
+     consilyn.com, the visitor's own mail app opens with the link in it; "share the link"
+     keeps the phone's share sheet. The pricing card and the header keep one button, which
+     leads to the form at #download. The link carries utm_source=send-link, so a start it
+     leads to is credited to it.
+   - Any other browser that cannot hear a call (Safari, Firefox, Linux, an old macOS or
+     Chrome) keeps its button and gets one line under it saying what to open instead; the
+     app page itself says the same, with the link to copy. */
 (function () {
   "use strict";
-  const ua = navigator.userAgent || "";
-  const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;  // an iPad asking for the desktop site
-  const handheld = /iPhone|iPad|iPod|Android|Windows Phone/i.test(ua) || touchMac ||
-    Boolean(navigator.userAgentData && navigator.userAgentData.mobile);
-  const mac = !handheld && /Macintosh|Mac OS X/.test(ua);
-  if (!handheld && !mac) return;
-  const buttons = document.querySelectorAll('a.btn[href^="https://api.consilyn.com/download"]');
-  if (!buttons.length) return;
-
-  const link = new URL("/", location.href);
-  link.search = "?utm_source=send-link";
-  link.hash = "download";
-  const subject = "Consilyn: download it on my Windows laptop";
-  const body = `Consilyn runs on Windows 10 and 11. Open this on the laptop you take calls on:\n${link}`;
-  const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  const say = handheld
-    ? "Consilyn runs on your Windows laptop, not on a phone or tablet. We email you the link to open there."
-    : "Consilyn runs on Windows 10 and 11, not on a Mac yet. We email you the link for the Windows laptop you take calls on.";
-
-  const live = /^(www\.)?consilyn\.com$/.test(location.hostname);
-  const share = (e) => {
-    if (!navigator.share) return;  // the mail app opens from the link itself
-    e.preventDefault();
-    navigator.share({ title: subject, text: body.split("\n")[0], url: link.toString() })
-      .catch((err) => { if (err && err.name !== "AbortError") location.href = mailto; });
-  };
+  if (!window.consilynFit) return;
   const make = (tag, attrs = {}, text) => {
     const n = document.createElement(tag);
     Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
     if (text) n.textContent = text;
     return n;
   };
-  let forms = 0;
 
-  function sendForm(installer) {
-    forms += 1;
-    const form = make("form", { class: "send-link", novalidate: "" });
-    const label = make("label", { for: `send-link-email-${forms}`, class: "send-link-label" }, "Your email");
-    const field = make("input", { id: `send-link-email-${forms}`, type: "email", name: "email", required: "",
-                                  autocomplete: "email", inputmode: "email", maxlength: "254", placeholder: "you@example.com" });
-    const go = make("button", { type: "submit", class: "btn btn-primary" }, "Email me the link");
-    const row = make("span", { class: "send-link-row" });
-    row.append(field, go);
-    const tick = make("label", { class: "send-link-tick" });
-    const box = make("input", { type: "checkbox", name: "follow_up" });
-    tick.append(box, " OK for Sandip to email me once to ask how it went");
-    const status = make("p", { class: "send-link-status", role: "status" });
-    const note = make("p", { class: "cta-note device-note" }, say);
-    note.append(" Or type ");
-    note.append(make("strong", {}, "consilyn.com"));
-    note.append(" on your laptop, or ");
-    const shareLink = make("a", { href: mailto, "data-track": "send-link" }, "share the link");
-    shareLink.addEventListener("click", share);
-    note.append(shareLink, ".");
-    if (mac) {
-      note.append(" ");
-      note.append(make("a", { href: installer }, "Download the Windows installer"));
-    }
-    form.append(label, row, tick, status);
-
-    const fallBack = (said) => {
-      status.textContent = said;
-      location.href = mailto;
-    };
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = field.value.trim();
-      if (!field.checkValidity() || !email) {
-        status.textContent = "That doesn't look like an email address.";
-        field.focus();
-        return;
-      }
-      if (!live) return fallBack("Your mail app is opening with the link instead.");
-      go.disabled = true;
-      status.textContent = "Sending...";
-      let answer = null;
-      try {
-        const res = await fetch("https://api.consilyn.com/v1/send-link", {
-          method: "POST", headers: { "content-type": "text/plain" },
-          body: JSON.stringify({ email, follow_up: box.checked }),
-        });
-        answer = await res.json();
-      } catch (err) { answer = null; }
-      go.disabled = false;
-      if (answer && answer.ok) {
-        form.replaceChildren(make("p", { class: "send-link-done", role: "status" },
-                                  `Sent to ${email}. Open it on the laptop you take calls on.`));
-      } else if (answer && answer.reason === "email") {
-        status.textContent = "That doesn't look like an email address.";
-        field.focus();
-      } else {
-        fallBack("We couldn't send it just now, so your mail app is opening with the link instead.");
-      }
-    });
-    return [form, note];
-  }
-
-  buttons.forEach((a) => {
-    const installer = a.href;
-    const row = a.closest(".cta-row");
-    if (!row) {  // the pricing card keeps one button, which leads to the form
-      a.textContent = "Email me the link";
-      a.href = "#download";
-      a.dataset.track = "to-send-link";
+  window.consilynFit.check().then((fit) => {
+    if (fit.ok) return;
+    const buttons = document.querySelectorAll('a.btn[href="/app/"]');
+    if (!buttons.length) return;
+    if (fit.kind !== "phone") {
+      const said = window.consilynFit.words(fit);
+      buttons.forEach((a) => {
+        const row = a.closest(".cta-row");
+        if (!row) return;
+        if (fit.kind === "browser") a.textContent = said.head;      // "Open Consilyn in Chrome"
+        row.after(make("p", { class: "cta-note device-note" }, said.text));
+      });
       return;
     }
-    const [form, note] = sendForm(installer);
-    a.replaceWith(form);
-    row.after(note);
+    phoneForms(buttons);
   });
+
+  function phoneForms(buttons) {
+    const link = new URL("/app/", location.href);
+    link.search = "?utm_source=send-link";
+    const subject = "Consilyn: open it on my laptop";
+    const body = `Consilyn runs in Chrome or Edge on the laptop you take calls on. Open this there:\n${link}`;
+    const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const say = "Consilyn works beside the call, on the laptop you take it on. We email you the link to open there.";
+    const live = /^(www\.)?consilyn\.com$/.test(location.hostname);
+    const share = (e) => {
+      if (!navigator.share) return;  // the mail app opens from the link itself
+      e.preventDefault();
+      navigator.share({ title: subject, text: body.split("\n")[0], url: link.toString() })
+        .catch((err) => { if (err && err.name !== "AbortError") location.href = mailto; });
+    };
+    let forms = 0;
+
+    function sendForm() {
+      forms += 1;
+      const form = make("form", { class: "send-link", novalidate: "" });
+      const label = make("label", { for: `send-link-email-${forms}`, class: "send-link-label" }, "Your email");
+      const field = make("input", { id: `send-link-email-${forms}`, type: "email", name: "email", required: "",
+                                    autocomplete: "email", inputmode: "email", maxlength: "254", placeholder: "you@example.com" });
+      const go = make("button", { type: "submit", class: "btn btn-primary" }, "Email me the link");
+      const row = make("span", { class: "send-link-row" });
+      row.append(field, go);
+      const tick = make("label", { class: "send-link-tick" });
+      const box = make("input", { type: "checkbox", name: "follow_up" });
+      tick.append(box, " OK for Sandip to email me once to ask how it went");
+      const status = make("p", { class: "send-link-status", role: "status" });
+      const note = make("p", { class: "cta-note device-note" }, say);
+      note.append(" Or type ");
+      note.append(make("strong", {}, "consilyn.com/app"));
+      note.append(" on your laptop, or ");
+      const shareLink = make("a", { href: mailto, "data-track": "send-link" }, "share the link");
+      shareLink.addEventListener("click", share);
+      note.append(shareLink, ".");
+      form.append(label, row, tick, status);
+
+      const fallBack = (said) => {
+        status.textContent = said;
+        location.href = mailto;
+      };
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = field.value.trim();
+        if (!field.checkValidity() || !email) {
+          status.textContent = "That doesn't look like an email address.";
+          field.focus();
+          return;
+        }
+        if (!live) return fallBack("Your mail app is opening with the link instead.");
+        go.disabled = true;
+        status.textContent = "Sending...";
+        let answer = null;
+        try {
+          const res = await fetch("https://api.consilyn.com/v1/send-link", {
+            method: "POST", headers: { "content-type": "text/plain" },
+            body: JSON.stringify({ email, follow_up: box.checked }),
+          });
+          answer = await res.json();
+        } catch (err) { answer = null; }
+        go.disabled = false;
+        if (answer && answer.ok) {
+          form.replaceChildren(make("p", { class: "send-link-done", role: "status" },
+                                    `Sent to ${email}. Open it on the laptop you take calls on.`));
+        } else if (answer && answer.reason === "email") {
+          status.textContent = "That doesn't look like an email address.";
+          field.focus();
+        } else {
+          fallBack("We couldn't send it just now, so your mail app is opening with the link instead.");
+        }
+      });
+      return [form, note];
+    }
+
+    buttons.forEach((a) => {
+      const row = a.closest(".cta-row");
+      if (!row) {  // the header and the pricing card keep one button, which leads to the form
+        a.textContent = a.classList.contains("head-cta") ? "Get the link" : "Email me the link";
+        a.href = "#download";
+        a.dataset.track = "to-send-link";
+        return;
+      }
+      const [form, note] = sendForm();
+      a.replaceWith(form);
+      row.after(note);
+    });
+  }
 })();
 
 (function () {
@@ -790,6 +797,7 @@
     const href = a.getAttribute("href");
     let button = a.dataset.track || null;
     if (button) { /* named by the page itself */ }
+    else if (href === "/app/") button = "start";
     else if (href.startsWith("https://api.consilyn.com/download")) button = "download";
     else if (href.startsWith("https://api.consilyn.com/buy")) button = "buy";
     else if (href.startsWith("mailto:")) button = "email";

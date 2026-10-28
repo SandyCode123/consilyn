@@ -157,7 +157,7 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .main-nav { display: flex; gap: 26px; margin-left: auto; }
 .main-nav a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--ink-2); }
 .main-nav a:hover { color: var(--ink); }
-.head-cta { margin-left: 4px; }
+.head-cta { margin-left: 4px; white-space: nowrap; }
 /* On a phone the menu folds behind a "Menu" button (user, 2026-10-09: there was no
    menu at all below 900px). Shown only when site.js runs, which opens it; without
    script the footer's links are the way round. */

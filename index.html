@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consilyn · AI answer assistant for expert network calls</title>
-<meta name="description" content="Short answers to say aloud on expert calls, built from the screening answers you submitted, with the source shown. Free Windows app; audio stays on your laptop.">
+<meta name="description" content="Short answers to say aloud on expert calls, built from your screening answers, with sources shown. Free in your browser on Windows and Mac. Audio stays local.">
 <link rel="canonical" href="https://consilyn.com/">
 <meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B1117" media="(prefers-color-scheme: dark)">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Consilyn">
 <meta property="og:title" content="Consilyn · Be the expert they screened for">
-<meta property="og:description" content="Short answers to say aloud on expert calls, built from your own screening answers, with the source shown. Free Windows app; audio stays on your laptop.">
+<meta property="og:description" content="Short answers to say aloud on expert calls, built from your own screening answers, with the source shown. Free in your browser on Windows and Mac; audio stays on your laptop.">
 <meta property="og:url" content="https://consilyn.com/">
 <meta property="og:image" content="https://consilyn.com/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -65,9 +65,10 @@
       "@id": "https://consilyn.com/#app",
       "name": "Consilyn",
       "url": "https://consilyn.com/",
-      "description": "Consilyn is a Windows app for experts who take paid consultations. It transcribes the call on the expert's laptop, never saving audio, and shows short answers to read aloud, built from the expert's own screening answers and background, with the source of every answer labelled.",
+      "description": "Consilyn is a live answer screen for experts who take paid consultations. It runs in Chrome or Edge on Windows and Mac, or as a Windows app. It transcribes the call on the expert's laptop, never saving audio, and shows short answers to read aloud, built from the expert's own screening answers and background, with the source of every answer labelled.",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Windows 10, Windows 11 (64-bit)",
+      "operatingSystem": "Windows 10, Windows 11, macOS 14.2 or later",
+      "browserRequirements": "Chrome or Edge on Windows; Chrome 141 or later on macOS 14.2 or later",
       "memoryRequirements": "8 GB",
       "inLanguage": "en",
       "featureList": [
@@ -167,7 +168,7 @@
     },
     {
       "@type": "Question",
-      "name": "Windows says it protected my PC. Is it safe?",
+      "name": "The Windows app: Windows says it protected my PC. Is it safe?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. The installer is new and not yet code-signed, so Windows and some browsers ask first. In Edge, open the downloads list, choose … next to the file, then Keep, then Show more and Keep anyway. In Chrome, choose Keep. When you run it and Windows says it protected your PC, choose More info, then Run anyway. The very first start takes a few minutes while Windows checks the new files."
@@ -191,10 +192,26 @@
     },
     {
       "@type": "Question",
+      "name": "Do I need to install anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Consilyn runs in your browser: open consilyn.com/app in Chrome or Edge on Windows 10 and 11, or in Chrome on a Mac with macOS 14.2 or newer. The first time, your browser downloads about 60 MB; after that it opens in seconds. Prefer an app? The Windows app does the same and is a little faster on older laptops."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers does it work in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chrome and Edge on Windows, and Chrome on a Mac (version 141 or newer, on macOS 14.2 or newer). Consilyn hears the call through the screen share these browsers offer with your computer's sound. Safari and Firefox can't share sound yet, and a phone or tablet can't share a call's sound, so in those the page tells you what to open instead."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Does it work on a Mac, or in other languages?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not yet. Consilyn is for Windows 10 and 11, in English."
+        "text": "Yes on a Mac, in Chrome on macOS 14.2 or newer. It works in English for now."
       }
     }
   ]
@@ -215,7 +232,7 @@
       <a href="#faq">FAQ</a>
       <a href="/guides/">Guides</a>
     </nav>
-    <a class="btn btn-primary btn-small head-cta" href="#download">Download</a>
+    <a class="btn btn-primary btn-small head-cta" href="/app/" data-track="start-head">Start free</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
   </div>
 </header>
@@ -226,15 +243,15 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Live answer assistant for expert calls · Windows</p>
+      <p class="eyebrow">Live answer assistant for expert calls · Windows and Mac</p>
       <h1 id="hero-title">Be the expert <em>they screened for.</em></h1>
       <p class="intro">Consilyn listens to your call on your laptop and shows a short answer to say in your own words, built from the screening answers you submitted.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://api.consilyn.com/download?from=hero">Download for Windows
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+        <a class="btn btn-primary" href="/app/" data-track="start-hero">Start free in your browser
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Free 15-minute setup call</a>
       </div>
-      <p class="cta-note">Free during early access · Windows 10 and 11 · No account · The setup call is a free 15-minute call with Sandip, who built it.</p>
+      <p class="cta-note">Free during early access · Nothing to install, no account · Chrome or Edge on Windows and Mac · Prefer an app? <a href="https://api.consilyn.com/download?from=hero">Windows app</a> · The setup call is a free 15-minute call with Sandip, who built it.</p>
       <ul class="trust-row">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Audio never leaves your laptop</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7 10 17l-5-5"/></svg>No bot joins the meeting</li>
@@ -444,7 +461,7 @@
           <li>Every feature</li>
           <li>No account, no card</li>
         </ul>
-        <a class="btn btn-primary" href="https://api.consilyn.com/download?from=middle">Download for Windows</a>
+        <a class="btn btn-primary" href="/app/" data-track="start-middle">Start free in your browser</a>
       </article>
       <article class="plan">
         <h3>Free</h3>
@@ -508,7 +525,7 @@
         <div class="answer-body"><p>No. You need a free Gemini key from Google, and the app shows you where to get one the first time it starts.</p></div>
       </details>
       <details>
-        <summary>Windows says it protected my PC. Is it safe?</summary>
+        <summary>The Windows app: Windows says it protected my PC. Is it safe?</summary>
         <div class="answer-body"><p>Yes. The installer is new and not yet code-signed, so Windows and some browsers ask first. In Edge, open the downloads list, choose <strong>…</strong> next to the file, then <strong>Keep</strong>, then <strong>Show more</strong> and <strong>Keep anyway</strong>. In Chrome, choose <strong>Keep</strong>. When you run it and Windows says it protected your PC, choose <strong>More info</strong>, then <strong>Run anyway</strong>. The very first start takes a few minutes while Windows checks the new files.</p></div>
       </details>
       <details>
@@ -520,8 +537,16 @@
         <div class="answer-body"><p>Checkout shows the full amount, tax included, before you pay. Pay in your own currency (it includes a 4% conversion fee) or in US dollars. In India, UPI or any Indian card. Cancel any time from the link in your receipt email.</p></div>
       </details>
       <details>
+        <summary>Do I need to install anything?</summary>
+        <div class="answer-body"><p>No. Consilyn runs in your browser: open <a href="/app/">consilyn.com/app</a> in Chrome or Edge on Windows 10 and 11, or in Chrome on a Mac with macOS 14.2 or newer. The first time, your browser downloads about 60 MB; after that it opens in seconds. Prefer an app? The <a href="https://api.consilyn.com/download?from=faq">Windows app</a> does the same and is a little faster on older laptops.</p></div>
+      </details>
+      <details>
+        <summary>Which browsers does it work in?</summary>
+        <div class="answer-body"><p>Chrome and Edge on Windows, and Chrome on a Mac (version 141 or newer, on macOS 14.2 or newer). Consilyn hears the call through the screen share these browsers offer with your computer's sound. Safari and Firefox can't share sound yet, and a phone or tablet can't share a call's sound, so in those the page tells you what to open instead.</p></div>
+      </details>
+      <details>
         <summary>Does it work on a Mac, or in other languages?</summary>
-        <div class="answer-body"><p>Not yet. Consilyn is for Windows 10 and 11, in English.</p></div>
+        <div class="answer-body"><p>Yes on a Mac, in Chrome on macOS 14.2 or newer. It works in English for now.</p></div>
       </details>
     </div>
   </div>
@@ -547,24 +572,24 @@
   <div class="wrap">
     <div class="final-card reveal">
       <h2 id="final-title">Try it on your next call.</h2>
-      <p>Free during early access. Installs without admin rights, and there is no account to make.</p>
+      <p>Free during early access. Nothing to install and no account to make: it opens in your browser.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://api.consilyn.com/download?from=final">Download for Windows</a>
+        <a class="btn btn-primary" href="/app/" data-track="start-final">Start free in your browser</a>
         <a class="btn btn-ghost" href="https://cal.com/sandip.amaltaslabs/consilyn-setup" target="_blank" rel="noopener" data-track="setup-call">Free 15-minute setup call</a>
       </div>
-      <p class="cta-note">Windows 10 and 11, 64-bit, 8 GB memory · A free Gemini key from Google</p>
-      <p class="cta-note"><strong>A warning is normal.</strong> The installer is new and not yet code-signed. If Edge says it was blocked, open the downloads list, choose <strong>…</strong> then <strong>Keep</strong> then <strong>Keep anyway</strong>. If Windows then says it protected your PC, choose <strong>More info</strong> then <strong>Run anyway</strong>.</p>
+      <p class="cta-note">Chrome or Edge on Windows 10 and 11 · Chrome on macOS 14.2 or newer · 8 GB memory · A free Gemini key from Google</p>
+      <p class="cta-note windows-app"><strong>Prefer an app?</strong> <a href="https://api.consilyn.com/download?from=final">Download the Windows app</a> (Windows 10 and 11, 64-bit): a little faster on older laptops, and it installs without admin rights. It is new and not yet code-signed, so Windows asks first; the steps appear when you press it.</p>
       <p class="cta-note">Questions? <a href="mailto:hello@consilyn.com">hello@consilyn.com</a></p>
 
       <!-- Why people stop (2026-10-16, docs/plans/2026-10-16-why-people-stop.md): one tap,
            no popup, shown only with the script running. Only the chosen answer (and any
            note typed under "Something else") is sent, to our own counter. -->
       <div class="ask ask-stopped" id="why-not" data-ask="stopped">
-        <p class="ask-q">Not downloading today? One tap tells me why.</p>
+        <p class="ask-q">Not trying it today? One tap tells me why.</p>
         <div class="ask-options">
           <button type="button" data-a="network_rules">My expert network doesn't allow AI</button>
           <button type="button" data-a="no_trust">I don't trust it yet</button>
-          <button type="button" data-a="mac_phone">I'm on a Mac or phone</button>
+          <button type="button" data-a="mac_phone">I'm on a phone or tablet</button>
           <button type="button" data-a="no_calls">No calls coming up</button>
           <button type="button" data-a="too_much_setup">Too much setup (the AI key)</button>
           <button type="button" data-a="other">Something else</button>
@@ -600,7 +625,7 @@
     </div>
     <p class="ask-thanks" role="status" hidden data-reply="installed">Great. Open Consilyn from the Start menu; the first screen shows where to get the free Gemini key.</p>
     <p class="ask-thanks" role="status" hidden data-reply="blocked">Thanks for saying. That is Windows being careful with a new app: the first two steps above get past it, and a call can walk you through it.</p>
-    <p class="ask-thanks" role="status" hidden data-reply="not_windows">Consilyn runs on Windows 10 and 11. Type <strong>consilyn.com</strong> on the laptop you take calls on and download it there.</p>
+    <p class="ask-thanks" role="status" hidden data-reply="not_windows">No need for Windows: Consilyn also runs in your browser. Open <a href="/app/">consilyn.com/app</a> in Chrome on your Mac, or on the laptop you take calls on.</p>
     <p class="ask-thanks" role="status" hidden data-reply="changed_mind">Thanks for saying. <a href="#why-not" data-close>One more tap tells me what put you off.</a></p>
   </div>
   <!-- Want a hand? (2026-10-18): optional, never in the way. Only the address, the tick and
@@ -624,7 +649,7 @@
     <div class="foot-grid">
       <div class="foot-about">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Consilyn</a>
-        <p>A live answer screen for experts who take paid calls. It runs on your Windows laptop.</p>
+        <p>A live answer screen for experts who take paid calls. It runs in your browser on Windows and Mac, or as a Windows app.</p>
       </div>
       <nav aria-label="Product">
         <h2>Product</h2>
@@ -632,7 +657,8 @@
           <li><a href="#why">Why Consilyn</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#download">Download</a></li>
+          <li><a href="/app/" data-track="start-foot">Start free</a></li>
+          <li><a href="#download">Windows app</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="/guides/">Guides</a></li>
@@ -866,6 +892,7 @@
  }
 ]
 </script>
+<script src="/assets/fit.js" defer></script>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>
