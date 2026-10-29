@@ -1,9 +1,10 @@
 # Privacy
 
 Consilyn is made by Amaltas Labs (https://www.amaltaslabs.com); "we" and "us" here
-mean Amaltas Labs. Consilyn runs on your laptop. There is no password: if you sign in, it is
-with your email and a one-time code. Nothing said on a call, and nothing you type or paste
-for a call, is ever sent to us.
+mean Amaltas Labs. Consilyn runs on your laptop. You can look around it without signing
+in; to start a call you sign in with your email and a one-time code (there is no
+password). Nothing said on a call, and nothing you type or paste for a call, is ever sent
+to us.
 
 ## What stays on your laptop
 
@@ -15,7 +16,7 @@ for a call, is ever sent to us.
   don't lose them by accident. Delete that folder to remove them.
 - **Your Gemini key and licence key** are saved in the same folder, in a file called
   `.env`.
-- **If you sign in**, your email and this device's sign-in token (a long random code our
+- **Once you sign in**, your email and this device's sign-in token (a long random code our
   server gives it) are saved in the same folder, in `account.json`. Deleting it signs
   this device out.
 
@@ -80,9 +81,10 @@ server whether the call is allowed. It sends:
 - **That the call has ended**, sent after it ends, never during it, so a call on another
   of your devices isn't taken for two at once.
 
-### Your account, if you sign in
+### Your account
 
-In Set up → Your account, you type your email, and our server emails you a six-digit
+You sign in before your first call on each device. In Set up → Your account, you type
+your email, and our server emails you a six-digit
 code through Resend, a mail service, under its privacy terms. Typing the code in signs
 that device in. Free calls and any plan you buy then belong to your email, on every
 device you sign in on. Our server keeps:

@@ -45,9 +45,9 @@ from using it or being unable to use it, including loss of business, fees or dat
 - To count free calls, the app asks our server before each call. If the server
   can't be reached, the call still goes ahead and is counted later. A third call
   in a row started offline asks you to connect first.
-- Free calls belong to a person, not a device. When you sign in under Set up (your
-  email and a code we send it), they are counted on your email and on each device
-  you use. We may ask you to sign in before a call.
+- Free calls belong to a person, not a device. You can look around the app without
+  signing in; to start a call you sign in under Set up (your email and a code we send
+  it). Calls are counted on your email and on each device you use.
 - A paid plan is a monthly subscription, sold by Dodo Payments as merchant of
   record. It renews until you cancel, and cancelling stops the next renewal.
   **Payments are not refundable**, except where the law requires it (see
