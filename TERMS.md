@@ -45,14 +45,19 @@ from using it or being unable to use it, including loss of business, fees or dat
 - To count free calls, the app asks our server before each call. If the server
   can't be reached, the call still goes ahead and is counted later. A third call
   in a row started offline asks you to connect first.
+- Free calls belong to a person, not a device. When you sign in under Set up (your
+  email and a code we send it), they are counted on your email and on each device
+  you use. We may ask you to sign in before a call.
 - A paid plan is a monthly subscription, sold by Dodo Payments as merchant of
   record. It renews until you cancel, and cancelling stops the next renewal.
   **Payments are not refundable**, except where the law requires it (see
-  [REFUND.md](REFUND.md)). Please use the free calls to try it first. A licence
-  key works on up to 2 laptops at a time; "Move to another laptop" in Set up
-  frees one.
-- Trying to get around the free-call count, for example by changing the app, is
-  not allowed.
+  [REFUND.md](REFUND.md)). Please use the free calls to try it first. A paid plan
+  is for one person, on every device they sign in on with the email they paid
+  with. In a copy of the Windows app from before accounts, a licence key works on
+  up to 2 laptops at a time; "Move to another laptop" in Set up frees one.
+- Trying to get around the free-call count, for example by changing the app or
+  using several emails, is not allowed, and neither is sharing one paid plan
+  between people.
 
 ## Licence
 

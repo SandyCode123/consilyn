@@ -1,8 +1,9 @@
 # Privacy
 
 Consilyn is made by Amaltas Labs (https://www.amaltaslabs.com); "we" and "us" here
-mean Amaltas Labs. Consilyn runs on your laptop. There is no account, and nothing said on a call, and
-nothing you type or paste for a call, is ever sent to us.
+mean Amaltas Labs. Consilyn runs on your laptop. There is no password: if you sign in, it is
+with your email and a one-time code. Nothing said on a call, and nothing you type or paste
+for a call, is ever sent to us.
 
 ## What stays on your laptop
 
@@ -14,6 +15,9 @@ nothing you type or paste for a call, is ever sent to us.
   don't lose them by accident. Delete that folder to remove them.
 - **Your Gemini key and licence key** are saved in the same folder, in a file called
   `.env`.
+- **If you sign in**, your email and this device's sign-in token (a long random code our
+  server gives it) are saved in the same folder, in `account.json`. Deleting it signs
+  this device out.
 
 ### If you use Consilyn in your browser
 
@@ -71,6 +75,31 @@ server whether the call is allowed. It sends:
   calls started while offline.
 - **Your licence key**, once you've bought one, so your plan can be checked. The
   server keeps only a scrambled copy of it.
+- **This device's sign-in token**, if you've signed in, so the call is counted on your
+  account and a plan you bought works on every device you sign in on.
+- **That the call has ended**, sent after it ends, never during it, so a call on another
+  of your devices isn't taken for two at once.
+
+### Your account, if you sign in
+
+In Set up → Your account, you type your email, and our server emails you a six-digit
+code through Resend, a mail service, under its privacy terms. Typing the code in signs
+that device in. Free calls and any plan you buy then belong to your email, on every
+device you sign in on. Our server keeps:
+
+- **your email**, as you typed it, and a tidied copy used to tell whether two addresses
+  are one inbox (for example, Gmail ignores dots and anything after a +);
+- **when you signed up and were last seen**, and whether you ticked "OK to email me about
+  offers". If you didn't, we email you only codes, receipts and replies;
+- **which devices are signed in**, by their scrambled IDs, and a scrambled copy of each
+  device's sign-in token (never the token itself);
+- **your calls' counts**: when each started and ended, on which device, and whether one
+  started while another of your devices had a call running. If several devices share
+  one account often, we may ask about it.
+
+The six-digit code is kept only scrambled, works for 10 minutes, and is deleted once
+used. A purchase made with the same email is linked to your account, including one made
+before you first signed in.
 
 ### Usage counts and error reports (you can turn these off)
 
@@ -109,7 +138,8 @@ put client details in it.
 
 You can give your email in Set up or on a feedback card, so we can reply or tell you
 when something you hit is fixed. It's optional, and it's sent with your reports and
-feedback from then on. If you bought a licence, we link the email you gave Dodo
+feedback from then on. If you haven't given one but have signed in, the email you signed
+in with goes with your reports instead. If you bought a licence, we link the email you gave Dodo
 Payments to your Support ID, so we can help you when something goes wrong.
 
 ### Checking for a new version
@@ -117,8 +147,8 @@ Payments to your Support ID, so we can help you when something goes wrong.
 The app asks our server for the newest version number, so it can offer the update.
 It sends nothing but the app's version, and it does this even with reports off.
 
-How long we keep it: usage counts and errors for about 13 months; feedback and
-emails until you ask us to delete them. Write to hello@consilyn.com, quoting your
+How long we keep it: usage counts and errors for about 13 months; feedback, emails
+and your account until you ask us to delete them. Write to hello@consilyn.com, quoting your
 Support ID, to see or delete what we hold about you.
 
 Your internet address is seen by Cloudflare, which runs the server, as with any
@@ -180,6 +210,9 @@ If you buy a licence, the purchase is handled by Dodo Payments, the merchant of
 record. Your name, email and payment details go to Dodo Payments under its privacy
 policy. We receive the licence's status, and the purchase details Dodo Payments
 shares with sellers, including your email and, if a payment fails, Dodo's reason for it.
+
+When you're signed in, Upgrade gives Dodo Payments your account's email, already filled
+in, and your account's number, so the plan lands on your account.
 
 The Upgrade link passes through our server on its way to Dodo Payments. It uses the
 country Cloudflare reports for your connection to offer rupees and UPI if you are in
