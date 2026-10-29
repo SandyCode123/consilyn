@@ -387,6 +387,9 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--paper-
 .faq summary:hover { color: var(--brand); }
 .faq .answer-body { padding: 0 4px 22px; color: var(--ink-2); font-size: 16.5px; max-width: 70ch; }
 .faq .answer-body p:last-child { margin-bottom: 0; }
+.faq .answer-body ul { margin: 0 0 12px; padding-left: 22px; }
+.faq .answer-body li { margin-bottom: 4px; }
+.faq .answer-body ul:last-child { margin-bottom: 0; }
 
 /* ------------------------------------------------------------ final CTA */
 

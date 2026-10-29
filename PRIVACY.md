@@ -220,7 +220,7 @@ India, and counts the press with that country, the kind of device and the same d
 code made from your internet address. It never keeps your address.
 
 After you pay, Dodo Payments sends you back to a thank-you page on our server, and puts
-your new licence key and email in that page's address. The page shows you the key, then
+your new licence key and email in that page's address. The page shows neither and
 removes both from the address bar. The server keeps neither.
 
 ## Contact

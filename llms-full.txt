@@ -32,7 +32,7 @@ Each answer is checked against your screening answers before it appears. If it d
 
 ### How fast are the answers?
 
-Answers prepared before the call appear about three seconds after the client stops talking; others take a few seconds more, with a line to start on while you wait. A paid Gemini key is fastest; the free one has daily limits.
+About three seconds after the client stops talking for answers prepared before the call, a few seconds more for others. A paid Gemini key is fastest.
 
 ### Is what I say used to train AI?
 
@@ -48,7 +48,7 @@ No. You need a free Gemini key from Google, and the app shows you where to get o
 
 ### The Windows app: Windows says it protected my PC. Is it safe?
 
-Yes. The installer is new and not yet code-signed, so Windows and some browsers ask first. In Edge, open the downloads list, choose … next to the file, then Keep, then Show more and Keep anyway. In Chrome, choose Keep. When you run it and Windows says it protected your PC, choose More info, then Run anyway. The very first start takes a few minutes while Windows checks the new files.
+Yes. It is new and not yet code-signed, so Windows asks first. Edge: in the downloads list choose …, Keep, Show more, Keep anyway. Chrome: choose Keep. Windows: choose More info, then Run anyway. The first start takes a few minutes while Windows checks the new files.
 
 ### What does it cost?
 
@@ -60,11 +60,11 @@ Checkout shows the full amount, tax included, before you pay. Pay in your own cu
 
 ### Do I need to install anything?
 
-No. Consilyn runs in your browser: open consilyn.com/app in Chrome or Edge on Windows 10 and 11, or in Chrome on a Mac with macOS 14.2 or newer. The first time, your browser downloads about 60 MB; after that it opens in seconds. Prefer an app? The Windows app does the same and is a little faster on older laptops.
+No. Open consilyn.com/app in your browser. The first visit downloads about 60 MB; after that it opens in seconds. Prefer an app? The Windows app does the same.
 
 ### Which browsers does it work in?
 
-Chrome and Edge on Windows, and Chrome on a Mac (version 141 or newer, on macOS 14.2 or newer). Consilyn hears the call through the screen share these browsers offer with your computer's sound. Safari and Firefox can't share sound yet, and a phone or tablet can't share a call's sound, so in those the page tells you what to open instead.
+Windows 10 and 11: Chrome or Edge. Mac: Chrome 141 or newer, on macOS 14.2 or newer. Safari, Firefox, phones and tablets can't share a call's sound yet, so the page tells you what to open instead.
 
 ### Does it work on a Mac, or in other languages?
 
