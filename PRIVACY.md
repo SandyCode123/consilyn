@@ -4,18 +4,21 @@ Consilyn is made by Amaltas Labs (https://www.amaltaslabs.com); "we" and "us" he
 mean Amaltas Labs. Consilyn runs on your laptop. You can look around it without signing
 in; to start a call you sign in with your email and a one-time code (there is no
 password). Nothing said on a call, and nothing you type or paste for a call, is ever sent
-to us.
+to us. The one exception is a call's date and time, and only if you ask us to email you a
+reminder before it.
 
 ## What stays on your laptop
 
 - **Audio is never saved and never leaves your laptop.** It is held in memory for a
   few seconds, turned into text on your laptop, and discarded.
-- **Your material** (your background, clients, screening answers, briefs) and **call
-  text** are stored in a database file in the `.consilyn` folder in your
+- **Your material** (your background, clients and their call times, screening answers,
+  briefs) and **call text** are stored in a database file in the `.consilyn` folder in your
   user folder. Only you can see them, and uninstalling leaves them there so you
   don't lose them by accident. Delete that folder to remove them.
 - **Your Gemini key and licence key** are saved in the same folder, in a file called
   `.env`.
+- **Add to calendar** makes the calendar event on your laptop. It goes from there to
+  your own calendar (Google Calendar, Outlook or another), never to us.
 - **Once you sign in**, your email and this device's sign-in token (a long random code our
   server gives it) are saved in the same folder, in `account.json`. Deleting it signs
   this device out.
@@ -103,14 +106,32 @@ The six-digit code is kept only scrambled, works for 10 minutes, and is deleted 
 used. A purchase made with the same email is linked to your account, including one made
 before you first signed in.
 
+### Call reminders by email (only if you ask)
+
+When you give a client's call time while signed in, you can leave **Email me the day
+before and about an hour before** ticked. Then our server keeps, with your account:
+
+- **the call's date and time**, and your time zone, so the email shows your own time;
+- **whether it is an expert call or an interview**, and whether you use the browser
+  version or the Windows app, so the email says the right thing;
+- **the app's own number for that client entry** (such as 7), so the email's link opens
+  it. It says nothing about the client: no name, no brief, nothing you typed.
+
+It emails you twice through Resend: the day before and about an hour before. Each email
+has a link to stop it. Changing the time moves the reminder; clearing the time, unticking
+the box or deleting the client cancels it. We delete it 7 days after the call. We count
+how many reminders were sent and whether a call was then started within 3 hours of its
+time, to see whether reminders help.
+
 ### Usage counts and error reports (you can turn these off)
 
 So that problems get found and fixed, the app also sends, tied to your Support ID:
 
 - that the app started, and the first time it did;
 - the first time you reach each setup step, **by name only**: AI key saved, client added,
-  screening answers saved, answers prepared, consent screen opened, listening started.
-  Nothing you typed or pasted goes with it;
+  screening answers saved, answers prepared, consent screen opened, listening started;
+  and for call times: a call time given, a call added to your calendar, a call started
+  within 3 hours of its time. Nothing you typed or pasted goes with it, not even the time;
 - after each call, **numbers only**: how long it lasted, how many answers were shown and
   what they were built from (your material, or general knowledge), how quickly they
   came, how the call ended, the name of the speaker it listened to, whether the laptop
