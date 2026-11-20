@@ -170,6 +170,8 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const GENERATED = "Generated · not verified";
+  // In an interview the app names AI-written text this way (app.js provLabel).
+  const UNVERIFIED = [GENERATED, "Not in your CV · your view"];
   const LOOKS = ["look-a", "look-b", "look-c"];
 
   /* ------------------------------------------------------------ helpers */
@@ -223,6 +225,7 @@
     let userPaused = reduceMotion;
     let look = 0;
     let seconds = 42;
+    let other = "client";   // who asks: the client, or in an interview the interviewer
 
     const active = () => !userPaused && visible && !document.hidden;
 
@@ -280,7 +283,7 @@
       ui.card.replaceChildren();
       ui.card.classList.remove("answered", "stale");
       const b = el("div", "app-blank");
-      b.append(el("h4", "", "Nothing on screen yet"), el("p", "", "A suggestion appears here when the client finishes a question."));
+      b.append(el("h4", "", "Nothing on screen yet"), el("p", "", `A suggestion appears here when the ${other} finishes a question.`));
       ui.card.appendChild(b);
     }
 
@@ -327,9 +330,9 @@
         prov.appendChild(el("span", "chip chip-verified chip-solid", turn.held.label));
         sentences(a, turn.held.text, true);
       } else {
-        turn.prov.forEach((label) => prov.appendChild(el("span", label === GENERATED ? "chip chip-unverified" : "chip chip-verified", label)));
+        turn.prov.forEach((label) => prov.appendChild(el("span", UNVERIFIED.includes(label) ? "chip chip-unverified" : "chip chip-verified", label)));
         if (turn.prepared) prov.appendChild(el("span", "chip chip-muted", "Prepared"));
-        if (turn.prov.includes(GENERATED)) a.classList.add("unverified");
+        if (turn.prov.some((l) => UNVERIFIED.includes(l))) a.classList.add("unverified");
         sentences(a, turn.text, true);
       }
       wear(a);
@@ -371,6 +374,7 @@
     // on screen. The first run starts from there instead of wiping it.
     async function playScenario(index, id, resume) {
       const sc = CALLS[index];
+      other = sc.kind === "interview" ? "interviewer" : "client";
       tabs.forEach((t, i) => t.setAttribute("aria-pressed", i === index ? "true" : "false"));
       let first = 0;
       if (resume) {

@@ -1,6 +1,6 @@
 # Consilyn
 
-> Consilyn is a live answer screen for experts who take paid consultations. It runs in Chrome or Edge on Windows and Mac, or as a Windows app. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
+> Consilyn is a live answer screen for job interviews and for experts who take paid consultations. It runs in Chrome or Edge on Windows and Mac, or as a Windows app. During a call the client has agreed to, it transcribes both sides on the expert's laptop (audio is never saved or sent) and shows short answers to read aloud, built from the expert's own screening answers and background. Every answer is labelled with its source, and AI-written text is marked not verified.
 
 Consilyn is a product of Amaltas Labs (https://www.amaltaslabs.com/). Website: https://consilyn.com/. Contact: hello@consilyn.com.
 
