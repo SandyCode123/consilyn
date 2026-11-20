@@ -11,6 +11,7 @@ Key facts:
 - Where text goes: suggestions are written by Google Gemini with the user's own key. On Gemini's free tier, Google may use that text to improve its products and people may review it.
 - The free-call counter receives only a scrambled laptop ID, a scrambled client-entry ID, the app version, call start and end times, a licence key bought before 29 October 2026, and the email the user signs in with (a one-time code, no password) and the device's sign-in token; never anything said. The app can be explored without signing in; starting a call needs it. Free calls and Consilyn Pro follow the email to every device signed in with it.
 - Reminders: the expert can give each call's time and add it to their own calendar with one press (made on the laptop, never sent). Signed in, Consilyn can also email them the day before and about an hour before; for that the server keeps only the call's time and time zone, deleted 7 days after the call.
+- Job interviews too: an entry can be an interview instead of an expert call. Answers come from the candidate's CV and their own words, and never add an employer, a result or a figure they did not give. The interviewer must be told, as a client is.
 - Before it listens, the app asks the expert to confirm the client knows the call is transcribed on the laptop and its text sent to Google's AI.
 - Works best with Zoom and Google Meet in Chrome. Speeds were measured with a paid Gemini key; on the free tier answers can be slow or missing.
 - Start: https://consilyn.com/app in the browser, or the free Windows installer at https://consilyn.com/#download (no admin rights). Sign in with an email to start a call.
@@ -30,6 +31,10 @@ Google's Gemini writes them from your screening answers, your background and wha
 ### Can it contradict what I submitted?
 
 Each answer is checked against your screening answers before it appears. If it disagrees, your own screening answer is shown instead. You always decide what you say.
+
+### Can I use it for a job interview?
+
+Yes. Add the entry as an interview, then paste your CV and the job description. Answers are built from your CV and what you wrote, in your own voice, and never add an employer, a result or a figure you did not give. As on an expert call, it asks you to confirm the interviewer knows before it listens.
 
 ### How fast are the answers?
 
