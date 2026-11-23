@@ -20,7 +20,12 @@
         { t: "view", p: "/app/", r: document.referrer || "", u: u })], { type: "text/plain" }));
     }
   } catch (e) { /* counting never stops the visitor */ }
-  location.replace("https://app.consilyn.com/");
+  var to = "https://app.consilyn.com/";
+  try {
+    var ref = (new URLSearchParams(location.search).get("ref") || "").toUpperCase();
+    if (/^[A-Z0-9]{3,20}$/.test(ref)) to += "?ref=" + ref;
+  } catch (e) { /* the app opens without it */ }
+  location.replace(to);
 })();
 </script>
 <meta http-equiv="refresh" content="2; url=https://app.consilyn.com/">

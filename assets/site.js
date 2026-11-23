@@ -34,6 +34,18 @@
   document.addEventListener("click", (e) => { if (!head.contains(e.target)) set(false); });
 })();
 
+/* A salesperson's link (2026-11-23): consilyn.com/?ref=<code> passes the code on to every
+   link into the app (consilyn.com/app, which forwards it to app.consilyn.com, which keeps it
+   for the sign-in). Only a code that could be one goes on. Nothing is kept in the browser:
+   a visitor who leaves the page and comes back later without the code arrives without it. */
+(function () {
+  "use strict";
+  let ref = "";
+  try { ref = (new URLSearchParams(location.search).get("ref") || "").toUpperCase(); } catch (e) { return; }
+  if (!/^[A-Z0-9]{3,20}$/.test(ref)) return;
+  document.querySelectorAll('a[href="/app/"]').forEach((a) => { a.href = `/app/?ref=${ref}`; });
+})();
+
 /* Who is visiting decides what the Start buttons do (2026-10-28, docs/web-first-placement.md).
    The web version's own browser check (fit.js, copied here by build_site.py) is asked
    first, and a browser that can hear a call changes nothing.
@@ -60,7 +72,7 @@
 
   window.consilynFit.check().then((fit) => {
     if (fit.ok) return;
-    const buttons = document.querySelectorAll('a.btn[href="/app/"]');
+    const buttons = document.querySelectorAll('a.btn[href^="/app/"]');
     if (!buttons.length) return;
     if (fit.kind !== "phone") {
       const said = window.consilynFit.words(fit);
@@ -78,6 +90,8 @@
   function phoneForms(buttons) {
     const link = new URL("/app/", location.href);
     link.search = "?utm_source=send-link";
+    const ref = new URL(buttons[0].href).searchParams.get("ref");
+    if (ref) link.searchParams.set("ref", ref);       // the salesperson's code goes with it
     const subject = "Consilyn: open it on my laptop";
     const body = `Consilyn runs in Chrome or Edge on the laptop you take calls on. Open this there:\n${link}`;
     const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -801,7 +815,7 @@
     const href = a.getAttribute("href");
     let button = a.dataset.track || null;
     if (button) { /* named by the page itself */ }
-    else if (href === "/app/") button = "start";
+    else if (href === "/app/" || href.startsWith("/app/?")) button = "start";   // ?ref= from a salesperson's link
     else if (href.startsWith("https://api.consilyn.com/download")) button = "download";
     else if (href.startsWith("https://api.consilyn.com/buy")) button = "buy";
     else if (href.startsWith("mailto:")) button = "email";

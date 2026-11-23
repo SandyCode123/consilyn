@@ -100,7 +100,11 @@ device you sign in on. Our server keeps:
   device's sign-in token (never the token itself);
 - **your calls' counts**: when each started and ended, on which device, and whether one
   started while another of your devices had a call running. If several devices share
-  one account often, we may ask about it.
+  one account often, we may ask about it;
+- **who introduced you, if anyone**: a referral code you typed when signing in, or one
+  in a link you opened (such as consilyn.com/?ref=CODE). It tells us which of our
+  salespeople introduced you, so they can be paid a share of what you pay. It is set
+  once and never changes what you pay.
 
 The six-digit code is kept only scrambled, works for 10 minutes, and is deleted once
 used. A purchase made with the same email is linked to your account, including one made
@@ -236,6 +240,10 @@ shares with sellers, including your email and, if a payment fails, Dodo's reason
 
 When you're signed in, Upgrade gives Dodo Payments your account's email, already filled
 in, and your account's number, so the plan lands on your account.
+
+For each payment we keep its amount before tax, its currency, its date and any discount
+code used, with your account. That is how a salesperson who introduced you is paid their
+share, and how a refund takes that share back.
 
 The Upgrade link passes through our server on its way to Dodo Payments. It uses the
 country Cloudflare reports for your connection to offer rupees and UPI if you are in
